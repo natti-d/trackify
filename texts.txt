@@ -3,5 +3,17 @@ Manage your team's progress easily and achieve the best results by the deadline 
 Управлявайте напредъка на вашия екип лесно и постигайте най-добри резултати до датата на крайния срок.
 
 Info:
-Trackify is an affordable website that allows your entire business team to organize project responsibilities. The tool allows you to assign tasks to one or more members and track their progress.
-Trackify е достъпен уебсайт, който позволява на целия ви бизнес екип да организира отговорностите за определен проект. Инструментът ви позволява да възлагате задачи на един или повече членове и да проследявате напредъка им.
+    Effective project management is essential for the effectiveness of any corporation in today's fast-paced business world. Management of activities, responsibilities, and deadlines can be difficult, especially when working in a team. Trackify is an effective web application that will empower your business team by providing an online platform for organising project duties.
+    Ефективното управление на проекти е от съществено значение за ефективността на всяка корпорация в днешния забързан бизнес свят. Управлението на дейности, отговорности и срокове може да бъде трудно, особено когато работите в екип. Trackify е ефективно уеб приложение, което ще даде възможност на вашия бизнес екип, като предостави онлайн платформа за организиране на задълженията по проекта.
+
+    Task Management:
+        Trackify optimises task management by offering a user-friendly interface where team members can effortlessly create, assign, and track activities. The platform provides for work categorization and establishing priorities, ensuring a clear grasp of each project's depth.
+        Trackify оптимизира управлението на задачите, като предлага удобен за потребителя интерфейс, където членовете на екипа могат без усилие да създават, възлагат и проследяват дейности. Платформата осигурява категоризиране на работата и установяване на приоритети, като гарантира ясно разбиране на дълбочината на всеки проект.
+
+    Kanban:
+        Trackify presupposes the creation of Kanban Boards to elevate your team's efficiency and streamline project workflows. Kanban is a visual management method that has proven to be a powerful tool for organizing tasks, enhancing collaboration, and providing a comprehensive view of project progress and status. As tasks progress through columns such as "To Do," "In Progress," and "Completed," team members can easily track and monitor real-time progress. With Trackify's implementation of Kanban Boards, managing projects has never been more straightforward.
+        Trackify предполага създаването на Kanban табла, за да повиши ефективността на вашия екип и да рационализира работните процеси на проекта. Kanban е визуален метод за управление, който се е доказал като мощен инструмент за организиране на задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед върху напредъка и състоянието на проекта. С напредването на задачите през колони като „Да направя“, „В ход“ и „Завършени“, членовете на екипа могат лесно да проследяват и наблюдават напредъка в реално време. С прилагането на Kanban табла от Trackify, управлението на проекти никога не е било по-лесно.
+
+    Project Timeline:
+        Trackify's deadline function helps you to visualise project timelines. This tool allows teams to set milestones, due dates, and dependencies, giving them a full understanding of the project's progress. The scheduled completion date is adaptable, allowing for real-time changes as project dynamics change.
+        Функцията за краен срок на Trackify ви помага да визуализирате прогреса на проекта. Този инструмент позволява на екипите да задават етапи от изпълнението и крайни дати на задачите, което дава на членовете пълна представа за напредъка на проекта. Планираната дата на завършване е адаптивна, което позволява промени в реално време при развитие на проекта.
