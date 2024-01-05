@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="w-100 h-100 m-0 p-0 overflow-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация в Trackify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./validations.js"></script>
+    <style>
+        #cloud-set1 {
+            background: url(./images/clouds_set1.png) 0 300px;
+            animation: wind 40s linear infinite;
+            filter: opacity(30%);
+        }
+
+        #cloud-set2 {
+            background: url(./images/clouds_set2.png) 0 300px;
+            animation: wind 40s linear infinite;
+        }
+
+        @keyframes wind {
+            0% {
+                background-position: 0 200px, 0 300px, 100px 250px;
+            }
+
+            100% {
+                background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+            }
+
+        }
+    </style>
+</head>
+
+<body class="w-100 h-100 m-0 p-0 overflow-hidden">
+    <div class="w-100 h-100 m-0 p-0 overflow-hidden"
+        style="background: #ade4ff; background: linear-gradient(180deg, #ade4ff 0%, #3ebfff 79%); background-attachment: fixed; background-size: cover;">
+        <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set1"></div>
+        <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set2"></div>
+        <div class="d-flex align-items-center h-100">
+            <!--ako se mahne position-relative ot child elements i se sloji na tozi div, shte se opravi-->
+            <div class="w-100 d-flex justify-content-center">
+                <form action="" class="col-md-4 col-10 p-3 d-flex align-items-center flex-column"
+                    style="background-color: #F0F2F4;">
+
+                    <div class="form-floating w-100 mb-3 position-relative">
+                        <input type="email" class="form-control" id="email-registration" placeholder="name"
+                            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+                        <label for="email">Email address</label>
+                    </div>
+
+                    <div class="form-floating w-100 mb-3 position-relative">
+                        <input type="name" class="form-control" id="name-registration" placeholder="info" required>
+                        <label for="name">Име и Фамилия</label>
+                    </div>                    
+
+                    <div class="form-floating w-100 mb-3 position-relative">
+                        <select class="form-select" id="account-type-registration" aria-label="Select Account Type"
+                            required>
+                            <option selected>Избери вид акаунт</option>
+                            <option value="School">Ученик/Учител</option>
+                            <option value="Business">Служител/Работодател</option>
+                            <option value="Personal">Личен</option>
+                        </select>
+                        <label for="floatingSelect">Вид Акаунт</label>
+                    </div>
+
+                    <div class="d-none form-floating w-100 mb-3 position-relative" id="organization-registration">
+                        <input type="info" class="form-control" id="organization-registration-value" placeholder="info">
+                        <label for="organization" id="organization-info-registration"></label>
+                    </div>
+
+                    <div class="form-floating w-100 mb-3 position-relative">
+                        <input type="password" class="form-control" id="password-registration" placeholder="password"
+                            required>
+                        <label for="password">Парола</label>
+                    </div>
+
+                    <div class="form-floating w-100 mb-3 position-relative">
+                        <input type="password" class="form-control" id="confirm-password-registration"
+                            placeholder="confirmPassword" required class="btn btn-secondary" data-bs-container="body"
+                            data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-content="Въведените пароли не са еднакви!">
+                        <label for="confirmPassword">Потвърди Парола</label>
+                    </div>
+
+                    <div class="d-none position-relative w-100 p-2" id="help-registration">
+                        <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
+                            style="border: solid 2px #003554;">
+                            <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ с регистрация</legend>
+                            <div>
+                                <p class="text-break" style="color: #003554;" id="instruction-registration"></p>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <button class="btn w-100 fs-4 mx-2 mb-3 position-relative" type="button"
+                        style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                        onclick="validateRegistration()"
+                        onmouseover="this.style.backgroundColor = '#03273c'; this.style.border = '2px solid #03273c';"
+                        onmouseleave="this.style.backgroundColor = '#003554'; this.style.border = '2px solid #003554';">
+                        Регистрирай се
+                    </button>
+
+                    <a class="w-100 fs-6 mx-2 text-center position-relative" href="./login.html" style="color: #003554"
+                        onmouseover="this.style.fontWeight = 'bold'; this.style.color = '#03273c';"
+                        onmouseleave="this.style.fontWeight = 'normal'; this.style.color = '#003554';">Вече имаш акаунт?
+                        Влез!</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const account_type_registration = document.getElementById('account-type-registration');
+
+        account_type_registration.addEventListener('change', function () {
+            let account_type_registration_value = document.getElementById('account-type-registration').value;
+            let organization_registration = document.getElementById('organization-registration');
+            let organization_info_registration = document.getElementById('organization-info-registration');
+            //Check Account Type
+            switch (account_type_registration_value) {
+                case "School": organization_registration.classList.remove('d-none'); organization_info_registration.innerText = String("Въведи Училище"); break;
+                case "Business": organization_registration.classList.remove('d-none'); organization_info_registration.innerText = String("Въведи Бизнес"); break;
+                case "Personal": organization_registration.classList.add('d-none'); organization_info_registration.innerText = null; break;
+            }
+        });
+    </script>
+</body>
+
+</html>
