@@ -64,3 +64,103 @@ function validateRegistration() {
         console.log(password_registration_value);
     }
 }
+
+var forgotten_pass;
+function validateChangePassword() {
+    let email_change_value = document.getElementById('email-change').value; //сравнява се с отговор от api
+    let email_change = document.getElementById('email-change');
+
+    let old_password_change_value = document.getElementById('old-password-change').value; //изпраща се на api
+    let old_password_change = document.getElementById('old-password-change');
+
+    let new_password_change_value = document.getElementById('new-password-change').value; //изпраща се на api
+    let new_password_change = document.getElementById('new-password-change');
+
+    let confirm_password_change_value = document.getElementById('confirm-password-change').value;
+    let confirm_password_change = document.getElementById('confirm-password-change');
+
+    let help_change = document.getElementById('help-change');
+    let instruction_change = document.getElementById('instruction-change');
+
+    if (!true) { //сравнява с e-mails от api
+        email_change.classList.add('is-invalid');
+        help_change.classList.remove('d-none');
+        instruction_change.innerHTML = String("Акаунт с такъв e-mail НЕ съществува!");
+        return;
+    }
+    else {
+        email_change.classList.remove('is-invalid');
+        help_change.classList.add('d-none');
+        instruction_change.innerHTML = null;
+        //Продължава
+    }
+
+    if (!forgotten_pass) {
+        if (!true) { //сравнява с password от api
+            old_password_change.classList.add('is-invalid');
+            help_change.classList.remove('d-none');
+            instruction_change.innerHTML = String("Грешна парола!");
+            return;
+        }
+        else {
+            old_password_change.classList.remove('is-invalid');
+            help_change.classList.add('d-none');
+            instruction_change.innerHTML = null;
+            //Продължава
+        }
+    }
+
+
+    //Validate Password
+    if (new_password_change_value.length < 8) {
+        new_password_change.classList.add('is-invalid');
+        help_change.classList.remove('d-none');
+        instruction_change.innerHTML = String("Новата паролата трябва да е поне 8 символа.");
+        return;
+    }
+    else {
+        //Продължава
+        new_password_change.classList.remove('is-invalid');
+        help_change.classList.add('d-none');
+    }
+
+    if (!forgotten_pass) {
+        if (new_password_change_value == old_password_change_value) {
+            new_password_change.classList.add('is-invalid');
+            help_change.classList.remove('d-none');
+            instruction_change.innerHTML = String("Старата парола съответства на новата парола!");
+            return;
+        }
+        else {
+            new_password_change.classList.remove('is-invalid');
+            help_change.classList.add('d-none');
+            instruction_change.innerHTML = null;
+        }
+    }
+
+    //Confirm Password 
+    if (new_password_change_value !== confirm_password_change_value) {
+        confirm_password_change.classList.add('is-invalid');
+        help_change.classList.remove('d-none');
+        instruction_change.innerHTML = String("Въведените пароли не съответстват!");
+    }
+    else {
+        confirm_password_change.classList.remove('is-invalid');
+        help_change.classList.add('d-none');
+        instruction_change.innerHTML = null;
+        console.log("Праща се е-мейл via PHP...");
+        //Изписаните данни ще се изпращат към API след потвържедние
+        console.log(new_password_change_value);
+    }
+}
+
+function forgottenPassword(forgotten) {
+    let old_password_change_container = document.getElementById('old-password-change-container');
+    if (forgotten) {
+        old_password_change_container.classList.add('d-none');
+    }
+    else {
+        old_password_change_container.classList.remove('d-none');
+    }
+    return forgotten_pass = forgotten;
+}
