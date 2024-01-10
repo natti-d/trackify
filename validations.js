@@ -152,6 +152,7 @@ function validateChangePassword() {
         //Изписаните данни ще се изпращат към API след потвържедние
         console.log(new_password_change_value);
     }
+    document.getElementById('form-change-password').reset();
 }
 
 function forgottenPassword(forgotten) {
@@ -162,5 +163,5 @@ function forgottenPassword(forgotten) {
     else {
         old_password_change_container.classList.remove('d-none');
     }
-    return forgotten_pass = forgotten;
+    forgotten_pass = forgotten;
 }
