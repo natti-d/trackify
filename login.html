@@ -79,7 +79,6 @@
         </div>
     </div>
 
-    <!--Нужно е да се изпрати код, с който да се потвърди дали потребителят е този, за който се представя-->
 
     <!--Forgotten Password Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -87,49 +86,90 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Смени парола</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Забравена парола</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="p-3 d-flex align-items-center flex-column" id="form-change-password"
+    
+                    <!--E-mail form-->
+                    <form action="" class="p-3 d-flex align-items-center flex-column" id="form-email-forgotten"
                         style="background-color: #F0F2F4;" onsubmit="this.reset()">
+                        <label class="mb-2" for="info">Попълни своя e-mail address, за да ти изптраим e-mail с код за смяна на
+                            паролата.</label>
                         <div class="form-floating w-100 mb-3 position-relative">
-                            <input type="email" class="form-control" id="email-change" placeholder="name"
+                            <input type="email" class="form-control" id="email-forgotten" placeholder="name"
                                 pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
                             <label for="email">Email address</label>
                         </div>
-                        <div class="form-floating w-100 mb-3 position-relative" id="old-password-change-container">
-                            <input type="password" class="form-control" id="old-password-change" placeholder="password"
-                                required>
-                            <label for="password">Стара парола</label>
+    
+                        <div class="d-none position-relative w-100 p-2" id="help-email-forgotten">
+                            <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
+                                style="border: solid 2px #003554;">
+                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на
+                                    паролата</legend>
+                                <div>
+                                    <p class="text-break" style="color: #003554;" id="instruction-email-forgotten"></p>
+                                </div>
+                            </fieldset>
                         </div>
+                    </form>
+    
+                    <!--Code Form-->
+                    <form action="" class="d-none p-3 d-flex align-items-center flex-column" id="form-code-forgotten"
+                        style="background-color: #F0F2F4;" onsubmit="this.reset()">
+                        <label class="mb-2" for="info">Попълни получения код, за да потвърдиш своя e-mail address.</label>
                         <div class="form-floating w-100 mb-3 position-relative">
-                            <input type="password" class="form-control" id="new-password-change" placeholder="password"
+                            <input type="numbers" class="form-control" id="code-forgotten" placeholder="name" required>
+                            <label for="info">Код</label>
+                        </div>
+    
+                        <div class="d-none position-relative w-100 p-2" id="help-code-forgotten">
+                            <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
+                                style="border: solid 2px #003554;">
+                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на
+                                    паролата</legend>
+                                <div>
+                                    <p class="text-break" style="color: #003554;" id="instruction-code-forgotten"></p>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+    
+                    <!--Forgotten Password Form-->
+                    <form action="" class="d-none p-3 d-flex align-items-center flex-column" id="form-pass-forgotten"
+                        style="background-color: #F0F2F4;" onsubmit="this.reset()">
+    
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="password" class="form-control" id="new-password-forgotten" placeholder="password"
                                 required>
                             <label for="password">Нова Парола</label>
                         </div>
                         <div class="form-floating w-100 mb-3 position-relative">
-                            <input type="password" class="form-control" id="confirm-password-change" placeholder="password"
-                                required>
+                            <input type="password" class="form-control" id="confirm-password-forgotten"
+                                placeholder="password" required>
                             <label for="password">Повтори Нова Парола</label>
                         </div>
-                        <div class="d-none position-relative w-100 p-2" id="help-change">
+                        <div class="d-none position-relative w-100 p-2" id="help-pass-forgotten">
                             <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
                                 style="border: solid 2px #003554;">
-                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на паролата</legend>
+                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на
+                                    паролата</legend>
                                 <div>
-                                    <p class="text-break" style="color: #003554;" id="instruction-change"></p>
+                                    <p class="text-break" style="color: #003554;" id="instruction-pass-forgotten"></p>
                                 </div>
                             </fieldset>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary mx-2 mb-3 position-relative" data-bs-dismiss="modal" onclick="document.getElementById('form-change-password').reset();">Откажи се</button>
+                    <button type="button" class="btn btn-secondary mx-2 mb-3 position-relative" data-bs-dismiss="modal"
+                        onclick="document.getElementById('form-change-password').reset();">Откажи се</button>
+    
                     <button class="btn mx-2 mb-3 position-relative"
-                    style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;" type="submit" onclick="validateChangePassword(true)"
-                    onmouseover="this.style.backgroundColor = '#03273c'; this.style.border = '2px solid #03273c';"
-                    onmouseleave="this.style.backgroundColor = '#003554'; this.style.border = '2px solid #003554';">Смени парола</button>
+                        style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;" type="submit"
+                        onclick="forgottenPassword()" id="ok-btn-forgotten"
+                        onmouseover="this.style.backgroundColor = '#03273c'; this.style.border = '2px solid #03273c';"
+                        onmouseleave="this.style.backgroundColor = '#003554'; this.style.border = '2px solid #003554';">Продължи</button>
                 </div>
             </div>
         </div>
