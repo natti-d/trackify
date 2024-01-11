@@ -65,7 +65,6 @@ function validateRegistration() {
     }
 }
 
-var forgotten_pass;
 function validateChangePassword() {
     let email_change_value = document.getElementById('email-change').value; //сравнява се с отговор от api
     let email_change = document.getElementById('email-change');
@@ -94,20 +93,17 @@ function validateChangePassword() {
         instruction_change.innerHTML = null;
         //Продължава
     }
-
-    if (!forgotten_pass) {
-        if (!true) { //сравнява с password от api
-            old_password_change.classList.add('is-invalid');
-            help_change.classList.remove('d-none');
-            instruction_change.innerHTML = String("Грешна парола!");
-            return;
-        }
-        else {
-            old_password_change.classList.remove('is-invalid');
-            help_change.classList.add('d-none');
-            instruction_change.innerHTML = null;
-            //Продължава
-        }
+    if (!true) { //сравнява с password от api
+        old_password_change.classList.add('is-invalid');
+        help_change.classList.remove('d-none');
+        instruction_change.innerHTML = String("Грешна парола!");
+        return;
+    }
+    else {
+        old_password_change.classList.remove('is-invalid');
+        help_change.classList.add('d-none');
+        instruction_change.innerHTML = null;
+        //Продължава
     }
 
 
@@ -195,6 +191,7 @@ function forgottenPassword() {
             step++;
             /*how to add data-bs-dismiss="modal"*/
         }
+        document.getElementById('ok-btn-forgotten').setAttribute("data-bs-dismiss", "modal");
     }
 
     else if (step == 3) { //Въвеждане на новата парола и потвърждаване
@@ -233,9 +230,14 @@ function forgottenPassword() {
             instruction_pass_forgotten.innerHTML = null;
 
             //Изписаните данни ще се изпращат към API
-            console.log(new_password_change_value);
+            console.log(new_password_forgotten_value);
         }
-        alert("Успешно смеихте паролата си!");
+        alert("Успешно сменихте паролата си!");
+
+        document.getElementById('form-email-forgotten').reset();
+        document.getElementById('form-code-forgotten').reset();
+        document.getElementById('form-pass-forgotten').reset();
+
         document.getElementById('form-pass-forgotten').classList.add('d-none');
         document.getElementById('form-email-forgotten').classList.remove('d-none');
         step = 1;
