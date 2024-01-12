@@ -189,9 +189,7 @@ function forgottenPassword() {
             document.getElementById('form-code-forgotten').classList.add('d-none');
             document.getElementById('form-pass-forgotten').classList.remove('d-none');
             step++;
-            /*how to add data-bs-dismiss="modal"*/
         }
-        document.getElementById('ok-btn-forgotten').setAttribute("data-bs-dismiss", "modal");
     }
 
     else if (step == 3) { //Въвеждане на новата парола и потвърждаване
@@ -233,6 +231,8 @@ function forgottenPassword() {
             console.log(new_password_forgotten_value);
         }
         alert("Успешно сменихте паролата си!");
+        ('modal-forgotten').modal('hide'); /*НЕ се скрива*/
+        ('modal-forgotten').hide();
 
         document.getElementById('form-email-forgotten').reset();
         document.getElementById('form-code-forgotten').reset();

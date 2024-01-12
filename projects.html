@@ -57,147 +57,146 @@
     </header>
 
     <!--Project Container-->
-    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative" id="content-homepage"
+    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative d-flex conatiner" id="content-homepage"
         style="top: 100px; height: 80vh; background-color: #d6f1ff;">
-        <!--Page name and Filters-->
-        <div class="overflow-hiddenpt-2 d-flex pt-2 mx-3 col-9 d-flex justify-content-around" style="color: #004e7a;">
-            <div class="d-flex justify-content-around">
-                <h2 class="py-2 px-4 col-8">Проекти</h2>
-            </div>
-            <!--Selected Filters--> <!--НУЖНО Е ДРУГ ВИД РАЗПРЕДЕЛЕНИЕ НА КОНТЕЙНЕРИТЕ-->
-            <div class="d-flex justify-content-end">
-                <!--Filter-->
-                <div class="dropdown">
-                    <button class="btn mx-3 fs-4 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
-                        style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        Филтри <i class="bi bi-filter-left"></i></button>
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button">Всички</button></li>
-                        <hr>
-                        <li><button class="dropdown-item" type="button">Последни</button></li>
-                        <li><button class="dropdown-item" type="button">Отворени</button></li>
-                        <!--в процес на работа-->
-                        <li><button class="dropdown-item" type="button">Затворени</button></li> <!--приключен-->
-                        <hr>
-                        <li><button class="dropdown-item" type="button">С роля Админ</button></li>
-                        <li><button class="dropdown-item" type="button">Чужди</button></li>
-                        <!--С роля Член на екип-->
-                    </ul>
+        <div class="col-8 col me-3">
+            <!--Page name and Filters-->
+            <div class="overflow-hiddenpt-2 pt-2 mx-3  d-flex justify-content-around" style="color: #004e7a;">
+                <div class="d-flex justify-content-around">
+                    <h2 class="py-2 px-4 col-8">Проекти</h2>
+                    <!--Selected Filters--> <!--НУЖНО Е ДРУГ ВИД РАЗПРЕДЕЛЕНИЕ НА КОНТЕЙНЕРИТЕ-->
+                    <div class="d-flex justify-content-end align-self-center">
+                        <!--Filter-->
+                        <div class="dropdown">
+                            <button class="btn mx-3 fs-5 dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
+                                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                                Филтри <i class="bi bi-filter-left"></i></button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button">Всички</button></li>
+                                <hr>
+                                <li><button class="dropdown-item" type="button">Последни</button></li>
+                                <li><button class="dropdown-item" type="button">Отворени</button></li>
+                                <!--в процес на работа-->
+                                <li><button class="dropdown-item" type="button">Затворени</button></li> <!--приключен-->
+                                <hr>
+                                <li><button class="dropdown-item" type="button">С роля Админ</button></li>
+                                <li><button class="dropdown-item" type="button">Чужди</button></li>
+                                <!--С роля Член на екип-->
+                            </ul>
+                        </div>
+                        <ul class="list-group list-group-horizontal me-3 pb-3">
+                            <li class="list-group-item text-center" style="width: 15vh;">Всички</button></li>
+                            <li class="list-group-item text-center" style="width: 15vh;">...</button></li>
+                        </ul>
+                    </div>
                 </div>
-                <fieldset class="ps-2 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
-                    <legend class="fw-bold float-none ps-2" style="color: #003554;">Филтри:</legend>
-                    <ul class="list-group list-group-horizontal me-3 pb-3">
-                        <li class="list-group-item text-center" style="width: 15vh;">Последни</button></li>
-                        <li class="list-group-item text-center" style="width: 15vh;">С роля Админ</button></li>
-                    </ul>
-                </fieldset>
+
+
             </div>
 
+            <div class="h-100 d-flex">
+                <!--Constainer with content-->
+                <div class="row col-12 mx-4 d-flex position-relative align-content-start justify-content-between flex-wrap overflow-hidden"
+                    style=" border-top: 2px solid #004e7a;">
+                    <div class="card col-3 mx-2 mt-2" style="height: 150px; background-color: #66007a; color: #F0F2F4;">
+                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
+                            <h5 class="card-title">Заглавие проект</h5>
+                            <details>
+                                <summary class="card-text">Описание</summary>
+                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
+                                    мисля си,
+                                    че ще бъде доста готино, ако го има,
+                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
+                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 mx-2 mt-2" style="height: 150px; background-color: #007a08; color: #F0F2F4;">
+                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden text-break">
+                            <h5 class="card-title">Заглавие проект</h5>
+                            <details>
+                                <summary class="card-text">Описание</summary>
+                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
+                                    мисля си,
+                                    че ще бъде доста готино, ако го има,
+                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
+                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 mx-2 mt-2" style="height: 150px; background-color: #7a0000; color: #F0F2F4;">
+                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
+                            <h5 class="card-title">Заглавие проект</h5>
+                            <details>
+                                <summary class="card-text">Описание</summary>
+                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
+                                    мисля си,
+                                    че ще бъде доста готино, ако го има,
+                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
+                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 mx-2 mt-2" style="height: 150px; background-color: #004e7a; color: #F0F2F4;">
+                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
+                            <h5 class="card-title">Заглавие проект</h5>
+                            <details>
+                                <summary class="card-text">Описание</summary>
+                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
+                                    мисля си,
+                                    че ще бъде доста готино, ако го има,
+                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
+                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 mx-2 mt-2" style="height: 150px; background-color: #7a6800; color: #F0F2F4;">
+                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
+                            <h5 class="card-title">Заглавие проект</h5>
+                            <details>
+                                <summary class="card-text">Описание</summary>
+                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
+                                    мисля си,
+                                    че ще бъде доста готино, ако го има,
+                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
+                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 mx-2 mt-2" style="height: 150px; background-color: #37007a; color: #F0F2F4;">
+                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
+                            <h5 class="card-title">Заглавие проект</h5>
+                            <details>
+                                <summary class="card-text">Описание</summary>
+                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
+                                    мисля си,
+                                    че ще бъде доста готино, ако го има,
+                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
+                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="w-100 h-100 d-flex">
 
-            <!--Constainer with content-->
-            <div class="row col-9 m-4 d-flex position-relative align-content-start justify-content-between flex-wrap overflow-hidden"
-                style=" border-top: 2px solid #004e7a;">
-                <div class="card col-2 mx-2 mt-2" style="height: 150px; background-color: #66007a; color: #F0F2F4;">
-                    <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                        <h5 class="card-title">Заглавие проект</h5>
-                        <details>
-                            <summary class="card-text">Описание</summary>
-                            <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                мисля си,
-                                че ще бъде доста готино, ако го има,
-                                затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                        </details>
-                    </div>
+        <!--Container with tasks-->
+        <div class="col flex-fill m-4 overflow-y-auto overflow-x-hidden top-0" style="height: fit-content;"
+            style="background-color: #F0F2F4;">
+            <fieldset class="ps-2 w-100 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
+                <legend class="fw-bold float-none ps-2" style="color: #003554;">Настоящи задачи</legend>
+                <div>
                 </div>
+            </fieldset>
 
-                <div class="card col-2 mx-2 mt-2" style="height: 150px; background-color: #007a08; color: #F0F2F4;">
-                    <div class="card-img-overlay overflow-y-auto overflow-x-hidden text-break">
-                        <h5 class="card-title">Заглавие проект</h5>
-                        <details>
-                            <summary class="card-text">Описание</summary>
-                            <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                мисля си,
-                                че ще бъде доста готино, ако го има,
-                                затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="card col-2 mx-2 mt-2" style="height: 150px; background-color: #7a0000; color: #F0F2F4;">
-                    <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                        <h5 class="card-title">Заглавие проект</h5>
-                        <details>
-                            <summary class="card-text">Описание</summary>
-                            <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                мисля си,
-                                че ще бъде доста готино, ако го има,
-                                затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="card col-2 mx-2 mt-2" style="height: 150px; background-color: #004e7a; color: #F0F2F4;">
-                    <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                        <h5 class="card-title">Заглавие проект</h5>
-                        <details>
-                            <summary class="card-text">Описание</summary>
-                            <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                мисля си,
-                                че ще бъде доста готино, ако го има,
-                                затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="card col-2 mx-2 mt-2" style="height: 150px; background-color: #7a6800; color: #F0F2F4;">
-                    <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                        <h5 class="card-title">Заглавие проект</h5>
-                        <details>
-                            <summary class="card-text">Описание</summary>
-                            <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                мисля си,
-                                че ще бъде доста готино, ако го има,
-                                затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="card col-2 mx-2 mt-2" style="height: 150px; background-color: #37007a; color: #F0F2F4;">
-                    <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                        <h5 class="card-title">Заглавие проект</h5>
-                        <details>
-                            <summary class="card-text">Описание</summary>
-                            <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                мисля си,
-                                че ще бъде доста готино, ако го има,
-                                затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                        </details>
-                    </div>
-                </div>
-            </div>
-
-            <!--Container with tasks-->
-            <div class="row flex-fill m-4 overflow-y-auto overflow-x-hidden top-0" style="height: fit-content;"
-                style="background-color: #F0F2F4;">
-                <fieldset class="ps-2 w-100 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
-                    <legend class="fw-bold float-none ps-2" style="color: #003554;">Настоящи задачи</legend>
-                    <div>
-                        <p class="text-break" style="color: #003554;" id="instruction-pass-forgotten"></p>
-                    </div>
-                </fieldset>
-                
-            </div>
         </div>
     </div>
 
