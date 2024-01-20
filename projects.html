@@ -14,43 +14,41 @@
     <!--HEADER-->
     <header
         class="col-12 position-relative w-100 top-0 m-0 start-0 position-fixed z-2 overflow-hidden d-flex justify-content-around"
-        id="top-navigation" style="background-color: #F0F2F4;"> <!--Раздели header от content div-->
+        id="top-navigation" style="background-color: #F0F2F4;">
+        <!--Раздели header от content div-->
         <div class="d-flex justify-content-between col-12">
             <div class="d-flex align-items-center">
                 <img src="images/logo/5.png" alt="logo" class="mx-3" style="height: 100px; transform: rotate(-90deg);">
 
-                <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    Проекти</button>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
+                            onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                            Проекти</button>
 
-                <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;" onclick=""
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    Създай</button>
-            </div>
+                        <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
+                            onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                            Създай</button>
+                    </div>
 
-            <div class="d-flex align-items-center">
-                <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    За Нас</button>
+                    <div class="">
+                        <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
+                            onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                            За Нас</button>
 
-                <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    Помощ</button>
-                <div class="dropdown z-2"> <!--Скрива се - ПОПРАВИ-->
-                    <button class="btn mx-3 bi bi-person-circle dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
-                    </ul>
+                        <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
+                            onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                            Помощ</button>
+                        <button class="btn mx-2 btn-lg bi bi-person-circle"
+                            style="border: 2px solid #004e7a; color: #004e7a;"
+                            onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,28 +66,41 @@
                     <div class="d-flex justify-content-end align-self-center">
                         <!--Filter-->
                         <div class="dropdown">
-                            <button class="btn mx-3 fs-5 dropdown-toggle" data-bs-toggle="dropdown"
+                            <select class="btn mx-3 fs-5 dropdown-toggle" data-bs-toggle="dropdown" label="Филтри"
                                 aria-expanded="false" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
                                 onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
                                 onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                                Филтри <i class="bi bi-filter-left"></i></button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Всички</button></li>
-                                <hr>
-                                <li><button class="dropdown-item" type="button">Последни</button></li>
-                                <li><button class="dropdown-item" type="button">Отворени</button></li>
-                                <!--в процес на работа-->
-                                <li><button class="dropdown-item" type="button">Затворени</button></li> <!--приключен-->
-                                <hr>
-                                <li><button class="dropdown-item" type="button">С роля Админ</button></li>
-                                <li><button class="dropdown-item" type="button">Чужди</button></li>
-                                <!--С роля Член на екип-->
-                            </ul>
+                                Филтри <i class="bi bi-filter-left me-3"></i>
+                                <optgroup label="Всички" class="d-flex justify-content-start"
+                                    style="color: #003554; background-color: #d6f1ff;">
+                                    <option style="color: #003554; background-color: #d6f1ff;">
+                                        <button type="button">Всички</button>
+                                    </option>
+                                </optgroup>
+                                <optgroup label="Прогрес" style="color: #003554; background-color: #d6f1ff;">
+                                    <option style="color: #003554; background-color: #d6f1ff;">
+                                        <button type="button">Последни</button>
+                                    </option>
+                                    <option style="color: #003554; background-color: #d6f1ff;">
+                                        <button type="button">Отворени</button>
+                                    </option>
+                                    <!--в процес на работа-->
+                                    <option style="color: #003554; background-color: #d6f1ff;">
+                                        <button type="button">Затворени</button>
+                                    </option>
+                                    <!--приключен-->
+                                </optgroup>
+                                <optgroup label="Роля" style="color: #003554; background-color: #d6f1ff;">
+                                    <option style="color: #003554; background-color: #d6f1ff;">
+                                        <button type="button">С роля Админ</button>
+                                    </option>
+                                    <option style="color: #003554; background-color: #d6f1ff;">
+                                        <button type="button">Чужди</button>
+                                    </option>
+                                    <!--С роля Член на екип-->
+                                </optgroup>
+                            </select>
                         </div>
-                        <ul class="list-group list-group-horizontal me-3 pb-3">
-                            <li class="list-group-item text-center" style="width: 15vh;">Всички</button></li>
-                            <li class="list-group-item text-center" style="width: 15vh;">...</button></li>
-                        </ul>
                     </div>
                 </div>
 
@@ -100,7 +111,8 @@
                 <!--Constainer with content-->
                 <div class="row col-12 mx-4 d-flex position-relative align-content-start justify-content-between flex-wrap overflow-hidden"
                     style=" border-top: 2px solid #004e7a;">
-                    <div class="card mx-2 mt-2" style="height: 150px; width: 30%; background-color: #66007a; color: #F0F2F4;">
+                    <div class="card mx-2 mt-2"
+                        style="height: 150px; width: 30%; background-color: #66007a; color: #F0F2F4;">
                         <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
                             <h5 class="card-title">Заглавие проект</h5>
                             <details>
@@ -114,7 +126,8 @@
                         </div>
                     </div>
 
-                    <div class="card mx-2 mt-2" style="height: 150px; width: 30%; background-color: #007a08; color: #F0F2F4;">
+                    <div class="card mx-2 mt-2"
+                        style="height: 150px; width: 30%; background-color: #007a08; color: #F0F2F4;">
                         <div class="card-img-overlay overflow-y-auto overflow-x-hidden text-break">
                             <h5 class="card-title">Заглавие проект</h5>
                             <details>
@@ -128,7 +141,8 @@
                         </div>
                     </div>
 
-                    <div class="card mx-2 mt-2" style="height: 150px; width: 30%; background-color: #7a0000; color: #F0F2F4;">
+                    <div class="card mx-2 mt-2"
+                        style="height: 150px; width: 30%; background-color: #7a0000; color: #F0F2F4;">
                         <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
                             <h5 class="card-title">Заглавие проект</h5>
                             <details>
@@ -142,7 +156,8 @@
                         </div>
                     </div>
 
-                    <div class="card mx-2 mt-2" style="height: 150px; width: 30%; background-color: #004e7a; color: #F0F2F4;">
+                    <div class="card mx-2 mt-2"
+                        style="height: 150px; width: 30%; background-color: #004e7a; color: #F0F2F4;">
                         <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
                             <h5 class="card-title">Заглавие проект</h5>
                             <details>
@@ -156,7 +171,8 @@
                         </div>
                     </div>
 
-                    <div class="card mx-2 mt-2" style="height: 150px; width: 30%; background-color: #7a6800; color: #F0F2F4;">
+                    <div class="card mx-2 mt-2"
+                        style="height: 150px; width: 30%; background-color: #7a6800; color: #F0F2F4;">
                         <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
                             <h5 class="card-title">Заглавие проект</h5>
                             <details>
@@ -170,7 +186,8 @@
                         </div>
                     </div>
 
-                    <div class="card mx-2 mt-2" style="height: 150px; width: 30%; background-color: #37007a; color: #F0F2F4;">
+                    <div class="card mx-2 mt-2"
+                        style="height: 150px; width: 30%; background-color: #37007a; color: #F0F2F4;">
                         <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
                             <h5 class="card-title">Заглавие проект</h5>
                             <details>
@@ -194,7 +211,105 @@
             <fieldset class="ps-2 w-100 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
                 <legend class="fw-bold float-none ps-2" style="color: #003554;">Настоящи задачи</legend>
                 <div>
-
+                    <div class="w-100 d-flex justify-content-center">
+                        <div class="col-12 p-3 m-2 py-4" style="background-color: #F0F2F4;">
+                            <div class="d-flex justify-content-center">
+                                <div class="accordion col-12" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button collapsed fs-5" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                aria-expanded="false" aria-controls="collapseOne"
+                                                style="background-color: #1fb4ff; color: #051923;">
+                                                Управление на задачите
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse"
+                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body fs-6 text-break">
+                                                <strong>Trackify</strong> оптимизира управлението на задачите, като
+                                                предлага
+                                                удобен
+                                                за потребителя
+                                                интерфейс, където членовете на екипа
+                                                могат без усилие да създават, възлагат и проследяват дейности.
+                                                Платформата
+                                                осигурява
+                                                категоризиране на работата и
+                                                установяване на приоритети, като гарантира ясно разбиране на дълбочината
+                                                на
+                                                всеки
+                                                проект.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed fs-5" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                aria-expanded="false" aria-controls="collapseTwo"
+                                                style="background-color: #3ebfff; color: #051923;">
+                                                Kanban таблици
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse"
+                                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body fs-6 text-break">
+                                                <strong>Trackify</strong> предполага създаването на Kanban таблици, за
+                                                да
+                                                повиши
+                                                ефективността на вашия
+                                                екип и да рационализира работните
+                                                процеси на проекта. Kanban е визуален метод за управление, който се е
+                                                доказал
+                                                като
+                                                мощен инструмент за организиране на
+                                                задачи, подобряване на сътрудничеството и предоставяне на цялостен
+                                                поглед
+                                                върху
+                                                напредъка и състоянието на проекта. С
+                                                напредването на задачите през колони като „Да направя“, „В ход“ и
+                                                „Завършени“,
+                                                членовете на екипа могат лесно да
+                                                проследяват и наблюдават напредъка в реално време. С прилагането на
+                                                Kanban
+                                                таблици от
+                                                <strong>Trackify</strong>, управлението на проекти
+                                                никога не е било по-лесно.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed fs-5" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                aria-expanded="false" aria-controls="collapseThree"
+                                                style="background-color: #5cc9ff; color: #051923;">
+                                                Развитие на проекта
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse"
+                                            aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body fs-6 text-break">
+                                                Функцията за краен срок на <strong>Trackify</strong> ви помага да
+                                                визуализирате
+                                                прогреса на проекта.
+                                                Този инструмент позволява на екипите
+                                                да задават етапи от изпълнението и крайни дати на задачите, което дава
+                                                на
+                                                членовете
+                                                пълна представа за напредъка на
+                                                проекта. Планираната дата на завършване е адаптивна, което позволява
+                                                промени
+                                                в
+                                                реално време при развитие на проекта.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </fieldset>
 
