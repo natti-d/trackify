@@ -10,169 +10,217 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body class="overflow-y-hidden">
     <!--HEADER-->
-    <header
-        class="col-12 position-relative w-100 top-0 m-0 start-0 position-fixed z-2 overflow-hidden d-flex justify-content-center"
-        id="top-navigation" style="background-color: #F0F2F4;"> <!--Раздели header от content div-->
-        <div class="d-flex justify-content-between col-10">
-
-            <div class="d-flex align-items-center">
-                <img src="images/logo/5.png" alt="logo" class="mx-3" style="height: 100px; transform: rotate(-90deg);">
+    <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
+        id="top-navigation" style="background-color: #F0F2F4;">
+        <!--LQVA CHAST HEADER-->
+        <div class="d-flex">
+            <img src="./images/logo/5.png" alt="logo" style="height: 100px; transform: rotate(-90deg);"
+                class="my-0 mx-3">
+            <div class="align-middle m-auto d-md-flex d-none">
                 <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
                     onclick="location.href='#about-homepage'"
                     onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">За
-                    Нас</button>
+                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    За Нас</button>
 
                 <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;" onclick=""
                     onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">Помощ</button>
+                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    Помощ</button>
             </div>
+        </div>
 
-            <div class="d-flex align-items-center">                
-                <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;" onclick="location.href='./login.html'"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">Вход</button>
+        <!--DQSNA CHAST HEADER-->
+        <div class="pe-md-5 m-3 d-md-flex d-none align-items-center">
+            <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
+                onclick="location.href='./login.html'"
+                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">Вход</button>
 
-                <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;" onclick="location.href='./registration.html'"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">Регистрация</button>
+            <button class="btn mx-3" style="border: 2px solid #004e7a; color: #004e7a; font-size: 2vh;"
+                onclick="location.href='./registration.html'"
+                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">Регистрация</button>
+
+        </div>
+
+        <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
+            <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;"
+                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
+                type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"></button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h3 class="offcanvas-title" id="offcanvasRightLabel" style="color: #004e7a;">Trackify</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
+                        onclick="location.href='#about-homepage'">
+                        За Нас</button>
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
+                        onclick="">
+                        Помощ</button>
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
+                        onclick="location.href='./login.html'">
+                        Вход</button>
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
+                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
+                        onclick="location.href='./registration.html'">
+                        Регистрация</button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!--HOME-PAGE CONTENT-->
-    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative" id="content-homepage" style="top: 100px;">
+    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative d-md-flex d-block conatiner" style="top: 0; height: 91vh;">
+        <!--HOME-PAGE CONTENT-->
+        <div class="" id="content-homepage">
 
-        <!--ABOUT-->
-        <div style="background-color: #47C2FF; background: linear-gradient(90deg, #72ccf9 38%, #003554 100%);"
-            id="about-homepage"
-            class="pb-5 rounded-2">
-
-            <div class="w-100 d-md-flex d-block position-relative justify-content-between align-items-center">
-                <div class="col-5 mx-3 my-5 d-block">
-                    <h1 class="bold mx-5 w-100 text-center fs-md-3 fs-1">Trackify</h1> <!--POPRAVI FONT-SIZE-->
-                    <p class="fs-3 mx-5 w-100 text-center" id="maininfo-homepage">
-                        Управлявайте напредъка на вашия екип лесно и постигайте най-добри резултати до датата на
-                        крайния
-                        срок.
-                    </p>
-                    <div class="d-flex justify-content-between w-100 mx-5 ">
-                        <button class="btn w-100 fs-4 mx-2"
-                            style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;" onclick="location.href='./login.html'"
-                            onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
-                            onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
-                            Вход
-                        </button>
-                        <button class="btn w-100 fs-4 mx-2"
-                            style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;" onclick="location.href='./registration.html'"
-                            onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
-                            onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
-                            Регистрация
-                        </button>
-                    </div>
-                </div>
-                <div class="col-5 mx-3 my-5 d-flex justify-content-center">
-                    <img src="images/logo/5.png" alt="logo" class="img-fluid my-2">
-                </div>
-            </div>
-            <div class="w-100 d-flex justify-content-center">
-                <div class="col-10 p-3 m-2 py-4" style="background-color: #F0F2F4;">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <p class="text-break col-11" id="info-homepage" style="font-size: large;">Ефективното
-                            управление на проекти е от
-                            съществено значение за
-                            ефективността на всяка корпорация в днешния забързан
-                            бизнес свят. Управлението на дейности, отговорности и срокове може да бъде трудно,
-                            особено
-                            когато работите в екип.
-                            <strong>Trackify</strong> е ефективно уеб приложение, което ще даде възможност на
-                            вашия бизнес екип, като
-                            предостави онлайн платформа за
-                            организиране на задълженията по проекта.
+            <!--ABOUT-->
+            <div style="background-color: #47C2FF; background: linear-gradient(90deg, #72ccf9 38%, #003554 100%);"
+                id="about-homepage" class="pb-5">
+                
+                <div class="w-100 d-md-flex d-block position-relative justify-content-md-between justify-content-center align-items-center">
+                    <div class="col-5 mx-3 my-5 d-block">
+                        <h1 class="bold mx-5 w-100 text-center fs-md-3 fs-1">Trackify</h1> <!--POPRAVI FONT-SIZE-->
+                        <p class="fs-3 mx-5 w-100 text-center" id="maininfo-homepage">
+                            Управлявайте напредъка на вашия екип лесно и постигайте най-добри резултати до датата на
+                            крайния
+                            срок.
                         </p>
+                        <div class="d-flex justify-content-between w-100 mx-5 ">
+                            <button class="btn w-100 fs-4 mx-2 d-md-inline-block d-none"
+                                style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                                onclick="location.href='./login.html'"
+                                onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
+                                onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
+                                Вход
+                            </button>
+                            <button class="btn w-100 fs-4 mx-2 d-md-inline-block d-none"
+                                style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                                onclick="location.href='./registration.html'"
+                                onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
+                                onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
+                                Регистрация
+                            </button>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="accordion col-11" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
-                                        style="background-color: #1fb4ff; color: #051923;">
-                                        Управление на задачите
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body fs-6 text-break">
-                                        <strong>Trackify</strong> оптимизира управлението на задачите, като предлага
-                                        удобен
-                                        за потребителя
-                                        интерфейс, където членовете на екипа
-                                        могат без усилие да създават, възлагат и проследяват дейности. Платформата
-                                        осигурява
-                                        категоризиране на работата и
-                                        установяване на приоритети, като гарантира ясно разбиране на дълбочината на
-                                        всеки
-                                        проект.
+                    <div class="col-5 mx-3 my-5 d-flex justify-content-center">
+                        <img src="images/logo/5.png" alt="logo" class="img-fluid my-2">
+                    </div>
+                </div>
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="col-10 p-3 m-2 py-4" style="background-color: #F0F2F4;">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <p class="text-break col-11" id="info-homepage" style="font-size: large;">Ефективното
+                                управление на проекти е от
+                                съществено значение за
+                                ефективността на всяка корпорация в днешния забързан
+                                бизнес свят. Управлението на дейности, отговорности и срокове може да бъде трудно,
+                                особено
+                                когато работите в екип.
+                                <strong>Trackify</strong> е ефективно уеб приложение, което ще даде възможност на
+                                вашия бизнес екип, като
+                                предостави онлайн платформа за
+                                организиране на задълженията по проекта.
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="accordion col-11" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne"
+                                            style="background-color: #1fb4ff; color: #051923;">
+                                            Управление на задачите
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            <strong>Trackify</strong> оптимизира управлението на задачите, като предлага
+                                            удобен
+                                            за потребителя
+                                            интерфейс, където членовете на екипа
+                                            могат без усилие да създават, възлагат и проследяват дейности. Платформата
+                                            осигурява
+                                            категоризиране на работата и
+                                            установяване на приоритети, като гарантира ясно разбиране на дълбочината на
+                                            всеки
+                                            проект.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed fs-5" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo" style="background-color: #3ebfff; color: #051923;">
-                                        Kanban таблици
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body fs-6 text-break">
-                                        <strong>Trackify</strong> предполага създаването на Kanban таблици, за да
-                                        повиши
-                                        ефективността на вашия
-                                        екип и да рационализира работните
-                                        процеси на проекта. Kanban е визуален метод за управление, който се е
-                                        доказал
-                                        като
-                                        мощен инструмент за организиране на
-                                        задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед
-                                        върху
-                                        напредъка и състоянието на проекта. С
-                                        напредването на задачите през колони като „Да направя“, „В ход“ и
-                                        „Завършени“,
-                                        членовете на екипа могат лесно да
-                                        проследяват и наблюдават напредъка в реално време. С прилагането на Kanban
-                                        таблици от
-                                        <strong>Trackify</strong>, управлението на проекти
-                                        никога не е било по-лесно.
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo"
+                                            style="background-color: #3ebfff; color: #051923;">
+                                            Kanban таблици
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            <strong>Trackify</strong> предполага създаването на Kanban таблици, за да
+                                            повиши
+                                            ефективността на вашия
+                                            екип и да рационализира работните
+                                            процеси на проекта. Kanban е визуален метод за управление, който се е
+                                            доказал
+                                            като
+                                            мощен инструмент за организиране на
+                                            задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед
+                                            върху
+                                            напредъка и състоянието на проекта. С
+                                            напредването на задачите през колони като „Да направя“, „В ход“ и
+                                            „Завършени“,
+                                            членовете на екипа могат лесно да
+                                            проследяват и наблюдават напредъка в реално време. С прилагането на Kanban
+                                            таблици от
+                                            <strong>Trackify</strong>, управлението на проекти
+                                            никога не е било по-лесно.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed fs-5" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree"
-                                        style="background-color: #5cc9ff; color: #051923;">
-                                        Развитие на проекта
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body fs-6 text-break">
-                                        Функцията за краен срок на <strong>Trackify</strong> ви помага да
-                                        визуализирате
-                                        прогреса на проекта.
-                                        Този инструмент позволява на екипите
-                                        да задават етапи от изпълнението и крайни дати на задачите, което дава на
-                                        членовете
-                                        пълна представа за напредъка на
-                                        проекта. Планираната дата на завършване е адаптивна, което позволява промени
-                                        в
-                                        реално време при развитие на проекта.
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree"
+                                            style="background-color: #5cc9ff; color: #051923;">
+                                            Развитие на проекта
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            Функцията за краен срок на <strong>Trackify</strong> ви помага да
+                                            визуализирате
+                                            прогреса на проекта.
+                                            Този инструмент позволява на екипите
+                                            да задават етапи от изпълнението и крайни дати на задачите, което дава на
+                                            членовете
+                                            пълна представа за напредъка на
+                                            проекта. Планираната дата на завършване е адаптивна, което позволява промени
+                                            в
+                                            реално време при развитие на проекта.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -180,9 +228,9 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--HELP-->
+            <!--HELP-->
+        </div>
     </div>
 </body>
 
