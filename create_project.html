@@ -25,7 +25,8 @@
 
                 <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
                     onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
+                    data-bs-toggle="modal" data-bs-target="#create" type="button">
                     Създай</button>
             </div>
         </div>
@@ -121,9 +122,25 @@
         </div>
     </header>
 
-    <div class="modal-dialog modal-fullscreen-md-down">
-        ...
+  
+  <!-- Modal -->
+  <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="alert('Промените Ви няма да се запазят!')">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
+    </div>
+  </div>
     
 </body>
 
