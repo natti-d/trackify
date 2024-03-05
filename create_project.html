@@ -157,11 +157,11 @@
                     </div>
                     <div class="form-floating w-100 mt-3 position-relative">
                         <input type="name" class="form-control" id="name-of-project" placeholder="name" required>
-                        <label for="name">Име на проект</label>
+                        <label for="name-of-project">Име на проект</label>
                     </div>
 
-                    <div class="w-100 mt-3 position-relative">
-                        <label for="color">Гама на проект</label required>
+                    <div class="w-100 mt-3 position-relative" id="color-picking">
+                        <span>Гама на проект</span>
                         <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
                             <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #F94144;"
                                 onclick="selectedColor(this.id)">A</li>
@@ -191,15 +191,15 @@
                     </div>
 
                     <div class="form-floating w-100 mt-3 position-relative">
-                        <textarea type="name" class="form-control" id="name-of-project" placeholder="name"
-                            style="min-height: 70px;" required></textarea>
-                        <label for="name">Описание на проект</label>
+                        <textarea type="name" class="form-control" id="description" placeholder="name"
+                            style="min-height: 120px;" required></textarea>
+                        <label for="description">Описание на проект</label>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмени</button>
-                    <button type="button" class="btn btn-primary">Създай</button>
+                    <button type="button" class="btn btn-secondary" id="close-create-modal">Отмени</button>
+                    <button type="button" class="btn btn-primary" onclick="createProject();" data-bs-dismiss="modal">Създай</button>
                 </div>
             </div>
         </div>
@@ -208,6 +208,10 @@
     <script>
         const colors = ["red-bg", "deeporange-bg", "orange-bg", "yellow-bg", "lime-bg", "lightgreen-bg", "green-bg", "blue-bg",
             "lightblue-bg", "purple-bg", "deeppurple-bg", "pink-bg"];
+
+        var name_of_project = null;
+        var background = 'blue-bg';
+        var description = null;
         function selectedColor(color) {
             colors.forEach(item => {
                 if (item != color) {
@@ -220,6 +224,23 @@
             select.innerHTML = '<i class="bi bi-check"></i>';
             select.classList.remove('opacity-50');
             document.getElementById('project-pattern').src = ("./images/patterns for projects/" + (color + ".png"));
+            background = color;
+        }
+
+        function createProject(){
+            name_of_project = document.getElementById('name-of-project').value;
+            console.log(name_of_project);
+            description = document.getElementById('description').value;
+            if(name_of_project == ""){
+                console.log("ERROR");
+                return "ERROR";
+            }
+            if(description == ""){
+                console.log("ERROR");
+                return "ERROR";
+            }
+            alert(name_of_project + "\n" + description + "\n" + background);
+            document.getElementById('close-create-modal').click();
         }
     </script>
 </body>
