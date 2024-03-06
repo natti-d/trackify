@@ -198,8 +198,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="close-create-modal">Отмени</button>
-                    <button type="button" class="btn btn-primary" onclick="createProject();" data-bs-dismiss="modal">Създай</button>
+                    <button type="button" class="btn btn-secondary" id="close-create-modal" data-bs-dismiss="modal">Отмени</button>
+                    <button type="button" class="btn btn-primary" onclick="createProject();"
+                        data-bs-dismiss="modal">Създай</button>
                 </div>
             </div>
         </div>
@@ -227,20 +228,29 @@
             background = color;
         }
 
-        function createProject(){
+        function createProject() {
             name_of_project = document.getElementById('name-of-project').value;
             console.log(name_of_project);
             description = document.getElementById('description').value;
-            if(name_of_project == ""){
+            if (name_of_project == "") {
                 console.log("ERROR");
                 return "ERROR";
             }
-            if(description == ""){
+            if (description == "") {
                 console.log("ERROR");
                 return "ERROR";
             }
             alert(name_of_project + "\n" + description + "\n" + background);
-            document.getElementById('close-create-modal').click();
+
+            //restarting modal for create
+                //document.getElementById('name-of-project').innerText = "";
+                //document.getElementById('description').innerText = "";
+            colors.forEach(item => {
+                let color_block = document.getElementById(item);
+                color_block.classList.remove('opacity-50');
+                color_block.innerHTML = 'A';
+            });
+            document.getElementById('project-pattern').src = ("./images/patterns for projects/template.png");
         }
     </script>
 </body>

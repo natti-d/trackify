@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--ИЗПОЛЗВАНИ:
+        - HTML5;
+        - CSS3;
+        - JAVASCRIPT;
+        - BOOTSTRAP;
+        - JQUERY;
+    -->
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -147,8 +155,8 @@
     </header>
 
     <!--Project Container-->
-    <div class="w-100 overflow-y-auto overflow-hidden position-relative d-md-flex d-block"
-        id="content-homepage" style="top: 0; height: 91vh; background-color: #d6f1ff;">
+    <div class="w-100 overflow-y-auto overflow-hidden position-relative d-md-flex d-block" id="content-homepage"
+        style="top: 0; height: 91vh; background-color: #d6f1ff;">
         <div class="col-md-8 w-md-100 me-4">
             <!--Page name and Filters-->
             <div class="overflow-hidden pt-2 pt-2 mx-3 d-flex justify-content-around" style="color: #004e7a;">
@@ -342,11 +350,11 @@
                     </div>
                     <div class="form-floating w-100 mt-3 position-relative">
                         <input type="name" class="form-control" id="name-of-project" placeholder="name" required>
-                        <label for="name">Име на проект</label>
+                        <label for="name-of-project">Име на проект</label>
                     </div>
 
-                    <div class="w-100 mt-3 position-relative">
-                        <label for="color">Гама на проект</label required>
+                    <div class="w-100 mt-3 position-relative" id="color-picking">
+                        <span>Гама на проект</span>
                         <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
                             <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #F94144;"
                                 onclick="selectedColor(this.id)">A</li>
@@ -376,25 +384,30 @@
                     </div>
 
                     <div class="form-floating w-100 mt-3 position-relative">
-                        <textarea type="name" class="form-control" id="name-of-project" placeholder="name"
-                            style="min-height: 70px;" required></textarea>
-                        <label for="name">Описание на проект</label>
+                        <textarea type="name" class="form-control" id="description" placeholder="name"
+                            style="min-height: 120px;" required></textarea>
+                        <label for="description">Описание на проект</label>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        onclick="location.reload();">Отмени</button>
-                    <button type="button" class="btn btn-primary">Създай</button>
+                    <button type="button" class="btn btn-secondary" id="close-create-modal"
+                        onclick="alert('Направените промени няма да се запазят.');"
+                        data-bs-dismiss="modal">Отмени</button>
+                    <button type="button" class="btn btn-primary" onclick="createProject();">Създай</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--SCRIPT FOR THE THEME OF A PROJECT-->
+    <!--Script for Create Modal-->
     <script>
         const colors = ["red-bg", "deeporange-bg", "orange-bg", "yellow-bg", "lime-bg", "lightgreen-bg", "green-bg", "blue-bg",
             "lightblue-bg", "purple-bg", "deeppurple-bg", "pink-bg"];
+
+        var name_of_project = null;
+        var background = 'blue-bg';
+        var description = null;
         function selectedColor(color) {
             colors.forEach(item => {
                 if (item != color) {
@@ -407,8 +420,36 @@
             select.innerHTML = '<i class="bi bi-check"></i>';
             select.classList.remove('opacity-50');
             document.getElementById('project-pattern').src = ("./images/patterns for projects/" + (color + ".png"));
+            background = color;
+        }
+
+        function createProject() {
+            name_of_project = document.getElementById('name-of-project').value;
+            console.log(name_of_project);
+            description = document.getElementById('description').value;
+
+            if (!(/[a-zA-Z]/.test(name_of_project) && /[a-zA-Z]/.test(description))) {
+                alert("Невалидни данни на проект!");
+                return "ERROR";
+            }
+            alert(name_of_project + "\n" + description + "\n" + background);
+            $('#create').modal('hide');
+
+            //restarting modal for create
+            setTimeout(function () {
+                $('#name-of-project').val('');
+                $('#description').val('');
+                colors.forEach(item => {
+                    let color_block = document.getElementById(item);
+                    color_block.classList.remove('opacity-50');
+                    color_block.innerHTML = 'A';
+                });
+                document.getElementById('project-pattern').src = ("./images/patterns for projects/template.png");
+            }, 1000);
+
         }
     </script>
+
 </body>
 
 </html>
