@@ -17,30 +17,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
-        /* width */
         ::-webkit-scrollbar {
             height: 5px;
             width: 5px;
         }
 
-        /* Track */
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
 
-        /* Handle */
         ::-webkit-scrollbar-thumb {
             background: #888;
         }
 
-        /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
     </style>
 </head>
 
-<body class="overflow-y-hidden">
+<body class="overflow-y-hidden" style="background-color: #d6f1ff;">
     <!--HEADER-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
         id="top-navigation" style="background-color: #F0F2F4;">
@@ -155,59 +151,14 @@
     </header>
 
     <!--Project Container-->
-    <div class="w-100 overflow-y-auto overflow-hidden position-relative d-md-flex d-block" id="content-homepage"
-        style="top: 0; height: 91vh; background-color: #d6f1ff;">
+    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative d-md-flex d-block" id="content-homepage"
+        style="top: 0; background-color: #d6f1ff;">
         <div class="col-md-8 w-md-100 me-4">
             <!--Page name and Filters-->
             <div class="overflow-hidden pt-2 pt-2 mx-3 d-flex justify-content-around" style="color: #004e7a;">
                 <div class="d-md-flex d-block justify-content-around">
                     <h2 class="py-2 px-4 col-md-8 w-100 text-center">Проекти</h2>
-                    <!--Selected Filters-
-                    <div class="d-block mb-1 col-md-4 w-100 justify-content-center align-self-center">
-                        <!--Filter--
-                        <div class="dropdown">
-                            <select class="btn btn-lg mx-3 fs-5 dropdown-toggle" data-bs-toggle="dropdown"
-                                label="Филтри" aria-expanded="false" style="border: 2px solid #004e7a; color: #004e7a;"
-                                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                                <i class="bi bi-filter-left me-3"></i>
-                                <optgroup label="Всички" class="m-auto p-0 w-100 text-center"
-                                    style="color: #003554; background-color: #d6f1ff;">
-                                    <option label="Всички" class="m-auto p-0 w-100 text-start"
-                                        style="color: #003554; background-color: #d6f1ff;" type="button">
-                                        Всички
-                                    </option>
-                                </optgroup>
-                                <optgroup label="Прогрес" class="m-auto p-0 w-100 text-center"
-                                    style="color: #003554; background-color: #d6f1ff;">
-                                    <option label="Последни" class="m-auto p-0 w-100 text-start"
-                                        style="color: #003554; background-color: #d6f1ff;" type="button">
-                                        Последни
-                                    </option>
-                                    <option label="Отворени" class="m-auto p-0 w-100 text-start"
-                                        style="color: #003554; background-color: #d6f1ff;" type="button">
-                                        Отворени
-                                    </option>
-                                    <option label="Затворени" class="m-auto p-0 w-100 text-start"
-                                        style="color: #003554; background-color: #d6f1ff;" type="button">
-                                        Затворени
-                                    </option>
-                                </optgroup>
-                                <optgroup label="Роля" class="m-auto p-0 w-100 text-center"
-                                    style="color: #003554; background-color: #d6f1ff;">
-                                    <option label="С роля Админ" class="m-auto p-0 w-100 text-start"
-                                        style="color: #003554; background-color: #d6f1ff;" type="button">
-                                        С роля Админ
-                                    </option>
-                                    <option label="Чужди" class="m-auto p-0 w-100 text-start"
-                                        style="color: #003554; background-color: #d6f1ff;" type="button">
-                                        Чужди
-                                    </option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>-->
-                </div>
+                 </div>
             </div>
 
             <div class="h-100 d-flex me-3">
@@ -451,5 +402,4 @@
     </script>
 
 </body>
-
 </html>
