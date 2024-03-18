@@ -27,127 +27,45 @@
             background: #555;
         }
     </style>
+
+    <style>
+    </style>
+
 </head>
 
 <body class="overflow-y-hidden" style="background-color: #d6f1ff;">
-    <!--HEADER-->
-    <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
-        id="top-navigation" style="background-color: #F0F2F4;">
-        <!--LQVA CHAST HEADER-->
-        <div class="d-flex">
-            <img src="./images/logo/5.png" alt="logo" style="height: 100px; transform: rotate(-90deg);"
-                class="my-0 mx-3">
-            <div class="align-middle m-auto d-md-flex d-none">
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    Проекти</button>
 
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                    data-bs-toggle="modal" data-bs-target="#create" type="button">
-                    Създай</button>
-            </div>
-        </div>
-
-        <!--DQSNA CHAST HEADER-->
-        <div class="pe-md-5 m-3 d-md-flex d-none align-items-center">
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                За Нас</button>
-
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                Помощ</button>
-            <button class="btn mx-2 btn-lg bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;"
-                data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-            </button>
-        </div>
-
-        <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
-            <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"></button>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h3 class="offcanvas-title" id="offcanvasRightLabel" style="color: #004e7a;">Trackify</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        Проекти</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                        data-bs-toggle="modal" data-bs-target="#create" type="button">
-                        Създай</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        За Нас</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        Помощ</button>
-                    <button class="btn mx-2 btn-lg w-100 bi bi-person-circle"
-                        style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-            aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header w-100 d-flex flex-row-reverse flex-md-row justify-content-between"
-                style="height: 100px; border-bottom: 2px solid #003554;">
-                <!--DALI E DOSTATYCHNO INTUITIVNO BEZ X BUTON-->
-                <button type="button" class="btn-close d-block d-md-none" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-                <div class="d-flex align-middle">
-                    <div class="d-block">
-                        <p class="my-1">Име Фамилия</p>
-                        <p class="my-1">e-mail</p>
-                    </div>
-                </div>
-            </div>
-            <div class="offcanvas-body">
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Помощ</button>
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Смени
-                    акаунт</button>
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Излез</button>
-            </div>
-        </div>
-    </header>
 
     <!--Project Container-->
-    <div class="w-100" style="background-color: #d6f1ff;">
+    <div class="col-12 d-flex flex-column flex-md-row" style="background-color: #d6f1ff;">
+
+        <!--ONE Task Table-->
+        <div class="card col-12 col-md-2 mx-2 d-flex flex-column" id="column">
+            <!--Table Title-->
+            <h5 class="card-header">
+                <input class="rounded-3 fs-3 w-100 px-2 py-1 text-truncate" type="text" value="Table Title"
+                 onkeyup="this.setAttribute('title', this.value);" onfocus="this.select();">
+            </h5>
+
+            <!--Table Content-->
+            <div class="card-body">
+                <!--Table ONE Task-->
+                <div class="rounded-4 border border-dark-subtle d-flex" id="task"
+                    onmouseover="this.classList.add('border-secondary', 'shadow'); this.classList.remove('border-dark-subtle');"
+                    onmouseleave="this.classList.remove('border-secondary', 'shadow'); this.classList.add('border-dark-subtle');">
+                    <p class="fs-5 lh-sm text-break p-2">Task</p>
+                </div>
+
+                <!--Button to add more tasks-->
+                <a class="btn btn-primary">Add task</a>
+            </div>
+        </div>
+
         
     </div>
 
+    <script>
+    </script>
 
 </body>
 
