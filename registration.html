@@ -54,7 +54,7 @@
                     <div class="form-floating w-100 mb-3 position-relative">
                         <input type="name" class="form-control" id="name-registration" placeholder="info" required>
                         <label for="name">Име и Фамилия</label>
-                    </div>                    
+                    </div>
 
                     <div class="form-floating w-100 mb-3 position-relative">
                         <select class="form-select" id="account-type-registration" aria-label="Select Account Type"
@@ -115,12 +115,12 @@
 
     <script>
         const account_type_registration = document.getElementById('account-type-registration');
-
+        /*Проверява се тип акаунт*/
         account_type_registration.addEventListener('change', function () {
             let account_type_registration_value = document.getElementById('account-type-registration').value;
             let organization_registration = document.getElementById('organization-registration');
             let organization_info_registration = document.getElementById('organization-info-registration');
-            //Check Account Type
+
             switch (account_type_registration_value) {
                 case "School": organization_registration.classList.remove('d-none'); organization_info_registration.innerText = String("Въведи Училище"); break;
                 case "Business": organization_registration.classList.remove('d-none'); organization_info_registration.innerText = String("Въведи Бизнес"); break;

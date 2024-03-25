@@ -37,10 +37,10 @@
 </head>
 
 <body class="overflow-y-hidden" style="background-color: #d6f1ff;">
-    <!--HEADER-->
+    <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
         id="top-navigation" style="background-color: #F0F2F4;">
-        <!--LQVA CHAST HEADER-->
+        <!--Лява част-->
         <div class="d-flex">
             <img src="./images/logo/5.png" alt="logo" style="height: 100px; transform: rotate(-90deg);"
                 class="my-0 mx-3">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <!--DQSNA CHAST HEADER-->
+        <!--Дясна част-->
         <div class="pe-md-5 m-3 d-md-flex d-none align-items-center">
             <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
                 onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
@@ -122,7 +122,6 @@
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header w-100 d-flex flex-row-reverse flex-md-row justify-content-between"
                 style="height: 100px; border-bottom: 2px solid #003554;">
-                <!--DALI E DOSTATYCHNO INTUITIVNO BEZ X BUTON-->
                 <button type="button" class="btn-close d-block d-md-none" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
                 <div class="d-flex align-middle">
@@ -150,11 +149,11 @@
         </div>
     </header>
 
-    <!--Project Container-->
+    <!--Контейнер за проекти-->
     <div class="w-100 overflow-y-auto overflow-x-hidden position-relative d-md-flex d-block" id="content-homepage"
         style="top: 0; background-color: #d6f1ff;">
         <div class="col-md-8 w-md-100 me-4">
-            <!--Page name and Filters-->
+            <!--Име на страница - Проекти-->
             <div class="overflow-hidden pt-2 pt-2 mx-3 d-flex justify-content-around" style="color: #004e7a;">
                 <div class="d-md-flex d-block justify-content-around">
                     <h2 class="py-2 px-4 col-md-8 w-100 text-center">Проекти</h2>
@@ -162,7 +161,7 @@
             </div>
 
             <div class="h-100 d-flex me-3">
-                <!--Constainer with content-->
+                <!--Контейнер със съдържанието-->
                 <div class="row col-12 mx-4 d-flex position-relative align-content-start justify-content-around justify-content-md-between flex-wrap overflow-hidden"
                     style=" border-top: 2px solid #004e7a;">
                     <div class="card mx-md-1 mt-2  col-md-3 col-12"
@@ -259,7 +258,7 @@
         </div>
 
 
-        <!--Container with tasks-->
+        <!--Контейнер със задачи-->
         <div class="flex-fill m-4 overflow-y-auto overflow-x-hidden top-0" style="height: fit-content;"
             style="background-color: #F0F2F4;">
             <fieldset class="px-2 w-100 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
@@ -285,7 +284,7 @@
         </div>
     </div>
 
-    <!--Create Modal-->
+    <!--Модал за създаване-->
     <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-sm-down">
@@ -351,7 +350,7 @@
         </div>
     </div>
 
-    <!--Script for Create Modal-->
+    <!--Скрипт за модала за създаване на проект-->
     <script>
         const colors = ["red-bg", "deeporange-bg", "orange-bg", "yellow-bg", "lime-bg", "lightgreen-bg", "green-bg", "blue-bg",
             "lightblue-bg", "purple-bg", "deeppurple-bg", "pink-bg"];
@@ -359,6 +358,8 @@
         var name_of_project = null;
         var background = 'blue-bg';
         var description = null;
+
+        /*Селектира се цветовата гама на проект*/
         function selectedColor(color) {
             colors.forEach(item => {
                 if (item != color) {
@@ -374,6 +375,7 @@
             background = color;
         }
 
+        /*Създава се проект*/
         function createProject() {
             name_of_project = document.getElementById('name-of-project').value;
             console.log(name_of_project);
@@ -386,7 +388,7 @@
             alert(name_of_project + "\n" + description + "\n" + background);
             $('#create').modal('hide');
 
-            //restarting modal for create
+            /*Рестартиране на модала за създаване*/
             setTimeout(function () {
                 $('#name-of-project').val('');
                 $('#description').val('');

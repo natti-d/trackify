@@ -38,7 +38,7 @@
     <!--w-100 aint really working, but ehh-->
     <div class="d-inline-block flex-row overflow-x-auto w-100 vh-75 mt-2">
         <!--Project Container-->
-        <div class="d-flex" style="background-color: #d6f1ff;" id="tables-container">
+        <div class="d-flex" style="background-color: #d6f1ff; height: 80vh;" id="tables-container">
         </div>
     </div>
 
@@ -48,6 +48,7 @@
 
     <script>
         var tables_container = document.getElementById('tables-container');
+        /*Създава задача*/
         function createTable() {
             let table = document.createElement('div');
             table.classList.add('card', 'mx-2', 'd-flex', 'flex-column', 'col-2');
@@ -99,6 +100,7 @@
             tables_container.appendChild(table);
         }
 
+        /*Създава ново поле на задача*/
         function createTask() {
             let task = document.createElement('div');
             task.classList.add('rounded-4', 'border', 'border-dark-subtule', 'd-flex', 'mt-1', 'mb-2', 'mx-2');
