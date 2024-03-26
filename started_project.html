@@ -27,84 +27,40 @@
             background: #555;
         }
     </style>
-
-    <style>
-    </style>
-
 </head>
 
-<body class="" style="background-color: #d6f1ff;" onload="createTable();">
+<body class="" style="background-color: #d6f1ff;">
 
     <!--w-100 aint really working, but ehh-->
     <div class="d-inline-block flex-row overflow-x-auto w-100 vh-75 mt-2">
         <!--Project Container-->
         <div class="d-flex" style="background-color: #d6f1ff; height: 80vh;" id="tables-container">
-        </div>
+            <div class="card mx-2 d-flex flex-column col-lg-2 col-md-4 col-xs-6">
+                <h5 class="card-header">To Do
+                </h5>
+
+                <div class="card-body overflow-y-scroll" id="todo">
+                    <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"></div>
+                    <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                    onclick="this.select();" onkeyup="this.title = this.value;">
+
+                </div>
+                <div class="card-footer">
+                    <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i class="bi bi-plus-circle ms-2"></i></p>
+                </div>
+            </div>
+        </div>    
     </div>
 
-    <button class="btn btn-primary" onclick="createTable()">
-        Add table<i class="bi bi-plus-circle ms-2"></i>
-    </button>
 
     <script>
-        var tables_container = document.getElementById('tables-container');
-        /*Създава задача*/
-        function createTable() {
-            let table = document.createElement('div');
-            table.classList.add('card', 'mx-2', 'd-flex', 'flex-column', 'col-2');
-            table.style.height = '80hv'; //doesn't work
-
-            //Table Title
-            let h5_table = document.createElement('h5');
-            h5_table.classList.add('card-header');
-
-            let title_table = document.createElement('input');
-            title_table.classList.add('rounded-3', 'fs-3', 'w-100', 'px-2', 'py-1', 'text-truncate');
-            title_table.type = 'text';
-            title_table.value = 'Table Title';
-
-            title_table.addEventListener('click', () => {
-                title_table.select();
-            });
-            title_table.addEventListener("keyup", function () {
-                title_table.title = title_table.value;
-            });
-
-            h5_table.appendChild(title_table);
-            table.appendChild(h5_table);
-
-            //Table Content
-            let body_table = document.createElement('div');
-            body_table.classList.add('card-body', 'overflow-y-scroll');
-            //body_table.style.height = '60 dp';
-            let task = createTask();
-            body_table.appendChild(task);
-
-            //Add task button
-            let table_footer = document.createElement('div');
-            table_footer.classList.add('card-footer');
-
-            let add_task = document.createElement('p');
-            add_task.classList.add('btn', 'btn-primary', 'mx-3');
-            add_task.innerHTML = 'Add task' + '<i class="bi bi-plus-circle ms-2"></i>';
-
-            add_task.addEventListener("click", function () {
-                let task = createTask();
-                body_table.appendChild(task);
-            });
-
-            table.appendChild(body_table);
-
-            table_footer.appendChild(add_task);
-            table.appendChild(table_footer);
-            tables_container.appendChild(table);
-        }
-
         /*Създава ново поле на задача*/
-        function createTask() {
+        function createTask(table) {
             let task = document.createElement('div');
             task.classList.add('rounded-4', 'border', 'border-dark-subtule', 'd-flex', 'mt-1', 'mb-2', 'mx-2');
             task.id = 'task';
+            //task.draggable = true;
+
             task.addEventListener("mouseover", function () {
                 task.classList.add('border-secondary', 'shadow');
                 task.classList.remove('border-dark-subtle');
@@ -115,14 +71,24 @@
                 task.classList.add('border-dark-subtle');
             });
 
-            let task_text = document.createElement('p');
-            task_text.classList.add('fs-5', 'lh-sm', 'text-break', 'p-2');
-            task_text.innerText = "Task";
+
+            let task_text = document.createElement('input');
+            task_text.classList.add('rounded-3', 'fs-5', 'w-100', 'px-2', 'py-1', 'text-truncate');
+            task_text.type = 'text';
+            task_text.value = 'Task';
+
+
+            task.addEventListener("click", function () {
+                task_text.select();
+            });
 
             task.appendChild(task_text);
-            return task;
+            console.log(document.getElementById(table));
+            document.getElementById(table).appendChild(task);
 
         }
+
+
     </script>
 
 </body>
