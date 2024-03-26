@@ -29,78 +29,93 @@
     </style>
 </head>
 
-<body class="" style="background-color: #d6f1ff;">
+<body class="overflow-y-hidden" style="background-color: #d6f1ff;">
 
-    <!--w-100 aint really working, but ehh-->
-    <div class="d-inline-block flex-row overflow-x-auto w-100 vh-75 mt-2">
+    <div class="d-inline-block flex-row overflow-y-auto w-100 mt-2">
         <!--Project Container-->
-        <div class="d-flex" style="background-color: #d6f1ff; height: 80vh;" id="tables-container">
-
+        <div class="d-flex flex-row" style="background-color: #d6f1ff;" id="tables-container">
             <!--Таблица зададено-->
-            <div class="card mx-2 d-flex flex-column col-lg-2 col-md-4 col-xs-6">
-                <h5 class="card-header">Зададено
-                </h5>
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header">Зададено
+                    </h5>
 
-                <div class="card-body overflow-y-scroll" id="todo">
-                    <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2">
-                        <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                            onclick="this.select();" onkeyup="this.title = this.value;">
+                    <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 70vh;">
+                        <div class="rounded-4 d-flex mt-1 mb-2 mx-2" onmouseover="this.classList.add('shadow');"
+                            onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                            <!--<i class="bi bi-plus-circle"></i>-->
+                        </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
-                            class="bi bi-plus-circle ms-2"></i></p>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
                 </div>
             </div>
 
             <!--Таблица В прогрес-->
-            <div class="card mx-2 d-flex flex-column col-lg-2 col-md-4 col-xs-6">
-                <h5 class="card-header">В прогрес
-                </h5>
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header">В прогрес
+                    </h5>
 
-                <div class="card-body overflow-y-scroll" id="todo">
-                    <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2">
-                        <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                            onclick="this.select();" onkeyup="this.title = this.value;">
+                    <div class="card-body overflow-y-auto" id="inprogress" style="max-height: 70vh;">
+                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                        </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
-                            class="bi bi-plus-circle ms-2"></i></p>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('inprogress')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
                 </div>
             </div>
 
             <!--Таблица Завършено-->
-            <div class="card mx-2 d-flex flex-column col-lg-2 col-md-4 col-xs-6">
-                <h5 class="card-header">Завършено
-                </h5>
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header">Завършено
+                    </h5>
 
-                <div class="card-body overflow-y-scroll" id="todo">
-                    <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2">
-                        <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                            onclick="this.select();" onkeyup="this.title = this.value;">
+                    <div class="card-body overflow-y-auto" id="done" style="max-height: 70vh;">
+                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                        </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
-                            class="bi bi-plus-circle ms-2"></i></p>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('done')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
                 </div>
             </div>
 
             <!--Таблица приключено-->
-            <div class="card mx-2 d-flex flex-column col-lg-2 col-md-4 col-xs-6">
-                <h5 class="card-header">Приключено
-                </h5>
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header">Приключено
+                    </h5>
 
-                <div class="card-body overflow-y-scroll" id="todo">
-                    <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2">
-                        <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                            onclick="this.select();" onkeyup="this.title = this.value;">
+                    <div class="card-body overflow-y-auto" id="closed" style="max-height: 70vh;">
+                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                        </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
-                            class="bi bi-plus-circle ms-2"></i></p>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('closed')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,18 +126,16 @@
         /*Създава ново поле на задача*/
         function createTask(table) {
             let task = document.createElement('div');
-            task.classList.add('rounded-4', 'border', 'border-dark-subtule', 'd-flex', 'mt-1', 'mb-2', 'mx-2');
+            task.classList.add('rounded-4', 'd-flex', 'mt-1', 'mb-2', 'mx-2');
             task.id = 'task';
             //task.draggable = true;
 
             task.addEventListener("mouseover", function () {
-                task.classList.add('border-secondary', 'shadow');
-                task.classList.remove('border-dark-subtle');
+                task.classList.add('shadow');
             });
 
             task.addEventListener("mouseleave", function () {
-                task.classList.remove('border-secondary', 'shadow');
-                task.classList.add('border-dark-subtle');
+                task.classList.remove('shadow');
             });
 
 
@@ -139,7 +152,6 @@
             task.appendChild(task_text);
             console.log(document.getElementById(table));
             document.getElementById(table).appendChild(task);
-
         }
 
 
