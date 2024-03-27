@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" class="w-100 h-100 m-0 p-0 overflow-hidden">
 
+<!--Страница, чрез която се влиза в акаунт-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Влез в Trackify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Bootstrap 5.3.2 - CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!--Bootstrap icons-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="validations.js"></script>
+    <!--Bootstrap 5.3.2 - JS-->
+    <script src="validations.js"></script> <!--Скрипт за провеждане на валидации-->    
+    <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
+
+    <!--Анимация на облаците-->
     <style>
         #cloud-set1 {
             background: url(./images/clouds_set1.png) 0 300px;
@@ -32,6 +40,7 @@
 
         }
     </style>
+
 </head>
 
 <body class="w-100 h-100 m-0 p-0 overflow-hidden">
@@ -60,17 +69,127 @@
                         Влез в профил
                     </button>
                     <div class="d-flex justify-content-between position-relative">
+                        <!--Забравена парола - за бъдеща реализация
+                            <div class="mx-3 text-center">
+                            <a class="" href="#" style="color: #003554"
+                                onmouseover="this.style.fontWeight = 'bold'; this.style.color = '#03273c';"
+                                onmouseleave="this.style.fontWeight = 'normal'; this.style.color = '#003554';">
+                                <p class="text-center my-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="">Забравена
+                                    парола?</p>
+                            </a>
+                        </div>-->
                         <div class="mx-3 text-center">
                             <a class="text-decoration-underline" href="./registration.html" style="color: #003554"
                                 onmouseover="this.style.fontWeight = 'bold'; this.style.color = '#03273c';"
-                                onmouseleave="this.style.fontWeight = 'normal'; this.style.color = '#003554';"><p class="text-center text-break my-0">Нямаш
-                                акаунт? <span class="d-inline-block text-decoration-underline">Регистрай се!</span></p></a>
+                                onmouseleave="this.style.fontWeight = 'normal'; this.style.color = '#003554';">
+                                <p class="text-center text-break my-0">Нямаш
+                                    акаунт? <span class="d-inline-block text-decoration-underline">Регистрай се!</span>
+                                </p>
+                            </a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <!--Забравена парола - за бъдеща реализаци
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="modal-forgotten">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Забравена парола</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    E-mail форма
+                    <form action="" class="p-3 d-flex align-items-center flex-column" id="form-email-forgotten"
+                        style="background-color: #F0F2F4;" onsubmit="this.reset()">
+                        <label class="mb-2" for="info">Попълни своя e-mail address, за да ти изптраим e-mail с код за
+                            смяна
+                            на
+                            паролата.</label>
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="email" class="form-control" id="email-forgotten" placeholder="name"
+                                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+                            <label for="email">Email address</label>
+                        </div>
+
+                        <div class="d-none position-relative w-100 p-2" id="help-email-forgotten">
+                            <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
+                                style="border: solid 2px #003554;">
+                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на
+                                    паролата</legend>
+                                <div>
+                                    <p class="text-break" style="color: #003554;" id="instruction-email-forgotten"></p>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+
+                    Форма за код
+                    <form action="" class="d-none p-3 d-flex align-items-center flex-column" id="form-code-forgotten"
+                        style="background-color: #F0F2F4;" onsubmit="this.reset()">
+                        <label class="mb-2" for="info">Попълни получения код, за да потвърдиш своя e-mail
+                            address.</label>
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="numbers" class="form-control" id="code-forgotten" placeholder="name" required>
+                            <label for="info">Код</label>
+                        </div>
+
+                        <div class="d-none position-relative w-100 p-2" id="help-code-forgotten">
+                            <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
+                                style="border: solid 2px #003554;">
+                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на
+                                    паролата</legend>
+                                <div>
+                                    <p class="text-break" style="color: #003554;" id="instruction-code-forgotten"></p>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+
+                    Форма за забравена парола
+                    <form action="" class="d-none p-3 d-flex align-items-center flex-column" id="form-pass-forgotten"
+                        style="background-color: #F0F2F4;" onsubmit="this.reset()">
+
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="password" class="form-control" id="new-password-forgotten"
+                                placeholder="password" required>
+                            <label for="password">Нова Парола</label>
+                        </div>
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="password" class="form-control" id="confirm-password-forgotten"
+                                placeholder="password" required>
+                            <label for="password">Повтори Нова Парола</label>
+                        </div>
+                        <div class="d-none position-relative w-100 p-2" id="help-pass-forgotten">
+                            <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
+                                style="border: solid 2px #003554;">
+                                <legend class="fw-bold float-none ps-2" style="color: #003554;">Помощ със смяна на
+                                    паролата</legend>
+                                <div>
+                                    <p class="text-break" style="color: #003554;" id="instruction-pass-forgotten"></p>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mx-2 mb-3 position-relative" data-bs-dismiss="modal"
+                        onclick="document.getElementById('form-change-password').reset();">Откажи се</button>
+
+                    <button class="btn mx-2 mb-3 position-relative"
+                        style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;" type="submit"
+                        onclick="forgottenPassword()" id="ok-btn-forgotten"
+                        onmouseover="this.style.backgroundColor = '#03273c'; this.style.border = '2px solid #03273c';"
+                        onmouseleave="this.style.backgroundColor = '#003554'; this.style.border = '2px solid #003554';">Продължи</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
 </body>
 
 </html>

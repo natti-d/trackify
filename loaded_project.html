@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!--Страница с всички проекти на един потребител-->
-
-<!--ИЗПОЛЗВАНИ:
-        - HTML5;
-        - CSS3;
-        - JAVASCRIPT;
-        - BOOTSTRAP;
-        - JQUERY;
-    -->
+<!--Страница, в която всеки потребител вижда задачите към даден проект-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекти Trackify</title>
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--Bootstrap 5.3.2 - JS-->
+    <!--Bootstrap 5.3.2 - CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!--Bootstrap icons-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!--Bootstrap 5.3.2 - CSS-->
+    <!--Bootstrap 5.3.2 - JS-->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--jQuery-->
     <script src="./creating_project.js"></script> <!--Скрипт за създаване на нов проект-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
 </head>
 
 <body class="overflow-y-hidden" style="background-color: #d6f1ff;">
+
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
         id="top-navigation" style="background-color: #F0F2F4;">
@@ -126,9 +118,9 @@
             </div>
             <div class="offcanvas-body">
                 <!--Настройки - за бъдеща реализация
-                    <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>-->
+                            <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
+                            onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
+                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>-->
                 <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
                     onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
                     onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Помощ</button>
@@ -138,140 +130,104 @@
             </div>
         </div>
     </header>
+    <!--Контейнер с таблиците и задачите на един проект-->
+    <div class="d-inline-block flex-row overflow-y-auto w-100 mt-2">
+        <div class="d-flex flex-row" style="background-color: #d6f1ff;" id="tables-container">
 
-    <!--Контейнер за проекти-->
-    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative d-md-flex d-block" id="content-homepage"
-        style="top: 0; background-color: #d6f1ff;">
-        <div class="col-md-8 w-md-100 me-4">
-            <!--Име на страница - Проекти-->
-            <div class="overflow-hidden pt-2 pt-2 mx-3 d-flex justify-content-around" style="color: #004e7a;"
-                id="projects-content">
-                <div class="d-md-flex d-block justify-content-around">
-                    <h2 class="py-2 px-4 col-md-8 w-100 text-center">Проекти</h2>
-                </div>
-            </div>
+            <!--Таблица Зададено-->
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header text-truncate" title="Зададено">Зададено</h5>
 
-            <div class="h-100 d-flex me-3">
-                <!--Контейнер със съдържанието-->
-                <div class="row col-12 mx-4 d-flex position-relative align-content-start justify-content-around justify-content-md-between flex-wrap overflow-hidden"
-                    style=" border-top: 2px solid #004e7a;">
-                    <div class="card mx-md-1 mt-2  col-md-3 col-12"
-                        style="height: 150px; background-color: #66007a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
+                    <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 70vh;">
+                        <!--Поле за една задача-->
+                        <div class="rounded-4 d-flex mt-1 mb-2 mx-2 justify-content-around"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #007a08; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #7a0000; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #004e7a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #7a6800; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #37007a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--Контейнер със задачи-->
-        <div class="flex-fill m-4 overflow-y-auto overflow-x-hidden top-0" style="height: fit-content;"
-            style="background-color: #F0F2F4;">
-            <fieldset class="px-2 w-100 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
-                <legend class="fw-bold float-none ps-2" style="color: #003554;">Настоящи задачи</legend>
-                <div class="w-100 d-block">
-                    <div class="card mx-2 my-2" style="height: 100px; background-color: #37007a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden py-1">
-                            <div class="d-lg-flex d-block justify-content-between mx-2 align-middle m-auto">
-                                <div class="w-100 my-0 my-lg-2">
-                                    <h5 class="card-title w-100">Задача</h5>
-                                    <p class="card-text w-100"><small>Име Проект</small></p>
-                                </div>
-                                <div class="w-100 my-0 my-lg-2">
-                                    <p class="card-title w-100">24/12/2024</p>
-                                    <p class="card-text w-100 d-lg-flex d-none"><small>Статус</small></p>
-                                </div>
+                            <!--!DOVYRSHI-->
+                            <!--Име на задачата-->
+                            <div class="w-75 d-flex flex-column flex-md-row">
+                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                    onclick="this.select();" onkeyup="this.title = this.value;">
                             </div>
+
+                            <div class="w-25 justify-content-between align-middle my-auto d-flex flex-row">
+                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
+                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
+                                <!--Преместване напред в таблиците-->
+                            </div>
+
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
                 </div>
-            </fieldset>
+            </div>
 
+            <!--Таблица В прогрес-->
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header text-truncate" title="В прогрес">В прогрес
+                    </h5>
+
+                    <div class="card-body overflow-y-auto" id="inprogress" style="max-height: 70vh;">
+                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('inprogress')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Таблица Изпълнено-->
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header">Изпълнено
+                    </h5>
+
+                    <div class="card-body overflow-y-auto" id="done" style="max-height: 70vh;">
+                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('done')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Таблица приключено-->
+            <div class="col-lg-3 col-md-4">
+                <div class="card mx-2 d-flex flex-column col-11">
+                    <h5 class="card-header">Приключено
+                    </h5>
+
+                    <div class="card-body overflow-y-auto" id="closed" style="max-height: 70vh;">
+                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+
+                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                onclick="this.select();" onkeyup="this.title = this.value;">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="btn btn-primary mx-3" onclick="createTask('closed')">Add task <i
+                                class="bi bi-plus-circle ms-2"></i></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -334,6 +290,42 @@
             </div>
         </div>
     </div>
+
+    <!--Скрипт за създаване на нова задача-->
+    <script>
+        /*Създава ново поле на задача*/
+        function createTask(table) {
+            let task = document.createElement('div');
+            task.classList.add('rounded-4', 'd-flex', 'mt-1', 'mb-2', 'mx-2');
+            task.id = 'task';
+            //task.draggable = true;
+
+            task.addEventListener("mouseover", function () {
+                task.classList.add('shadow');
+            });
+
+            task.addEventListener("mouseleave", function () {
+                task.classList.remove('shadow');
+            });
+
+
+            let task_text = document.createElement('input');
+            task_text.classList.add('rounded-3', 'fs-5', 'w-100', 'px-2', 'py-1', 'text-truncate');
+            task_text.type = 'text';
+            task_text.value = 'Task';
+
+
+            task.addEventListener("click", function () {
+                task_text.select();
+            });
+
+            task.appendChild(task_text);
+            console.log(document.getElementById(table));
+            document.getElementById(table).appendChild(task);
+        }
+
+
+    </script>
 
 </body>
 

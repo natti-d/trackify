@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--Първата страница, която потребител БЕЗ акаунт вижда-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trackify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Bootstrap 5.3.2 - CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!--Bootstrap icons-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap 5.3.2 - JS-->    
+    <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
+
 </head>
 
-<body class="overflow-y-hidden">
+<body class="overflow-y-auto">
     <!--Заглавна част-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
         id="top-navigation" style="background-color: #F0F2F4;">
@@ -85,15 +92,16 @@
         </div>
     </header>
 
-    <div class="w-100 overflow-y-auto overflow-x-hidden position-relative d-md-flex d-block conatiner" style="top: 0; height: 91vh;">
+    <div class="w-100 overflow-hidden d-md-flex d-block conatiner" style="top: 0;">
         <!--Контейнер за съдаржанието на страницата-->
         <div class="" id="content-homepage">
 
             <!--За нас-->
             <div style="background-color: #47C2FF; background: linear-gradient(90deg, #72ccf9 38%, #003554 100%);"
                 id="about-homepage" class="pb-5">
-                
-                <div class="w-100 d-md-flex d-block position-relative justify-content-md-between justify-content-center align-items-center">
+
+                <div
+                    class="w-100 d-md-flex d-block position-relative justify-content-md-between justify-content-center align-items-center">
                     <div class="col-5 mx-3 my-5 d-block">
                         <h1 class="bold mx-5 w-100 text-center fs-md-3 fs-1">Trackify</h1> <!--POPRAVI FONT-SIZE-->
                         <p class="fs-3 mx-5 w-100 text-center" id="maininfo-homepage">
