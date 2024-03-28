@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Страница, в която всеки потребител вижда задачите към даден проект-->
+
+<!--Първата страница, която потребител С акаунт вижда-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trackify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--Bootstrap 5.3.2 - CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!--Bootstrap icons-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--Bootstrap 5.3.2 - JS-->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--jQuery-->
-    <script src="./creating_project.js"></script> <!--Скрипт за създаване на нов проект-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
+    <script src="./creating_project.js"></script> <!--Скрипт за създаване на нов проект-->
+
 </head>
 
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
-
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
         id="top-navigation" style="background-color: #F0F2F4;">
@@ -130,126 +130,154 @@
             </div>
         </div>
     </header>
-    
-    <!--Контейнер с таблиците и задачите на един проект-->
-    <div class="d-inline-block flex-row overflow-y-auto w-100 mt-2">
-        <div class="d-flex flex-row" style="background-color: #d6f1ff;" id="tables-container">
 
-            <!--Таблица Зададено-->
-            <div class="col-lg-3 col-md-4">
-                <div class="card mx-2 d-flex flex-column col-11">
-                    <h5 class="card-header text-truncate" title="Зададено">Зададено</h5>
+    <!--Съдържание-->
+    <div class="w-100 overflow-hidden position-relative d-md-flex d-block" style="top: 0;">
+        <!--Контейнер за съдаржанието на страницата-->
+        <div class="" id="content-homepage">
 
-                    <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
-                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
+            <!--За нас-->
+            <div style="background-color: #47C2FF; background: linear-gradient(90deg, #72ccf9 38%, #003554 100%);"
+                id="about-homepage" class="pb-5">
 
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                    onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
-                                <!--Преместване напред в таблиците-->
-                            </div>
-
+                <div
+                    class="w-100 d-md-flex d-block position-relative justify-content-md-between justify-content-center align-items-center">
+                    <div class="col-5 mx-3 my-5 d-block">
+                        <h1 class="bold mx-5 w-100 text-center fs-md-3 fs-1">Trackify</h1> <!--POPRAVI FONT-SIZE-->
+                        <p class="fs-3 mx-5 w-100 text-center" id="maininfo-homepage">
+                            Управлявайте напредъка на вашия екип лесно и постигайте най-добри резултати до датата на
+                            крайния
+                            срок.
+                        </p>
+                        <div class="d-flex justify-content-between w-100 mx-5 ">
+                            <button class="btn w-100 fs-4 mx-2 d-md-inline-block d-none"
+                                style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                                onclick="location.href='./login.html'"
+                                onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
+                                onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
+                                Вход
+                            </button>
+                            <button class="btn w-100 fs-4 mx-2 d-md-inline-block d-none"
+                                style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                                onclick="location.href='./registration.html'"
+                                onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
+                                onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
+                                Регистрация
+                            </button>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <p class="btn btn-primary mx-3 text-center" onclick="createTask(0)">Добави Задача<i
-                                class="bi bi-plus-circle ms-2"></i></p>
+                    <div class="col-5 mx-3 my-5 d-flex justify-content-center">
+                        <img src="images/logo/5.png" alt="logo" class="img-fluid my-2">
+                    </div>
+                </div>
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="col-10 p-3 m-2 py-4" style="background-color: #F0F2F4;">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <p class="text-break col-11" id="info-homepage" style="font-size: large;">Ефективното
+                                управление на проекти е от
+                                съществено значение за
+                                ефективността на всяка корпорация в днешния забързан
+                                бизнес свят. Управлението на дейности, отговорности и срокове може да бъде трудно,
+                                особено
+                                когато работите в екип.
+                                <strong>Trackify</strong> е ефективно уеб приложение, което ще даде възможност на
+                                вашия бизнес екип, като
+                                предостави онлайн платформа за
+                                организиране на задълженията по проекта.
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="accordion col-11" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne"
+                                            style="background-color: #1fb4ff; color: #051923;">
+                                            Управление на задачите
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            <strong>Trackify</strong> оптимизира управлението на задачите, като предлага
+                                            удобен
+                                            за потребителя
+                                            интерфейс, където членовете на екипа
+                                            могат без усилие да създават, възлагат и проследяват дейности. Платформата
+                                            осигурява
+                                            категоризиране на работата и
+                                            установяване на приоритети, като гарантира ясно разбиране на дълбочината на
+                                            всеки
+                                            проект.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo"
+                                            style="background-color: #3ebfff; color: #051923;">
+                                            Kanban таблици
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            <strong>Trackify</strong> предполага създаването на Kanban таблици, за да
+                                            повиши
+                                            ефективността на вашия
+                                            екип и да рационализира работните
+                                            процеси на проекта. Kanban е визуален метод за управление, който се е
+                                            доказал
+                                            като
+                                            мощен инструмент за организиране на
+                                            задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед
+                                            върху
+                                            напредъка и състоянието на проекта. С
+                                            напредването на задачите през колони като „Да направя“, „В ход“ и
+                                            „Завършени“,
+                                            членовете на екипа могат лесно да
+                                            проследяват и наблюдават напредъка в реално време. С прилагането на Kanban
+                                            таблици от
+                                            <strong>Trackify</strong>, управлението на проекти
+                                            никога не е било по-лесно.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree"
+                                            style="background-color: #5cc9ff; color: #051923;">
+                                            Развитие на проекта
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            Функцията за краен срок на <strong>Trackify</strong> ви помага да
+                                            визуализирате
+                                            прогреса на проекта.
+                                            Този инструмент позволява на екипите
+                                            да задават етапи от изпълнението и крайни дати на задачите, което дава на
+                                            членовете
+                                            пълна представа за напредъка на
+                                            проекта. Планираната дата на завършване е адаптивна, което позволява промени
+                                            в
+                                            реално време при развитие на проекта.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!--Таблица В прогрес-->
-            <div class="col-lg-3 col-md-4">
-                <div class="card mx-2 d-flex flex-column col-11">
-                    <h5 class="card-header text-truncate" title="В прогрес">В прогрес
-                    </h5>
-
-                    <div class="card-body overflow-y-auto" id="inprogress" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
-                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                    onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
-                                <!--Преместване напред в таблиците-->
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card-footer"></div>
-                </div>
-            </div>
-
-            <!--Таблица Изпълнено-->
-            <div class="col-lg-3 col-md-4">
-                <div class="card mx-2 d-flex flex-column col-11">
-                    <h5 class="card-header">Изпълнено
-                    </h5>
-
-                    <div class="card-body overflow-y-auto" id="done" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
-                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                    onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
-                                <!--Преместване напред в таблиците-->
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card-footer"></div>
-                </div>
-            </div>
-
-            <!--Таблица приключено-->
-            <div class="col-lg-3 col-md-4">
-                <div class="card mx-2 d-flex flex-column col-11">
-                    <h5 class="card-header">Приключено
-                    </h5>
-
-                    <div class="card-body overflow-y-auto" id="closed" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
-                            onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                    onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3 d-none"></i>
-                                <!--Няма накъде повече да се премества, затова го скриваме-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer"></div>
-                </div>
-            </div>
+            <!--Помощ-->
         </div>
     </div>
 
@@ -312,91 +340,6 @@
             </div>
         </div>
     </div>
-
-    <!--Скрипт за създаване на нова задача или проследяване на прогреса-->
-    <script>   
-        /*Връща статуса на задача (т.е. към коя таблица принадлежи) в думи, като чете index числа*/
-        function returnStatusOfTable(status) {
-            switch (status) {
-                case 0: return 'todo'; break;
-                case 1: return 'inprogress'; break;
-                case 2: return 'done'; break;
-                case 3: return 'closed'; break;
-            }
-        }
-
-        /*Функцията създава ново поле на задача*/
-        function createTask(statusNum) {
-            status = returnStatusOfTable(statusNum);
-            //Поле за задача
-            let task = document.createElement('div');
-            task.classList.add('rounded-4', 'd-flex', 'flex-column', 'flex-md-row', 'mt-1', 'mb-2', 'p-2', 'justify-content-around');
-            task.id = 'task';
-
-            task.addEventListener("mouseover", function () {
-                task.classList.add('shadow');
-            });
-
-            task.addEventListener("mouseleave", function () {
-                task.classList.remove('shadow');
-            });
-
-            //Име на задача
-            let task_text_conatiner = document.createElement('div');
-            task_text_conatiner.classList.add('w-100');
-
-            let task_text = document.createElement('input');
-            task_text.classList.add('rounded-3', 'fs-5', 'w-100', 'px-2', 'py-1', 'text-truncate');
-            task_text.type = 'text';
-            task_text.value = 'Task';
-
-            task.addEventListener("click", function () {
-                task_text.select();
-            });
-
-            //Бутони на задача
-            let task_btn_container = document.createElement('div');
-            task_btn_container.classList.add('justify-content-between', 'align-middle', 'my-auto', 'd-flex', 'flex-row');
-
-            //Бутон за задаване на човек
-            let assign_member = document.createElement('i');
-            assign_member.classList.add('bi', 'bi-plus-circle', 'w-50', 'px-2', 'fs-3');
-
-            //Бутон за преместване напред в таблиците
-            let move_task = document.createElement('i');
-            move_task.classList.add('bi', 'bi-arrow-right-circle', 'w-50', 'px-2', 'fs-3');
-            checkIfTaskIsClosed(move_task, status);
-
-            task_btn_container.appendChild(assign_member);
-            task_btn_container.appendChild(move_task);
-
-            task_text_conatiner.appendChild(task_text);
-
-            task.appendChild(task_text_conatiner);
-            task.appendChild(task_btn_container);
-
-            document.getElementById(status).appendChild(task);
-
-            move_task.addEventListener("click", function () {
-                if (statusNum == 3) { return "Closed"; }
-                else {
-                    statusNum++;
-                    //document.getElementById(status).removeChild(task); - не е нужно, за да работи добре
-                    status = returnStatusOfTable(statusNum);
-                    document.getElementById(status).appendChild(task);
-                    checkIfTaskIsClosed(move_task, status);
-                }
-            });
-        }
-
-        /*Функцията проверява дали задачата не е напълно прикючена*/
-        function checkIfTaskIsClosed(next, status) {
-            if (status == "closed") {
-                next.classList.add('d-none');
-            }
-        }
-    </script>
-
 </body>
 
 </html>
