@@ -141,17 +141,16 @@
 
                     <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 70vh;">
                         <!--Поле за една задача-->
-                        <div class="rounded-4 d-flex mt-1 mb-2 mx-2 justify-content-around"
+                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
-                            <!--!DOVYRSHI-->
                             <!--Име на задачата-->
-                            <div class="w-75 d-flex flex-column flex-md-row">
+                            <div class="w-100 d-flex flex-column flex-md-row">
                                 <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
                                     onclick="this.select();" onkeyup="this.title = this.value;">
                             </div>
 
-                            <div class="w-25 justify-content-between align-middle my-auto d-flex flex-row">
+                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
                                 <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
                                 <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
                                 <!--Преместване напред в таблиците-->
@@ -173,11 +172,22 @@
                     </h5>
 
                     <div class="card-body overflow-y-auto" id="inprogress" style="max-height: 70vh;">
-                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                        <!--Поле за една задача-->
+                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
-                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                onclick="this.select();" onkeyup="this.title = this.value;">
+                            <!--Име на задачата-->
+                            <div class="w-100 d-flex flex-column flex-md-row">
+                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                    onclick="this.select();" onkeyup="this.title = this.value;">
+                            </div>
+
+                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
+                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
+                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
+                                <!--Преместване напред в таблиците-->
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-footer">
@@ -194,11 +204,22 @@
                     </h5>
 
                     <div class="card-body overflow-y-auto" id="done" style="max-height: 70vh;">
-                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                        <!--Поле за една задача-->
+                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
-                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                onclick="this.select();" onkeyup="this.title = this.value;">
+                            <!--Име на задачата-->
+                            <div class="w-100 d-flex flex-column flex-md-row">
+                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                    onclick="this.select();" onkeyup="this.title = this.value;">
+                            </div>
+
+                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
+                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
+                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
+                                <!--Преместване напред в таблиците-->
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-footer">
@@ -215,11 +236,22 @@
                     </h5>
 
                     <div class="card-body overflow-y-auto" id="closed" style="max-height: 70vh;">
-                        <div class="rounded-4 border border-dark-subtule d-flex mt-1 mb-2 mx-2"
+                        <!--Поле за една задача-->
+                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
-                            <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
-                                onclick="this.select();" onkeyup="this.title = this.value;">
+                            <!--Име на задачата-->
+                            <div class="w-100 d-flex flex-column flex-md-row">
+                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
+                                    onclick="this.select();" onkeyup="this.title = this.value;">
+                            </div>
+
+                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
+                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
+                                <i class="bi bi-check-circle-fill w-50 px-2 fs-3" style="color: #007a5e;"></i>
+                                <!--Няма накъде повече да се премества, затова имаме тикче-->
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-footer">
