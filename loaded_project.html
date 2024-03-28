@@ -130,9 +130,16 @@
             </div>
         </div>
     </header>
-    
+
+    <!--Лента с допълнителни настройки на един проект-->
+    <div class="d-flex w-100 justify-content-end py-2 border-bottom">
+        <p class="btn btn-primary mx-3 text-center my-0" onclick="">
+            Добави Екип<i class="bi bi-plus-circle ms-2"></i>
+        </p>
+    </div>
+
     <!--Контейнер с таблиците и задачите на един проект-->
-    <div class="d-inline-block flex-row overflow-y-auto w-100 mt-2">
+    <div class="d-inline-block flex-row overflow-y-auto w-100 pt-3">
         <div class="d-flex flex-row" style="background-color: #d6f1ff;" id="tables-container">
 
             <!--Таблица Зададено-->
@@ -140,7 +147,7 @@
                 <div class="card mx-2 d-flex flex-column col-11">
                     <h5 class="card-header text-truncate" title="Зададено">Зададено</h5>
 
-                    <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 70vh;">
+                    <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 60vh;">
                         <!--Поле за една задача-->
                         <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
@@ -253,6 +260,7 @@
         </div>
     </div>
 
+
     <!--Модал за създаване-->
     <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -314,7 +322,7 @@
     </div>
 
     <!--Скрипт за създаване на нова задача или проследяване на прогреса-->
-    <script>   
+    <script>
         /*Връща статуса на задача (т.е. към коя таблица принадлежи) в думи, като чете index числа*/
         function returnStatusOfTable(status) {
             switch (status) {
