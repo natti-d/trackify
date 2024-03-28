@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
 </head>
 
-<body class="overflow-y-hidden" style="background-color: #d6f1ff;">
+<body class="overflow-y-auto" style="background-color: #d6f1ff;">
 
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
@@ -141,11 +141,11 @@
 
                     <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 70vh;">
                         <!--Поле за една задача-->
-                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
+                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
                             <!--Име на задачата-->
-                            <div class="w-100 d-flex flex-column flex-md-row">
+                            <div class="w-100">
                                 <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
                                     onclick="this.select();" onkeyup="this.title = this.value;">
                             </div>
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="btn btn-primary mx-3" onclick="createTask('todo')">Add task <i
+                        <p class="btn btn-primary mx-3" onclick="createTask(0)">Add task <i
                                 class="bi bi-plus-circle ms-2"></i></p>
                     </div>
                 </div>
@@ -173,11 +173,11 @@
 
                     <div class="card-body overflow-y-auto" id="inprogress" style="max-height: 70vh;">
                         <!--Поле за една задача-->
-                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
+                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
                             <!--Име на задачата-->
-                            <div class="w-100 d-flex flex-column flex-md-row">
+                            <div class="w-100">
                                 <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
                                     onclick="this.select();" onkeyup="this.title = this.value;">
                             </div>
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="btn btn-primary mx-3" onclick="createTask('inprogress')">Add task <i
+                        <p class="btn btn-primary mx-3" onclick="createTask(1)">Add task <i
                                 class="bi bi-plus-circle ms-2"></i></p>
                     </div>
                 </div>
@@ -205,11 +205,10 @@
 
                     <div class="card-body overflow-y-auto" id="done" style="max-height: 70vh;">
                         <!--Поле за една задача-->
-                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
+                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-
                             <!--Име на задачата-->
-                            <div class="w-100 d-flex flex-column flex-md-row">
+                            <div class="w-100">
                                 <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
                                     onclick="this.select();" onkeyup="this.title = this.value;">
                             </div>
@@ -223,8 +222,9 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="btn btn-primary mx-3" onclick="createTask('done')">Add task <i
-                                class="bi bi-plus-circle ms-2"></i></p>
+                        <p class="btn btn-primary mx-3" onclick="createTask(2)">Add task
+                            <i class="bi bi-plus-circle ms-2"></i>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -237,25 +237,24 @@
 
                     <div class="card-body overflow-y-auto" id="closed" style="max-height: 70vh;">
                         <!--Поле за една задача-->
-                        <div class="rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
+                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around"
                             onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
 
                             <!--Име на задачата-->
-                            <div class="w-100 d-flex flex-column flex-md-row">
+                            <div class="w-100">
                                 <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task"
                                     onclick="this.select();" onkeyup="this.title = this.value;">
                             </div>
 
                             <div class="justify-content-between align-middle my-auto d-flex flex-row">
                                 <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-check-circle-fill w-50 px-2 fs-3" style="color: #007a5e;"></i>
-                                <!--Няма накъде повече да се премества, затова имаме тикче-->
+                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3 d-none"></i>
+                                <!--Няма накъде повече да се премества, затова го скриваме-->
                             </div>
-
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="btn btn-primary mx-3" onclick="createTask('closed')">Add task <i
+                        <p class="btn btn-primary mx-3" onclick="createTask(3)">Add task <i
                                 class="bi bi-plus-circle ms-2"></i></p>
                     </div>
                 </div>
@@ -323,14 +322,25 @@
         </div>
     </div>
 
-    <!--Скрипт за създаване на нова задача-->
-    <script>
-        /*Създава ново поле на задача*/
-        function createTask(table) {
+    <!--Скрипт за създаване на нова задача или проследяване на прогреса-->
+    <script>   
+        /*Връща статуса на задача (т.е. към коя таблица принадлежи) в думи, като чете index числа*/
+        function returnStatusOfTable(status) {
+            switch (status) {
+                case 0: return 'todo'; break;
+                case 1: return 'inprogress'; break;
+                case 2: return 'done'; break;
+                case 3: return 'closed'; break;
+            }
+        }
+
+        /*Функцията създава ново поле на задача*/
+        function createTask(statusNum) {
+            status = returnStatusOfTable(statusNum);
+            //Поле за задача
             let task = document.createElement('div');
-            task.classList.add('rounded-4', 'd-flex', 'mt-1', 'mb-2', 'mx-2');
+            task.classList.add('rounded-4', 'd-flex', 'flex-column', 'flex-md-row', 'mt-1', 'mb-2', 'p-2', 'justify-content-around');
             task.id = 'task';
-            //task.draggable = true;
 
             task.addEventListener("mouseover", function () {
                 task.classList.add('shadow');
@@ -340,23 +350,60 @@
                 task.classList.remove('shadow');
             });
 
+            //Име на задача
+            let task_text_conatiner = document.createElement('div');
+            task_text_conatiner.classList.add('w-100');
 
             let task_text = document.createElement('input');
             task_text.classList.add('rounded-3', 'fs-5', 'w-100', 'px-2', 'py-1', 'text-truncate');
             task_text.type = 'text';
             task_text.value = 'Task';
 
-
             task.addEventListener("click", function () {
                 task_text.select();
             });
 
-            task.appendChild(task_text);
-            console.log(document.getElementById(table));
-            document.getElementById(table).appendChild(task);
+            //Бутони на задача
+            let task_btn_container = document.createElement('div');
+            task_btn_container.classList.add('justify-content-between', 'align-middle', 'my-auto', 'd-flex', 'flex-row');
+
+            //Бутон за задаване на човек
+            let assign_member = document.createElement('i');
+            assign_member.classList.add('bi', 'bi-plus-circle', 'w-50', 'px-2', 'fs-3');
+
+            //Бутон за преместване напред в таблиците
+            let move_task = document.createElement('i');
+            move_task.classList.add('bi', 'bi-arrow-right-circle', 'w-50', 'px-2', 'fs-3');
+            checkIfTaskIsClosed(move_task, status);
+
+            task_btn_container.appendChild(assign_member);
+            task_btn_container.appendChild(move_task);
+
+            task_text_conatiner.appendChild(task_text);
+
+            task.appendChild(task_text_conatiner);
+            task.appendChild(task_btn_container);
+
+            document.getElementById(status).appendChild(task);
+
+            move_task.addEventListener("click", function () {
+                if (statusNum == 3) { return "Closed"; }
+                else {
+                    statusNum++;
+                    //document.getElementById(status).removeChild(task); - не е нужно, за да работи добре
+                    status = returnStatusOfTable(statusNum);
+                    document.getElementById(status).appendChild(task);
+                    checkIfTaskIsClosed(move_task, status);
+                }
+            });
         }
 
-
+        /*Функцията проверява дали задачата не е напълно прикючена*/
+        function checkIfTaskIsClosed(next, status) {
+            if (status == "closed") {
+                next.classList.add('d-none');
+            }
+        }
     </script>
 
 </body>
