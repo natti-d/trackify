@@ -133,7 +133,8 @@
 
     <!--Лента с допълнителни настройки на един проект-->
     <div class="d-flex w-100 justify-content-end py-2 border-bottom">
-        <p class="btn btn-primary mx-3 text-center my-0" onclick="">
+        <p class="btn btn-primary mx-3 text-center my-0" data-bs-toggle="offcanvas" data-bs-target="#addMemberOffCanva"
+            aria-controls="addMemberOffcanvas">
             Добави Екип<i class="bi bi-plus-circle ms-2"></i>
         </p>
     </div>
@@ -260,6 +261,31 @@
         </div>
     </div>
 
+    <!--Offcanva за добавяне членове на екип-->
+    <div class="offcanvas offcanvas-end w-md-100" tabindex="-1" id="addMemberOffCanva" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Добави членове на екип</h5>
+            <button type="button" class="btn-close d-md-none d-block" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-block justify-content-center">
+            <!--За e-mail на член от екиш-->
+            <div class="form-floating w-100 mb-3">
+                <input type="email" class="form-control mb-1" id="email-member" placeholder="name"
+                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+                <label for="email">Email address на член от екип</label>
+
+                <p class="btn btn-primary w-100 text-center mt-1" onclick="addMember();">
+                    Добави<i class="bi bi-pencil-square ms-2"></i>
+                </p>
+            </div>
+
+            <!--Списък с екип-->
+            <ul class="list-group overflow-y-auto" id="team-list" max-height: 70vh;>
+            </ul>
+        </div>
+    </div>
+
 
     <!--Модал за създаване-->
     <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -321,8 +347,52 @@
         </div>
     </div>
 
-    <!--Скрипт за създаване на нова задача или проследяване на прогреса-->
+    <!--Модал за възлагане на задача-->
+    <div class="modal fade" id="assign-task" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="staticBackdropLabel">Възложи задача</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group" id="list-members-assign">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+                            <label class="form-check-label" for="firstCheckbox">First checkbox</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close-create-modal"
+                        onclick="alert('Направените промени няма да се запазят.');"
+                        data-bs-dismiss="modal">Отмени</button>
+                    <button type="button" class="btn btn-primary" onclick="">Възможи</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Скрипт за създаване на нова задача, проследяване на прогреса и добавяне членове на екипа-->
     <script>
+        /*Добавя e-mail към екип*/
+        var members = [];
+        function addMember() {
+            let team_list = document.getElementById('team-list');
+            let email_member = document.getElementById('email-member').value;
+            if (members.includes(email_member)) {
+                alert("Този e-mail е вече член на екипа.");
+            }
+            else if (email_member == "") {
+                alert("Невалиден e-mail");
+            }
+            else {
+                members.push(email_member);
+                $(team_list).append('<li class="list-group-item">' + members[members.length - 1] + "</li>");
+            }
+        }
+
         /*Връща статуса на задача (т.е. към коя таблица принадлежи) в думи, като чете index числа*/
         function returnStatusOfTable(status) {
             switch (status) {
@@ -369,6 +439,9 @@
             //Бутон за задаване на човек
             let assign_member = document.createElement('i');
             assign_member.classList.add('bi', 'bi-plus-circle', 'w-50', 'px-2', 'fs-3');
+            assign_member.addEventListener("click", function () {
+                assignTask();
+            });
 
             //Бутон за преместване напред в таблиците
             let move_task = document.createElement('i');
@@ -402,6 +475,28 @@
             if (status == "closed") {
                 next.classList.add('d-none');
             }
+        }
+
+        /**/
+        var list_members_assign = document.getElementById('list-members-assign');
+        function assignTask() {
+            list_members_assign.innerHTML = "";
+            members.forEach((member) => {
+                let li = document.createElement('li');
+                li.classList.add('list-group-item');
+                let input = document.createElement('input');
+                input.classList.add('form-check-input', 'me-1');
+                input.type = 'checkbox';
+                let label = document.createElement('label');
+                label.classList.add('form-check-label');
+
+                label.innerHTML = member; //NE RABOTI NESHTICHKO
+                console.log(label);
+                input.append(label);
+                li.append(input);
+                list_members_assign.append(li);
+            });
+            $('#assign-task').modal('show');
         }
     </script>
 
