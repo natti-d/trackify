@@ -134,7 +134,7 @@
     <!--Лента с допълнителни настройки на един проект-->
     <div class="d-flex w-100 justify-content-end py-2 border-bottom">
         <p class="btn btn-primary mx-3 text-center my-0" data-bs-toggle="offcanvas" data-bs-target="#addMemberOffCanva"
-            aria-controls="addMemberOffcanvas">
+            aria-controls="addMemberOffcanvas" onclick="printMembers();">
             Добави Екип<i class="bi bi-plus-circle ms-2"></i>
         </p>
     </div>
@@ -273,7 +273,7 @@
             <div class="form-floating w-100 mb-3">
                 <input type="email" class="form-control mb-1" id="email-member" placeholder="name"
                     pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
-                <label for="email">Email address на член от екип</label>
+                <label for="email-member">Email address на член от екип</label>
 
                 <p class="btn btn-primary w-100 text-center mt-1" onclick="addMember();">
                     Добави<i class="bi bi-pencil-square ms-2"></i>
@@ -358,10 +358,6 @@
                 </div>
                 <div class="modal-body">
                     <ul class="list-group" id="list-members-assign">
-                        <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                            <label class="form-check-label" for="firstCheckbox">First checkbox</label>
-                        </li>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -378,8 +374,11 @@
     <script>
         /*Добавя e-mail към екип*/
         var members = [];
+        var team_list = document.getElementById('team-list');
         function addMember() {
-            let team_list = document.getElementById('team-list');
+            if (members.length == 0){
+                team_list.innerHTML = '';
+            }
             let email_member = document.getElementById('email-member').value;
             if (members.includes(email_member)) {
                 alert("Този e-mail е вече член на екипа.");
@@ -390,6 +389,19 @@
             else {
                 members.push(email_member);
                 $(team_list).append('<li class="list-group-item">' + members[members.length - 1] + "</li>");
+            }
+        }
+
+        function printMembers() {
+            team_list.innerHTML = '';
+            if (members.length > 0) {
+                for (let i = 0; i < members.length; i++) {
+                    let member = members[i];
+                    $(team_list).append('<li class="list-group-item">' + members[i] + "</li>");
+                }
+            }
+            else{
+                team_list.append('Няма добавени членове на екип.');
             }
         }
 
@@ -477,25 +489,26 @@
             }
         }
 
-        /**/
+        /*Функцията възлага задачи на отделни членове от екипа*/
         var list_members_assign = document.getElementById('list-members-assign');
         function assignTask() {
             list_members_assign.innerHTML = "";
-            members.forEach((member) => {
+            for (let i = 0; i < members.length; i++) {
+                let member = members[i];
                 let li = document.createElement('li');
                 li.classList.add('list-group-item');
                 let input = document.createElement('input');
                 input.classList.add('form-check-input', 'me-1');
-                input.type = 'checkbox';
+                input.type = 'checkbox'; input.id = 'memberCheckBox' + i;
                 let label = document.createElement('label');
-                label.classList.add('form-check-label');
-
-                label.innerHTML = member; //NE RABOTI NESHTICHKO
+                label.classList.add('form-check-label', 'ms-1');
+                label.innerHTML = member; label.htmlFor = input.id;
                 console.log(label);
-                input.append(label);
                 li.append(input);
+                li.append(label);
                 list_members_assign.append(li);
-            });
+            }
+
             $('#assign-task').modal('show');
         }
     </script>
