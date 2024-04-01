@@ -1,0 +1,6 @@
+MariaDB [(none)]> CREATE DATABASE trackify;
+Query OK, 1 row affected (0.049 sec)
+
+MariaDB [(none)]> USE trackify;
+Database changed
+CREATE TABLE users(id INT AUTO_INCREMENT PRIMARY KEY, email TEXT, password TEXT, fullName TEXT, );
