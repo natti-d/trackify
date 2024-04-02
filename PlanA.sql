@@ -1,32 +1,34 @@
-CREATE DATABASE trackify;
-
-USE trackify;
-
 CREATE TABLE `Users` (
-  `user_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `email` TEXT,
-  `password` TEXT,
-  `full_name` TEXT,
-  `account_type` INTEGER
+  `user_id` integer,
+  `email` string,
+  `password` string,
+  `full_name` string,
+  `account_type` integer
 );
 
 CREATE TABLE `Projects` (
-  `project_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `project_name` TEXT,
-  `project_description` LONGTEXT, 
-  `background_id` INTEGER
+  `project_id` integer,
+  `project_name` string,
+  `admin_id` integer,
+  `background_id` integer
 );
 
 CREATE TABLE `Members` (
-  `member_id` INTEGER,
-  `projects_id` INTEGER,
-  `task_id` INTEGER
+  `member_id` integer,
+  `projects_id` integer,
+  `task_id` integer
 );
 
 CREATE TABLE `Tasks` (
-  `task_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `project_id` INTEGER,
-  `task_label` TEXT
+  `task_id` integer,
+  `project_id` integer,
+  `task_label` string,
+  `members` table
+);
+
+CREATE TABLE `Backgrounds` (
+  `background_id` integer,
+  `color` string
 );
 
 ALTER TABLE `Projects` ADD FOREIGN KEY (`project_id`) REFERENCES `Members` (`projects_id`);
