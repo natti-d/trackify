@@ -13,7 +13,6 @@
     <!--Bootstrap icons-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--Bootstrap 5.3.2 - JS-->
-    <script src="./validations.js"></script> <!--Скрипт за провеждане на валидации-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
     <!--Анимация на облаците-->
     <style>
@@ -44,48 +43,54 @@
 <body class="w-100 h-100 m-0 p-0 overflow-hidden">
     <div class="w-100 h-100 m-0 p-0 overflow-hidden"
         style="background: #ade4ff; background: linear-gradient(180deg, #ade4ff 0%, #3ebfff 79%); background-attachment: fixed; background-size: cover;">
+        <!--Облаци-->
         <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set1"></div>
         <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set2"></div>
+        <!--Съдържание-->
         <div class="d-flex align-items-center h-100">
-            <!--ako se mahne position-relative ot child elements i se sloji na tozi div, shte se opravi-->
             <div class="w-100 d-flex justify-content-center">
-                <form action="" class="col-md-4 col-10 p-3 d-flex align-items-center flex-column"
-                    style="background-color: #F0F2F4;">
+                <!--Форма-->
+                <form action="./registration.php" method="post"
+                    class="col-md-4 col-10 p-3 d-flex align-items-center flex-column" style="background-color: #F0F2F4;"
+                    autocomplete="off">
+                    <!--E-mail-->
                     <div class="form-floating w-100 mb-3 position-relative">
-                        <input type="email" class="form-control" id="email-registration" placeholder="name"
-                            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+                        <input type="email" class="form-control" id="email-registration" name="e-mail"
+                            placeholder="text" required>
                         <label for="email">Email address</label>
                     </div>
+                    <!--Име и Фамилия-->
                     <div class="form-floating w-100 mb-3 position-relative">
-                        <input type="name" class="form-control" id="name-registration" placeholder="info" required>
+                        <input type="name" class="form-control" id="name-registration" placeholder="info" name="name"
+                            required>
                         <label for="name">Име и Фамилия</label>
                     </div>
-
+                    <!--Вид акаунт-->
                     <div class="form-floating w-100 mb-3 position-relative">
                         <select class="form-select" id="account-type-registration" aria-label="Select Account Type"
-                            required>
-                            <option selected>Избери вид акаунт</option>
-                            <option value="School">Ученик/Учител</option>
-                            <option value="Business">Служител/Работодател</option>
-                            <option value="Personal">Личен</option>
+                            name="account-type" required>
+                            <option selected value="">Избери вид акаунт</option>
+                            <option value="0">Ученик/Учител</option>
+                            <option value="1">Служител/Работодател</option>
+                            <option value="2">Личен</option>
                         </select>
                         <label for="floatingSelect">Вид Акаунт</label>
                     </div>
-
+                    <!--Парола-->
                     <div class="form-floating w-100 mb-3 position-relative">
                         <input type="password" class="form-control" id="password-registration" placeholder="password"
-                            required>
+                            onkeyup="validatePassword();" name="password" required>
                         <label for="password">Парола</label>
                     </div>
-
+                    <!--Потвърди Парола-->
                     <div class="form-floating w-100 mb-3 position-relative">
                         <input type="password" class="form-control" id="confirm-password-registration"
                             placeholder="confirmPassword" required class="btn btn-secondary" data-bs-container="body"
-                            data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-toggle="popover" data-bs-placement="right" onkeyup="confirmPassword();"
                             data-bs-content="Въведените пароли не са еднакви!">
                         <label for="confirmPassword">Потвърди Парола</label>
                     </div>
-
+                    <!--Помощ - неподходящо??
                     <div class="d-none position-relative w-100 p-2" id="help-registration">
                         <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
                             style="border: solid 2px #003554;">
@@ -94,16 +99,18 @@
                                 <p class="text-break" style="color: #003554;" id="instruction-registration"></p>
                             </div>
                         </fieldset>
-                    </div>
+                    </div>-->
 
-                    <button class="btn w-100 fs-4 mx-2 mb-3 position-relative" type="button"
-                        style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
-                        onclick="validateRegistration()"
+                    <!--Бутон за регистрация-->
+                    <button class="btn w-100 fs-4 mx-2 mb-3 position-relative" type="submit"
+                        style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;" onclick=""
+                        id="registrate-btn" disabled
                         onmouseover="this.style.backgroundColor = '#03273c'; this.style.border = '2px solid #03273c';"
                         onmouseleave="this.style.backgroundColor = '#003554'; this.style.border = '2px solid #003554';">
                         Регистрирай се
                     </button>
 
+                    <!--Бутон за смяна на екран - Вход-->
                     <a class="w-100 fs-6 mx-2 text-center position-relative" href="./login.html" style="color: #003554"
                         onmouseover="this.style.fontWeight = 'bold'; this.style.color = '#03273c';"
                         onmouseleave="this.style.fontWeight = 'normal'; this.style.color = '#003554';">Вече имаш акаунт?
@@ -112,6 +119,39 @@
             </div>
         </div>
     </div>
+
+    <!--Валидация на паролите-->
+    <script>
+        //Валидира се Парола
+        function validatePassword() {
+            let password_registration_value = document.getElementById('password-registration').value;
+            let password_registration = document.getElementById('password-registration');
+
+            if (password_registration_value.length < 8) {
+                password_registration.classList.add('is-invalid');
+                return;
+            }
+            else {
+                password_registration.classList.remove('is-invalid');
+            }
+        }
+
+        //Потвърждава се Парола 
+        function confirmPassword() {
+            let password_registration_value = document.getElementById('password-registration').value;
+
+            let confirm_password_registration_value = document.getElementById('confirm-password-registration').value;
+            let confirm_password_registration = document.getElementById('confirm-password-registration');
+
+            if (password_registration_value !== confirm_password_registration_value) {
+                confirm_password_registration.classList.add('is-invalid');
+            }
+            else {
+                confirm_password_registration.classList.remove('is-invalid');
+                document.getElementById('registrate-btn').disabled = false;
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--Bootstrap 5.3.2 - JS-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
+    <!--Стилово офромление на градиентната анимация в За Нас контейнера-->
     <style>
         #about-homepage {
             background: linear-gradient(-45deg, #87d5fc, #64aed9, #0476b8);
@@ -52,7 +53,8 @@
                     onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                     За Нас</button>
 
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
+                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
+                    onclick="location.href='#help-homepage';"
                     onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
                     onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                     Помощ</button>
@@ -87,15 +89,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                    <!--BUG--> <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
                         onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
                         onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                        onclick="location.href='#about-homepage'">
+                        onclick="location.href='#about-homepage';" data-bs-dismiss="offcanvas">
                         За Нас</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                    <!--BUG--> <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
                         onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
                         onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                        onclick="">
+                        onclick="location.href='#help-homepage';" data-bs-dismiss="offcanvas">
                         Помощ</button>
                     <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
                         onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
@@ -118,8 +120,7 @@
             <!--За нас-->
             <div id="about-homepage" class="pb-5">
                 <!--Вход/Регистрация и име-->
-                <div
-                    class="w-100 d-flex justify-content-center align-items-center">
+                <div class="w-100 d-flex justify-content-center align-items-center">
                     <div class="w-100 mx-3 my-2 py-5 col-8">
                         <h1 class="bold mx-5 text-center fs-md-3 fs-1">ПланА</h1>
                         <p class="fs-3 mx-5 text-center" id="maininfo-homepage">
@@ -253,6 +254,140 @@
             </div>
 
             <!--Помощ-->
+            <div id="help-homepage" class="pb-5">
+                <!--Вход/Регистрация и име-->
+                <div class="w-100 d-flex justify-content-center align-items-center">
+                    <div class="w-100 mx-3 my-2 py-5 col-8">
+                        <h1 class="bold mx-5 text-center fs-md-3 fs-1">ПланА</h1>
+                        <p class="fs-3 mx-5 text-center" id="maininfo-homepage">
+                            Управлявайте напредъка на вашия екип лесно и постигайте най-добри резултати.
+                        </p>
+                        <div class="d-flex justify-content-center mx-5 pt-4">
+                            <button class="btn fs-4 mx-2 col-md-4"
+                                style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                                onclick="location.href='./login.html'"
+                                onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
+                                onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
+                                Вход
+                            </button>
+                            <button class="btn fs-4 mx-2 col-md-4"
+                                style="border: 2px solid #003554; color: #F0F2F4; background-color: #003554;"
+                                onclick="location.href='./registration.html'"
+                                onmouseover="this.style.backgroundColor = ''; this.style.color = '#003554'; this.style.border = '2px solid #003554';"
+                                onmouseleave="this.style.backgroundColor = '#003554'; this.style.color = '#F0F2F4'; this.style.border = '2px solid #003554';">
+                                Регистрация
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Таблици с описание на проекта-->
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="col-10 p-3 m-2 py-4" style="background-color: #F0F2F4;">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <p class="text-break col-11" id="info-homepage" style="font-size: large;">Ефективното
+                                управление на проекти е от
+                                съществено значение за
+                                ефективността на всяка корпорация в днешния забързан
+                                бизнес свят. Управлението на дейности, отговорности и срокове може да бъде трудно,
+                                особено
+                                когато работите в екип.
+                                <strong>ПланА</strong> е ефективно уеб приложение, което ще даде възможност на
+                                вашия бизнес екип, като
+                                предостави онлайн платформа за
+                                организиране на задълженията по проекта.
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="accordion col-11" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne"
+                                            style="background-color: #1fb4ff; color: #051923;">
+                                            Управление на задачите
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            <strong>ПланА</strong> оптимизира управлението на задачите, като предлага
+                                            удобен
+                                            за потребителя
+                                            интерфейс, където членовете на екипа
+                                            могат без усилие да създават, възлагат и проследяват дейности. Платформата
+                                            осигурява
+                                            категоризиране на работата и
+                                            установяване на приоритети, като гарантира ясно разбиране на дълбочината на
+                                            всеки
+                                            проект.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo"
+                                            style="background-color: #3ebfff; color: #051923;">
+                                            Kanban таблици
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            <strong>ПланА</strong> предполага създаването на Kanban таблици, за да
+                                            повиши
+                                            ефективността на вашия
+                                            екип и да рационализира работните
+                                            процеси на проекта. Kanban е визуален метод за управление, който се е
+                                            доказал
+                                            като
+                                            мощен инструмент за организиране на
+                                            задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед
+                                            върху
+                                            напредъка и състоянието на проекта. С
+                                            напредването на задачите през колони като „Да направя“, „В ход“ и
+                                            „Завършени“,
+                                            членовете на екипа могат лесно да
+                                            проследяват и наблюдават напредъка в реално време. С прилагането на Kanban
+                                            таблици от
+                                            <strong>ПланА</strong>, управлението на проекти
+                                            никога не е било по-лесно.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree"
+                                            style="background-color: #5cc9ff; color: #051923;">
+                                            Развитие на проекта
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fs-6 text-break">
+                                            Функцията за краен срок на <strong>ПланА</strong> ви помага да
+                                            визуализирате
+                                            прогреса на проекта.
+                                            Този инструмент позволява на екипите
+                                            да задават етапи от изпълнението и крайни дати на задачите, което дава на
+                                            членовете
+                                            пълна представа за напредъка на
+                                            проекта. Планираната дата на завършване е адаптивна, което позволява промени
+                                            в
+                                            реално време при развитие на проекта.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
