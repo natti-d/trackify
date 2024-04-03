@@ -21,7 +21,6 @@
     if (!$conn) {
         die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
     }
-    echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
     //MYSQL Character Set
     $command = "SET CHARACTER SET utf8;";
@@ -39,14 +38,15 @@
             $command = "SELECT `user_id` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
             $getID = mysqli_query($conn, $command);
             $row = mysqli_fetch_assoc($getID);
-            echo "<script>location.href='./projects.html'; localStorage.setItem('user', '".$row['user_id']."');</script>";
+            echo "<script>location.href='./projects.php'; localStorage.setItem('user', '".$row['user_id']."');</script>";
         } else {
-            echo "<script>alert('Невалидна парола! Моля, въведете друга!');</script>";
+            echo "<script>alert('Невалидна парола! Моля, въведете друга!'); location.href='./login.html';</script>";
         }
     } else {
-        echo "<script>alert('Невалиден e-mail адрес! Моля, въведете друг!');</script>";
+        echo "<script>alert('Невалиден e-mail адрес! Моля, въведете друг!'); location.href='./login.html';</script>";
     }
     ?>
+    
 </body>
 
 </html>

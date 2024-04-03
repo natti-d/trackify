@@ -1,9 +1,9 @@
-//Скрипт за модала за създаване на проект
 const colors = ["red-bg", "orange-bg", "yellow-bg", "lime-bg", "lightgreen-bg", "green-bg", "blue-bg", "purple-bg", "pink-bg"];
 
 var name_of_project = null;
 var background = 'blue-bg';
 var description = null;
+var create_btn = document.getElementById('create-project-btn');
 
 /*Селектира се цветовата гама на проект*/
 function selectedColor(color) {
@@ -21,23 +21,24 @@ function selectedColor(color) {
     background = color;
 }
 
-/*Създава се проект*/
-function createProject() {
+/*Верифицира се, че данните не са празни*/
+function verificateData(){
     name_of_project = document.getElementById('name-of-project').value;
-    console.log(name_of_project);
     description = document.getElementById('description').value;
 
     if (!(/[a-zA-Z]/.test(name_of_project) && /[a-zA-Z]/.test(description))) {
-        alert("Невалидни данни на проект!");
-        return "ERROR";
+        create_btn.disabled = false;
     }
-    alert(name_of_project + "\n" + description + "\n" + background);
+}
+
+/*Рестартиране на модала за създаване*/
+function restartCreateModal() {
     $('#create').modal('hide');
 
-    /*Рестартиране на модала за създаване*/
     setTimeout(function () {
         $('#name-of-project').val('');
         $('#description').val('');
+        create_btn.disabled = true;
         colors.forEach(item => {
             let color_block = document.getElementById(item);
             color_block.classList.remove('opacity-50');

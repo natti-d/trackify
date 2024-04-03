@@ -34,7 +34,6 @@
     if ($validateEmail->num_rows == 1) {
         echo "<script>alert('Има акаунт с такъв e-mail. Моля, въведете друг!');</script>";
         echo "<script>location.href='./registration.html';</script>";
-        //set id of user as localStorage and return to home.html every time its empty!!!
     }
     else {
         $name = $_POST['name'];
@@ -48,7 +47,7 @@
             $command = "SELECT `user_id` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
             $getID = mysqli_query($conn, $command);
             $row = mysqli_fetch_assoc($getID);
-            echo "<script>location.href='./projects.html'; localStorage.setItem('user', '".$row['user_id']."');</script>";
+            echo "<script>location.href='./projects.php'; localStorage.setItem('user', '".$row['user_id']."');</script>";
         }
         else{
             die("Неосъществена регистрация: " . mysqli_connect_error());
