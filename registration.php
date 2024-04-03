@@ -45,7 +45,10 @@
         $registrateUser = mysqli_query($conn, $command);
         if($registrateUser){
             echo "<script>alert('Успешно се регистрирахте!');</script>";
-            echo "<script>location.href='./projects.html';</script>";
+            $command = "SELECT `user_id` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
+            $getID = mysqli_query($conn, $command);
+            $row = mysqli_fetch_assoc($getID);
+            echo "<script>location.href='./projects.html'; localStorage.setItem('user', '".$row['user_id']."');</script>";
         }
         else{
             die("Неосъществена регистрация: " . mysqli_connect_error());

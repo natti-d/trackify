@@ -36,8 +36,10 @@
         $logUser = mysqli_query($conn, $command);
         if ($logUser->num_rows == 1) {
             echo "<script>alert('Успешно влязохте в акаунта си!');</script>";
-            echo "<script>location.href='./projects.html';</script>";
-            //set id of user as localStorage and return to home.html every time its empty!!!
+            $command = "SELECT `user_id` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
+            $getID = mysqli_query($conn, $command);
+            $row = mysqli_fetch_assoc($getID);
+            echo "<script>location.href='./projects.html'; localStorage.setItem('user', '".$row['user_id']."');</script>";
         } else {
             echo "<script>alert('Невалидна парола! Моля, въведете друга!');</script>";
         }

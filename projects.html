@@ -26,230 +26,25 @@
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
 </head>
 
-<body class="overflow-y-auto" style="background-color: #d6f1ff;">
-    <!--Заглавен елемент-->
-    <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
-        id="top-navigation" style="background-color: #F0F2F4;">
-        <!--Лява част-->
-        <div class="d-flex">
-            <img src="./images/logo/0.2.png" alt="logo" style="height: 100px;"
-                class="my-0 mx-3">
-            <div class="align-middle m-auto d-md-flex d-none">
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                    onclick="location.href='projects.html#projects-content';">
-                    Проекти</button>
+<!--CHUPI OPISANIETO-->
 
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                    onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                    data-bs-toggle="modal" data-bs-target="#create" type="button">
-                    Създай</button>
-            </div>
-        </div>
-
-        <!--Дясна част-->
-        <div class="pe-md-5 m-3 d-md-flex d-none align-items-center">
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                onclick="location.href='home.html#about-homepage'">
-                За Нас</button>
-
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                Помощ</button>
-            <button class="btn mx-2 btn-lg bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;"
-                data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-            </button>
-        </div>
-
-        <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
-            <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;"
-                onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"></button>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h3 class="offcanvas-title" id="offcanvasRightLabel" style="color: #004e7a;">ПланА</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        Проекти</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
-                        data-bs-toggle="modal" data-bs-target="#create" type="button">
-                        Създай</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        За Нас</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick=""
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                        Помощ</button>
-                    <button class="btn mx-2 btn-lg w-100 bi bi-person-circle"
-                        style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
-                        onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
-                        onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!--Странично поле за всеки акаунт с допълнителни или нужни функции-->
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-            aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header w-100 d-flex flex-row-reverse flex-md-row justify-content-between"
-                style="height: 100px; border-bottom: 2px solid #003554;">
-                <button type="button" class="btn-close d-block d-md-none" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-                <div class="d-flex align-middle">
-                    <div class="d-block">
-                        <p class="my-1">Име Фамилия</p>
-                        <p class="my-1">e-mail</p>
-                    </div>
-                </div>
-            </div>
-            <div class="offcanvas-body">
-                <!--Настройки - за бъдеща реализация
-                    <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>-->
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Помощ</button>
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Излез</button>
-            </div>
-        </div>
-    </header>
+<body class="overflow-y-auto" style="background-color: #d6f1ff;" onload="generateProjectCard('pr', 'pr2', 1);">
+    
 
     <!--Контейнер за проекти-->
     <div class="w-100 overflow-y-hidden overflow-x-hidden position-relative d-md-flex d-block" id="content-homepage"
         style="top: 0; background-color: #d6f1ff;">
-        <div class="col-md-8 w-md-100 me-4">
+        <div class="col-md-12 px-3">
             <!--Име на страница - Проекти-->
-            <div class="overflow-hidden pt-2 pt-2 mx-3 d-flex justify-content-around" style="color: #004e7a;"
+            <div class="overflow-hidden pt-2 d-flex justify-content-around" style="color: #004e7a;"
                 id="projects-content">
                 <div class="d-md-flex d-block justify-content-around">
                     <h2 class="py-2 px-4 col-md-8 w-100 text-center">Проекти</h2>
                 </div>
             </div>
-
-            <div class="h-100 d-flex me-3">
-                <!--Контейнер със съдържанието-->
-                <div class="row col-12 mx-4 d-flex position-relative align-content-start justify-content-around justify-content-md-between flex-wrap overflow-hidden"
-                    style=" border-top: 2px solid #004e7a;">
-                    <div class="card mx-md-1 mt-2  col-md-3 col-12"
-                        style="height: 150px; background-color: #66007a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #007a08; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #7a0000; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #004e7a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #7a6800; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <div class="card mx-md-1 mt-2 col-md-3 col-12"
-                        style="height: 150px; background-color: #37007a; color: #F0F2F4;">
-                        <div class="card-img-overlay overflow-y-auto overflow-x-hidden  text-break">
-                            <h5 class="card-title">Заглавие проект</h5>
-                            <details class="d-flex">
-                                <summary class="card-text">Описание</summary>
-                                <p class="card-text">Това е едно дълго описание на проект, което не знам кой ще чете, но
-                                    мисля си,
-                                    че ще бъде доста готино, ако го има,
-                                    затова реших да го добавя! Цветът на фона, отговаря на цвета на фона на
-                                    проекта.<br><small>Някакво странно инфо ще има тук!</small></p>
-                            </details>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
-
-        <!--Контейнер със задачи-->
+        <!--Контейнер със задачи - За бъдеща реализация
         <div class="flex-fill m-4 overflow-y-auto overflow-x-hidden top-0" style="height: fit-content;"
             style="background-color: #F0F2F4;">
             <fieldset class="px-2 w-100 d-md-flex d-block position-relative" style="border: solid 2px #003554;">
@@ -271,8 +66,7 @@
                     </div>
                 </div>
             </fieldset>
-
-        </div>
+        </div>-->
     </div>
 
     <!--Модал за създаване-->
@@ -335,6 +129,67 @@
         </div>
     </div>
 
+    <script>
+        let cards_container = document.getElementById('cards-container');
+        /*Генериране на карта за проект*/
+        function generateProjectCard(name, description, bg) {
+            let card = document.createElement('div');
+            let text = getColors(bg)[1];
+            let bgColor = getColors(bg)[0];
+            card.classList.add('card', 'mx-1', 'mt-2', 'col-md-3', 'col-12', text);
+            card.style.height = '150px';
+            card.style.backgroundColor = bgColor;
+
+            let card_display = document.createElement('div');
+            card_display.classList.add('card-img-overlay', 'overflow-y-auto', 'overflow-x-hidden', 'text-break');
+
+            let h5 = document.createElement('h5');
+            h5.classList.add('card-title');
+            h5.innerText = name;
+            card_display.append(h5);
+
+            let details = document.createElement('details');
+            details.classList.add('d-flex');
+
+            let summary = document.createElement('summary');
+            summary.classList.add('card-text');
+            summary.innerText = "Описание";
+            details.append(summary);
+
+            let p = document.createElement('p');
+            p.classList.add('card-text');
+            p.innerText = description;
+            details.append(p);
+
+            card_display.append(details);
+            card.append(card_display);
+            cards_container.append(card);
+        }
+
+        function getColors(bg) {
+            switch (bg) {
+                case 0: return ["#F94144", "text-light"]; break;
+                case 1: return ["#F3722C", "text-black"]; break;
+                case 2: return ["#F9C74F", "text-black"]; break;
+                case 3: return ["#C5C35E", "text-black"]; break;
+                case 4: return ["#90BE6D", "text-black"]; break;
+                case 5: return ["#007A5E", "text-light"]; break;
+                case 6: return ["#314087", "text-light"]; break;
+                case 7: return ["#7462AB", "text-light"]; break;
+                case 8: return ["#8A4A8A", "text-light"]; break;
+                default: return ["#314087", "text-light"]; break;
+            }
+        }
+
+        function getID(){
+            return localStorage.getItem('user');
+        }
+
+        var userID = getID();
+        var request = new XMLHttpRequest();
+        request.open('GET', 'projects.php?' + userID, true);
+        request.send();
+    </script>
 </body>
 
 </html>
