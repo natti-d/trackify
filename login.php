@@ -26,18 +26,17 @@
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
 
-    $email = $_POST['e-mail'];
-    $command = "SELECT `email` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
-    $validateEmail = mysqli_query($conn, $command);
-    if ($validateEmail->num_rows == 1) {
-        $pass = $_POST['password'];
-        $command = "SELECT `email` FROM `Users` WHERE `password` = '$pass' LIMIT 1;";
-        $logUser = mysqli_query($conn, $command);
-        if ($logUser->num_rows == 1) {
+    $email = mysqli_real_escape_string($conn, $_POST['e-mail']);
+    $pass = mysqli_real_escape_string($conn, $_POST['password']);
+
+    $command = "SELECT `user_id`, `password` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
+    $validateAcc = mysqli_query($conn, $command);
+    if ($validateAcc->num_rows == 1) {
+        $row = mysqli_fetch_assoc($validateAcc);
+        $dbPass = $row['password'];
+
+        if ($pass == $dbPass) {
             echo "<script>alert('Успешно влязохте в акаунта си!');</script>";
-            $command = "SELECT `user_id` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
-            $getID = mysqli_query($conn, $command);
-            $row = mysqli_fetch_assoc($getID);
             echo "<script>location.href='./projects.php'; localStorage.setItem('user', '".$row['user_id']."');</script>";
         } else {
             echo "<script>alert('Невалидна парола! Моля, въведете друга!'); location.href='./login.html';</script>";

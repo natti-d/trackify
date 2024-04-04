@@ -12,6 +12,8 @@
         - AJAX;
     -->
 
+
+    <!--RACIONALIZIRAI PHP-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,9 +29,18 @@
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
 </head>
 
-<!--CHUPI OPISANIETO-->
-
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
+
+    <script>
+        function reload(){
+            window.onload = function() {
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                }
+            }
+        }
+    </script>
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden" id="top-navigation" style="background-color: #F0F2F4;">
         <!--Лява част-->
@@ -303,6 +314,7 @@
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
 
+    echo "<script>reload()</script>";
     //Взима от бисквитката userID и търси съответните IDs, за да изпише проектите
     $userID = $_COOKIE['userID'];
     if ($userID != '') {

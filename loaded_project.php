@@ -12,13 +12,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--Bootstrap 5.3.2 - JS-->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--jQuery-->
-    <script src="./creating_project.js"></script> <!--Скрипт за създаване на нов проект-->
+    <!--<script src="./creating_project.js"></script> Скрипт за създаване на нов проект-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
 
 </head>
 
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
     <script>
+        var members = [];
+
         /*Взимане на user id, project id от localStorage*/
         document.cookie = "userID=" + localStorage.getItem('user');
         document.cookie = "project=" + localStorage.getItem('projectID');
@@ -26,70 +28,104 @@
         function getColors(bg) {
             switch (bg) {
                 case "0" || 0:
-                    return ["#F94144", "text-light"];
+                    return "#F94144";
                     break;
                 case "1" || 1:
-                    return ["#F3722C", "text-black"];
+                    return "#F3722C";
                     break;
                 case "2" || 2:
-                    return ["#F9C74F", "text-black"];
+                    return "#F9C74F";
                     break;
                 case "3" || 3:
-                    return ["#C5C35E", "text-black"];
+                    return "#C5C35E";
                     break;
                 case "4" || 4:
-                    return ["#90BE6D", "text-black"];
+                    return "#90BE6D";
                     break;
                 case "5" || 5:
-                    return ["#007A5E", "text-light"];
+                    return "#007A5E";
                     break;
                 case "6" || 6:
-                    return ["#314087", "text-light"];
+                    return "#314087";
                     break;
                 case "7" || 7:
-                    return ["#7462AB", "text-light"];
+                    return "#7462AB";
                     break;
                 case "8" || 8:
-                    return ["#8A4A8A", "text-light"];
+                    return "#8A4A8A";
                     break;
                 default:
-                    return ["#314087", "text-light"];
+                    return "#314087";
                     break;
             }
         }
-    </script>
-    <?php
-    //Данни за достъп до базата данни
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "PlanA";
 
-    //Прави се връзка с базата данни
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    //Проверява се връзката
-    if (!$conn) {
-        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
-    }
-    echo "<script>console.log('Успешно свързване с базата данни!');</script>";
-
-    //MYSQL Character Set
-    $command = "SET CHARACTER SET utf8;";
-    $setCharacterSet = mysqli_query($conn, $command);
-
-    $userID = $_COOKIE['userID'];
-    $projectID = $_COOKIE['project'];
-
-    $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
-    $getProjectInfo = mysqli_query($conn, $command);
-    if ($getProjectInfo->num_rows != 0) {
-        while ($row = mysqli_fetch_assoc($getProjectInfo)) {
-            $color = $row['background_id'];
-            echo "<script>
-            document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0];
-            </script>";
+        function reload(){
+            window.onload = function() {
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                }
+            }
         }
-    }
+    </script>
+
+    <?php
+        //Данни за достъп до базата данни
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "PlanA";
+
+        //Прави се връзка с базата данни
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        //Проверява се връзката
+        if (!$conn) {
+            die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
+        }
+        echo "<script>console.log('Успешно свързване с базата данни!');</script>";
+
+        //MYSQL Character Set
+        $command = "SET CHARACTER SET utf8;";
+        $setCharacterSet = mysqli_query($conn, $command);
+
+        $userID = $_COOKIE['userID'];
+        $projectID = $_COOKIE['project'];
+
+        //Взима се цвета на фона на проекта
+        $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
+        $getProjectInfo = mysqli_query($conn, $command);
+        if($getProjectInfo){
+            if ($getProjectInfo->num_rows != 0) {
+                echo "<script>reload()</script>"; //za da aktivira dannite kakto e redno
+                while ($row = mysqli_fetch_assoc($getProjectInfo)) {        
+                    $color = $row['background_id'];            
+                    echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color'); console.log(getColors('$color'));</script>";
+                }
+            }else{
+                echo "Грешка: " . mysqli_error($conn);
+            }
+        }else {
+            echo "Грешка: " . mysqli_error($conn);
+        }
+
+        //Изписват се членовете на един екип
+        $command = "SELECT Users.email 
+                FROM Members 
+                INNER JOIN Users ON Members.member_id = Users.user_id
+                WHERE Members.projects_id = '$projectID' 
+                GROUP BY Members.member_id;";
+        $getMembers = mysqli_query($conn, $command);
+
+        if (!$getMembers)
+        {
+            echo("Error description: " . mysqli_error($conn));
+        }
+        $emails[] = "";
+        while ($row = mysqli_fetch_assoc($getMembers)) {
+            $email = strval($row['email']);
+            echo "<script>members.push('$email');</script>";
+        }
     ?>
 
     <!--Заглавен елемент-->
@@ -291,7 +327,7 @@
         <div class="offcanvas-body d-block justify-content-center">
             <!--За e-mail на член от екиш-->
             <div class="form-floating w-100 mb-3">
-                <input type="email" class="form-control mb-1" id="email-member" placeholder="name" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+                <input type="email" class="form-control mb-1" id="email-member" name="email-member" placeholder="name" required>
                 <label for="email-member">Email address на член от екип</label>
 
                 <p class="btn btn-primary w-100 text-center mt-1" onclick="addMember();">
@@ -305,7 +341,7 @@
         </div>
     </div>
 
-    <!--Модал за създаване-->
+    <!--Модал за създаване на проект-->
     <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content">
@@ -313,40 +349,47 @@
                     <h2 class="modal-title fs-5" id="staticBackdropLabel">Създай проект</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="w-100">
-                        <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
-                    </div>
-                    <div class="form-floating w-100 mt-3 position-relative">
-                        <input type="name" class="form-control" id="name-of-project" placeholder="name" required>
-                        <label for="name-of-project">Име на проект</label>
+
+                <form action="./create_project.php" method="post" autocomplete="off">
+                    <div class="modal-body">
+                        <div class="w-100">
+                            <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
+                        </div>
+                        <div class="form-floating w-100 mt-3 position-relative">
+                            <input type="name" name="name-of-project" class="form-control" id="name-of-project" onkeyup="verificateData();" placeholder="name" required>
+                            <label for="name-of-project">Име на проект</label>
+                        </div>
+
+                        <div class="w-100 mt-3 position-relative" id="color-picking">
+                            <span>Гама на проект</span>
+                            <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
+                                <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #F94144;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="orange-bg" style="background-color: #F3722C;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="yellow-bg" style="background-color: #F9C74F;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="lime-bg" style="background-color: #C5C35E;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="lightgreen-bg" style="background-color: #90BE6D;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="green-bg" style="background-color: #007a5e;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="blue-bg" style="background-color: #314087;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="purple-bg" style="background-color: #7462AB;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="pink-bg" style="background-color: #8A4A8A;" onclick="selectedColor(this.id)">A</li>
+                            </ul>
+                            <div class="form-floating w-100 mt-3 position-relative">
+                                <input type="name" name="color" class="form-control" id="color-of-project" placeholder="name" value="blue-bg" required>
+                                <label for="color-of-project">Код на тема</label>
+                            </div>
+                        </div>
+
+                        <div class="form-floating w-100 mt-3 position-relative">
+                            <textarea type="name" name="description" class="form-control" id="description" placeholder="name" style="min-height: 120px;" onkeyup="verificateData();" required></textarea>
+                            <label for="description">Описание на проект</label>
+                        </div>
                     </div>
 
-                    <div class="w-100 mt-3 position-relative" id="color-picking">
-                        <span>Гама на проект</span>
-                        <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
-                            <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #F94144;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-black" id="orange-bg" style="background-color: #F3722C;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-black" id="yellow-bg" style="background-color: #F9C74F;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-black" id="lime-bg" style="background-color: #C5C35E;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-black" id="lightgreen-bg" style="background-color: #90BE6D;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-light" id="green-bg" style="background-color: #007a5e;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-light" id="blue-bg" style="background-color: #314087;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-light" id="purple-bg" style="background-color: #7462AB;" onclick="selectedColor(this.id)">A</li>
-                            <li class="col-2 py-2 text-center text-light" id="pink-bg" style="background-color: #8A4A8A;" onclick="selectedColor(this.id)">A</li>
-                        </ul>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close-create-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
+                        <button type="submit" class="btn btn-primary" id="create-project-btn" onclick="restartCreateModal();" disabled>Създай</button>
                     </div>
-
-                    <div class="form-floating w-100 mt-3 position-relative">
-                        <textarea type="name" class="form-control" id="description" placeholder="name" style="min-height: 120px;" required></textarea>
-                        <label for="description">Описание на проект</label>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="close-create-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
-                    <button type="button" class="btn btn-primary" onclick="createProject();">Създай</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -374,7 +417,6 @@
     <!--Скрипт за създаване на нова задача, проследяване на прогреса и добавяне членове на екипа-->
     <script>
         /*Добавя e-mail към екип*/
-        var members = [];
         var team_list = document.getElementById('team-list');
 
         function addMember() {
@@ -387,8 +429,24 @@
             } else if (email_member == "") {
                 alert("Невалиден e-mail");
             } else {
-                members.push(email_member);
-                $(team_list).append('<li class="list-group-item">' + members[members.length - 1] + "</li>");
+                $.ajax({
+                    url: './addMember.php', // PHP file handling database operations
+                    type: 'POST',
+                    data: { email_member: email_member },
+                    success: function(response) {
+                        alert(email_member);
+                        if (response.success) {
+                            //members.push(email_member);
+                            //$(team_list).append('<li class="list-group-item">' + email_member + '</li>');
+                        } else {
+                            //alert(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        //alert("Грешка при изпращане на заявката до сървъра.");
+                    }
+                });
             }
         }
 
@@ -521,6 +579,62 @@
             }
 
             $('#assign-task').modal('show');
+        }
+    </script>
+
+    <!--Скрипт за модала за създаване на нов проект-->
+    <script>
+        const colors = ["red-bg", "orange-bg", "yellow-bg", "lime-bg", "lightgreen-bg", "green-bg", "blue-bg", "purple-bg", "pink-bg"];
+
+        var name_of_project = null;
+        var background = 'blue-bg';
+        var description = null;
+        var create_btn = document.getElementById('create-project-btn');
+
+        /*Селектира се цветовата гама на проект*/
+        function selectedColor(color) {
+            colors.forEach(item => {
+                if (item != color) {
+                    let other = document.getElementById(item);
+                    other.classList.add('opacity-50');
+                    other.innerHTML = 'A';
+                }
+            });
+            let select = document.getElementById(color);
+            select.innerHTML = '<i class="bi bi-check"></i>';
+            select.classList.remove('opacity-50');
+            document.getElementById('project-pattern').src = ("./images/patterns for projects/" + (color + "2.png"));
+            background = color;
+            document.getElementById('color-of-project').value = background;
+        }
+
+        /*Верифицира се, че данните са попълнени с някакви ст-сти*/
+        function verificateData() {
+            name_of_project = document.getElementById('name-of-project').value;
+            description = document.getElementById('description').value;
+
+            if (!(/[a-zA-Z]/.test(name_of_project) && !/[a-zA-Z]/.test(description))) {
+                create_btn.disabled = false;
+            } else {
+                create_btn.disabled = true;
+            }
+        }
+
+        /*Рестартиране на модала за създаване*/
+        function restartCreateModal() {
+            $('#create').modal('hide');
+
+            setTimeout(function() {
+                $('#name-of-project').val('');
+                $('#description').val('');
+                create_btn.disabled = true;
+                colors.forEach(item => {
+                    let color_block = document.getElementById(item);
+                    color_block.classList.remove('opacity-50');
+                    color_block.innerHTML = 'A';
+                });
+                document.getElementById('project-pattern').src = ("./images/patterns for projects/blue_bg2.png");
+            }, 1000);
         }
     </script>
 </body>
