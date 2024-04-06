@@ -13,7 +13,8 @@
     -->
 
 
-    <!--RACIONALIZIRAI PHP-->
+<!--RACIONALIZIRAI PHP-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,9 +33,9 @@
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
 
     <script>
-        function reload(){
+        function reload() {
             window.onload = function() {
-                if(!window.location.hash) {
+                if (!window.location.hash) {
                     window.location = window.location + '#loaded';
                     window.location.reload();
                 }
@@ -47,7 +48,7 @@
         <div class="d-flex">
             <img src="./images/logo/0.2.png" alt="logo" style="height: 100px;" class="my-0 mx-3">
             <div class="align-middle m-auto d-md-flex d-none">
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='projects.html#projects-content';">
+                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='projects.php#projects-content';">
                     Проекти</button>
 
                 <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
@@ -211,7 +212,7 @@
     <script>
         let cards_container = document.getElementById('cards-container');
         /*Генериране на карти за проект*/
-        function generateProjectCard(name, description, bg) {
+        function generateProjectCard(name, description, bg, id) {
             //cards_container.innerHTML = '';
             let card = document.createElement('div');
             let text = getColors(bg)[1];
@@ -244,6 +245,11 @@
             card_display.append(details);
             card.append(card_display);
             cards_container.append(card);
+
+            card_display.addEventListener("click", function() {
+                localStorage.setItem('projectID', id);
+                location.href = './loaded_project.php';
+            });
         }
 
         /*Взимане на цвят*/
@@ -333,7 +339,8 @@
                     $pName = $row2['project_name'];
                     $pDescr = $row2['project_description'];
                     $pBg = $row2['background_id'];
-                    echo "<script>generateProjectCard( '$pName', '$pDescr', '$pBg');</script>";
+                    $pID = $row2['project_id'];
+                    echo "<script>generateProjectCard( '$pName', '$pDescr', '$pBg', '$pID');</script>";
                 }
             }
         }

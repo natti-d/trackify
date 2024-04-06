@@ -20,6 +20,7 @@
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
     <script>
         var members = [];
+        var users = [];
 
         /*Взимане на user id, project id от localStorage*/
         document.cookie = "userID=" + localStorage.getItem('user');
@@ -60,9 +61,9 @@
             }
         }
 
-        function reload(){
+        function reload() {
             window.onload = function() {
-                if(!window.location.hash) {
+                if (!window.location.hash) {
                     window.location = window.location + '#loaded';
                     window.location.reload();
                 }
@@ -71,61 +72,70 @@
     </script>
 
     <?php
-        //Данни за достъп до базата данни
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "PlanA";
+    //Данни за достъп до базата данни
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "PlanA";
 
-        //Прави се връзка с базата данни
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        //Проверява се връзката
-        if (!$conn) {
-            die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
-        }
-        echo "<script>console.log('Успешно свързване с базата данни!');</script>";
+    //Прави се връзка с базата данни
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    //Проверява се връзката
+    if (!$conn) {
+        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
+    }
+    echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-        //MYSQL Character Set
-        $command = "SET CHARACTER SET utf8;";
-        $setCharacterSet = mysqli_query($conn, $command);
+    //MYSQL Character Set
+    $command = "SET CHARACTER SET utf8;";
+    $setCharacterSet = mysqli_query($conn, $command);
 
-        $userID = $_COOKIE['userID'];
-        $projectID = $_COOKIE['project'];
+    $userID = $_COOKIE['userID'];
+    $projectID = $_COOKIE['project'];
 
-        //Взима се цвета на фона на проекта
-        $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
-        $getProjectInfo = mysqli_query($conn, $command);
-        if($getProjectInfo){
-            if ($getProjectInfo->num_rows != 0) {
-                echo "<script>reload()</script>"; //za da aktivira dannite kakto e redno
-                while ($row = mysqli_fetch_assoc($getProjectInfo)) {        
-                    $color = $row['background_id'];            
-                    echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color'); console.log(getColors('$color'));</script>";
-                }
-            }else{
-                echo "Грешка: " . mysqli_error($conn);
+    //Взима се цвета на фона на проекта
+    $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
+    $getProjectInfo = mysqli_query($conn, $command);
+    if ($getProjectInfo) {
+        if ($getProjectInfo->num_rows != 0) {
+            echo "<script>reload()</script>"; //za da aktivira dannite kakto e redno
+            while ($row = mysqli_fetch_assoc($getProjectInfo)) {
+                $color = $row['background_id'];
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color'); console.log(getColors('$color'));</script>";
             }
-        }else {
+        } else {
             echo "Грешка: " . mysqli_error($conn);
         }
+    } else {
+        echo "Грешка: " . mysqli_error($conn);
+    }
 
-        //Изписват се членовете на един екип
-        $command = "SELECT Users.email 
+    //Изписват се членовете на един екип
+    $command = "SELECT Users.email 
                 FROM Members 
                 INNER JOIN Users ON Members.member_id = Users.user_id
                 WHERE Members.projects_id = '$projectID' 
                 GROUP BY Members.member_id;";
-        $getMembers = mysqli_query($conn, $command);
+    $getMembers = mysqli_query($conn, $command);
 
-        if (!$getMembers)
-        {
-            echo("Error description: " . mysqli_error($conn));
-        }
-        $emails[] = "";
-        while ($row = mysqli_fetch_assoc($getMembers)) {
-            $email = strval($row['email']);
-            echo "<script>members.push('$email');</script>";
-        }
+    if (!$getMembers) {
+        echo ("Error description: " . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($getMembers)) {
+        $email = strval($row['email']);
+        echo "<script>members.push('$email');</script>";
+    }
+
+    $command = "SELECT `email`FROM `Users`";
+    $getUsers = mysqli_query($conn, $command);
+
+    if (!$getUsers) {
+        echo ("Error description: " . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($getUsers)) {
+        $user = strval($row['email']);
+        echo "<script>users.push('$user');</script>";
+    }
     ?>
 
     <!--Заглавен елемент-->
@@ -428,23 +438,23 @@
                 alert("Този e-mail е вече член на екипа.");
             } else if (email_member == "") {
                 alert("Невалиден e-mail");
+            } else if (!users.includes(email_member)) {
+                alert("Това не е наш потребител.");
             } else {
                 $.ajax({
-                    url: './addMember.php', // PHP file handling database operations
+                    url: './addMember.php',
                     type: 'POST',
-                    data: { email_member: email_member },
+                    data: {
+                        email_member: email_member
+                    },
                     success: function(response) {
                         alert(email_member);
-                        if (response.success) {
-                            //members.push(email_member);
-                            //$(team_list).append('<li class="list-group-item">' + email_member + '</li>');
-                        } else {
-                            //alert(response.message);
-                        }
+                        $(team_list).append('<li class="list-group-item">' + email_member + '</li>');
+                        members.push(email_member);
+                        if (response.success) {} else {}
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        //alert("Грешка при изпращане на заявката до сървъра.");
                     }
                 });
             }
