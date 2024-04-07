@@ -36,7 +36,6 @@
         $dbPass = $row['password'];
 
         if ($pass == $dbPass) {
-            echo "<script>alert('Успешно влязохте в акаунта си!');</script>";
             echo "<script>location.href='./projects.php'; localStorage.setItem('user', '".$row['user_id']."');</script>";
         } else {
             echo "<script>alert('Невалидна парола! Моля, въведете друга!'); location.href='./login.html';</script>";

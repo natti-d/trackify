@@ -19,8 +19,14 @@
 
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
     <script>
+        /*Проверява дали има logged акаунт */
+        if (!localStorage.getItem('user') || localStorage.getItem('user') == null) {
+            location.href = './home.html';
+        }
+
         var members = [];
         var users = [];
+        var pTitle = "";
 
         /*Взимане на user id, project id от localStorage*/
         document.cookie = "userID=" + localStorage.getItem('user');
@@ -98,10 +104,11 @@
     $getProjectInfo = mysqli_query($conn, $command);
     if ($getProjectInfo) {
         if ($getProjectInfo->num_rows != 0) {
-            echo "<script>reload()</script>"; //za da aktivira dannite kakto e redno
+            echo "<script>reload()</script>";
             while ($row = mysqli_fetch_assoc($getProjectInfo)) {
                 $color = $row['background_id'];
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color'); console.log(getColors('$color'));</script>";
+                $pName = htmlspecialchars($row['project_name']);
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color'); pTitle = '$pName';</script>";
             }
         } else {
             echo "Грешка: " . mysqli_error($conn);
@@ -126,7 +133,7 @@
         echo "<script>members.push('$email');</script>";
     }
 
-    $command = "SELECT `email`FROM `Users`";
+    $command = "SELECT `email` FROM `Users`";
     $getUsers = mysqli_query($conn, $command);
 
     if (!$getUsers) {
@@ -142,22 +149,22 @@
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden" id="top-navigation" style="background-color: #F0F2F4;">
         <!--Лява част-->
         <div class="d-flex">
-            <img src="./images/logo/0.png" alt="logo" style="height: 100px;" class="my-0 mx-3">
+            <img src="./images/logo/official.png" alt="logo" style="height: 100px;" class="my-0 mx-3">
             <div class="align-middle m-auto d-md-flex d-none">
                 <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='projects.php#projects-content';">
                     Проекти</button>
 
-                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
+                <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
                     Създай</button>
             </div>
         </div>
 
         <!--Дясна част-->
         <div class="pe-md-5 m-3 d-md-flex d-none align-items-center">
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='home.html#about-homepage'">
+            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='home.php#about-homepage'">
                 За Нас</button>
 
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='home.php#help-homepage'">
                 Помощ</button>
             <button class="btn mx-2 btn-lg bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
             </button>
@@ -172,13 +179,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='projects.php/#projects-content';" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                         Проекти</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
                         Създай</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#about-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                         За Нас</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#help-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                         Помощ</button>
                     <button class="btn mx-2 btn-lg w-100 bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                     </button>
@@ -192,27 +199,32 @@
                 <button type="button" class="btn-close d-block d-md-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 <div class="d-flex align-middle">
                     <div class="d-block">
-                        <p class="my-1">Име Фамилия</p>
-                        <p class="my-1">e-mail</p>
+                        <p class="my-1" id="userName">Име Фамилия</p>
+                        <p class="my-1" id="userEmail">e-mail</p>
                     </div>
                 </div>
             </div>
             <div class="offcanvas-body">
                 <!--Настройки - за бъдеща реализация
-                            <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
-                            onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
-                            onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>-->
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Помощ</button>
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Излез</button>
+                    <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
+                    onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
+                    onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>-->
+                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';" onclick="location.href='home.php#help-homepage';">Помощ</button>
+                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';" onclick="localStorage.removeItem('user'); location.href='home.html';">Излез</button>
             </div>
         </div>
     </header>
 
     <!--Лента с допълнителни настройки на един проект-->
-    <div class="d-flex w-100 justify-content-end py-2 border-bottom">
-        <p class="btn btn-primary mx-3 text-center my-0" data-bs-toggle="offcanvas" data-bs-target="#addMemberOffCanva" aria-controls="addMemberOffcanvas" onclick="printMembers();">
-            Добави Екип<i class="bi bi-plus-circle ms-2"></i>
-        </p>
+    <div class="d-flex w-100 py-2 border-bottom justify-content-end">
+        <div class="flex-fill justify-content-center d-flex">
+            <h1 class="fs-1" id="project-title"></h1>
+        </div>
+        <div class="col-3 justify-content-end d-flex">
+            <p class="btn btn-primary mx-3 text-center align-middle my-auto" data-bs-toggle="offcanvas" data-bs-target="#addMemberOffCanva" aria-controls="addMemberOffcanvas" onclick="printMembers();">
+                Добави Екип<i class="bi bi-plus-circle ms-2"></i>
+            </p>
+        </div>
     </div>
 
     <!--Контейнер с таблиците и задачите на един проект-->
@@ -225,24 +237,9 @@
                     <h5 class="card-header text-truncate" title="Зададено">Зададено</h5>
 
                     <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 60vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around" onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task" onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
-                                <!--Преместване напред в таблиците-->
-                            </div>
-
-                        </div>
                     </div>
                     <div class="card-footer">
-                        <p class="btn btn-primary mx-3 text-center" onclick="createTask(0)">Добави Задача<i class="bi bi-plus-circle ms-2"></i></p>
+                        <p class="btn btn-primary mx-3 text-center" onclick="createTask();">Добави Задача<i class="bi bi-plus-circle ms-2"></i></p>
                     </div>
                 </div>
             </div>
@@ -254,21 +251,6 @@
                     </h5>
 
                     <div class="card-body overflow-y-auto" id="inprogress" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around" onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task" onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
-                                <!--Преместване напред в таблиците-->
-                            </div>
-
-                        </div>
                     </div>
                     <div class="card-footer"></div>
                 </div>
@@ -281,20 +263,6 @@
                     </h5>
 
                     <div class="card-body overflow-y-auto" id="done" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around" onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task" onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3"></i>
-                                <!--Преместване напред в таблиците-->
-                            </div>
-
-                        </div>
                     </div>
                     <div class="card-footer"></div>
                 </div>
@@ -307,20 +275,6 @@
                     </h5>
 
                     <div class="card-body overflow-y-auto" id="closed" style="max-height: 70vh;">
-                        <!--Поле за една задача-->
-                        <div class="d-none rounded-4 d-flex flex-column flex-md-row mt-1 mb-2 p-2 justify-content-around" onmouseover="this.classList.add('shadow');" onmouseleave="this.classList.remove('shadow');">
-
-                            <!--Име на задачата-->
-                            <div class="w-100">
-                                <input type="text" class="rounded-3 fs-5 w-100 px-2 py-1 text-truncate" value="Task" onclick="this.select();" onkeyup="this.title = this.value;">
-                            </div>
-
-                            <div class="justify-content-between align-middle my-auto d-flex flex-row">
-                                <i class="bi bi-plus-circle w-50 px-2 fs-3"></i> <!--Задаване на човек-->
-                                <i class="bi bi-arrow-right-circle w-50 px-2 fs-3 d-none"></i>
-                                <!--Няма накъде повече да се премества, затова го скриваме-->
-                            </div>
-                        </div>
                     </div>
                     <div class="card-footer"></div>
                 </div>
@@ -409,23 +363,28 @@
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="staticBackdropLabel">Възложи задача</h2>
+                    <h2 class="modal-title fs-5" id="assignTaskH2">Възложи задача</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <ul class="list-group" id="list-members-assign">
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="close-create-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
-                    <button type="button" class="btn btn-primary" onclick="">Възможи</button>
-                </div>
+                <form action="./assignTasks.php" method="post" autocomplete="off">
+                    <div class="modal-body">
+                        <ul class="list-group" id="list-members-assign">
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close-create-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
+                        <button type="submit" class="btn btn-primary">Възложи</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     <!--Скрипт за създаване на нова задача, проследяване на прогреса и добавяне членове на екипа-->
     <script>
+        /*Задава името на проекта*/
+        document.getElementById('project-title').innerText = pTitle;
+        document.title = "ПланА - " + pTitle;
         /*Добавя e-mail към екип*/
         var team_list = document.getElementById('team-list');
 
@@ -460,6 +419,7 @@
             }
         }
 
+        /*Изписва членове на екип */
         function printMembers() {
             team_list.innerHTML = '';
             if (members.length > 0) {
@@ -490,9 +450,9 @@
             }
         }
 
-        /*Функцията създава ново поле на задача*/
-        function createTask(statusNum) {
-            status = returnStatusOfTable(statusNum);
+        /*Функцията принтира задачите в БД и активно update-ва в нея */
+        function printTaskTemplate(taskTitle, statusNum, taskID, assigned) {
+            status = returnStatusOfTable(parseInt(statusNum));
             //Поле за задача
             let task = document.createElement('div');
             task.classList.add('rounded-4', 'd-flex', 'flex-column', 'flex-md-row', 'mt-1', 'mb-2', 'p-2', 'justify-content-around');
@@ -513,10 +473,28 @@
             let task_text = document.createElement('input');
             task_text.classList.add('rounded-3', 'fs-5', 'w-100', 'px-2', 'py-1', 'text-truncate');
             task_text.type = 'text';
-            task_text.value = 'Task';
+            task_text.value = taskTitle;
 
-            task.addEventListener("click", function() {
+            task_text.addEventListener("click", function() {
                 task_text.select();
+            });
+
+            /*Актуализира името на задачата в БД*/
+            task_text.addEventListener("focusout", function() {
+                $.ajax({
+                    url: './changeTaskTitleByID.php',
+                    type: 'POST',
+                    data: {
+                        task_text: task_text.value,
+                        task_ID: taskID
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
             });
 
             //Бутони на задача
@@ -527,7 +505,9 @@
             let assign_member = document.createElement('i');
             assign_member.classList.add('bi', 'bi-plus-circle', 'w-50', 'px-2', 'fs-3');
             assign_member.addEventListener("click", function() {
-                assignTask();
+                localStorage.setItem('taskID', taskID);
+                document.cookie = "taskID=" + localStorage.getItem('taskID');
+                assignTask(task_text.value, assigned);
             });
 
             //Бутон за преместване напред в таблиците
@@ -538,7 +518,7 @@
             task_btn_container.appendChild(assign_member);
             task_btn_container.appendChild(move_task);
 
-            task_text_conatiner.appendChild(task_text);
+            task_text_conatiner.append(task_text);
 
             task.appendChild(task_text_conatiner);
             task.appendChild(task_btn_container);
@@ -546,14 +526,41 @@
             document.getElementById(status).appendChild(task);
 
             move_task.addEventListener("click", function() {
-                if (statusNum == 3) {
-                    return "Closed";
-                } else {
-                    statusNum++;
-                    //document.getElementById(status).removeChild(task); - не е нужно, за да работи добре
-                    status = returnStatusOfTable(statusNum);
-                    document.getElementById(status).appendChild(task);
-                    checkIfTaskIsClosed(move_task, status);
+                statusNum++;
+                status = returnStatusOfTable(statusNum);
+                document.getElementById(status).appendChild(task);
+                checkIfTaskIsClosed(move_task, status);
+
+                $.ajax({
+                    url: './changeTaskStatusByID.php',
+                    type: 'POST',
+                    data: {
+                        task_status: statusNum,
+                        task_ID: taskID
+                    },
+                    success: function(response) {
+                        //window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        }
+
+        /*Функцията създава нов ред в БД за задача*/
+        function createTask() {
+            $.ajax({
+                url: './addTask.php',
+                type: 'POST',
+                data: {
+                    task_text: "Задача"
+                },
+                success: function(response) {
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
                 }
             });
         }
@@ -568,7 +575,7 @@
         /*Функцията възлага задачи на отделни членове от екипа*/
         var list_members_assign = document.getElementById('list-members-assign');
 
-        function assignTask() {
+        function assignTask(task, assigned) {
             list_members_assign.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
                 let member = members[i];
@@ -578,16 +585,35 @@
                 input.classList.add('form-check-input', 'me-1');
                 input.type = 'checkbox';
                 input.id = 'memberCheckBox' + i;
+                input.name = 'membersAssign[]';
+                input.value = member;
+                if (assigned.includes(member)) {
+                    input.checked = true;
+                    input.addEventListener("change", function() {
+                        if (input.checked == false) {
+                            $.ajax({
+                                url: './unassign.php',
+                                type: 'POST',
+                                data: {
+                                    email_member: member
+                                },
+                                success: function(response) {},
+                                error: function(xhr, status, error) {
+                                    console.error(xhr.responseText);
+                                }
+                            });
+                        }
+                    });
+                }
                 let label = document.createElement('label');
                 label.classList.add('form-check-label', 'ms-1');
                 label.innerHTML = member;
                 label.htmlFor = input.id;
-                console.log(label);
                 li.append(input);
                 li.append(label);
                 list_members_assign.append(li);
             }
-
+            document.getElementById('assignTaskH2').innerText = task + " - възложи задача";
             $('#assign-task').modal('show');
         }
     </script>
@@ -647,6 +673,60 @@
             }, 1000);
         }
     </script>
+
+    <?php
+    //Данни за достъп до базата данни
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "PlanA";
+
+    //Прави се връзка с базата данни
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    //Проверява се връзката
+    if (!$conn) {
+        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
+    }
+    echo "<script>console.log('Успешно свързване с базата данни!');</script>";
+
+    //MYSQL Character Set
+    $command = "SET CHARACTER SET utf8;";
+    $setCharacterSet = mysqli_query($conn, $command);
+
+    $projectID = $_COOKIE['project'];
+    $command = "SELECT * FROM `Tasks` WHERE `project_id` = '$projectID';";
+    $getTasks = mysqli_query($conn, $command);
+    if (!$getTasks) {
+        echo ("Error description: " . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($getTasks)) {
+        $taskTitle = $row['task_label'];
+        $taskStatus = $row['task_status'];
+        $taskID = $row['task_id'];
+        $assignedMemb = [];
+        $command = "SELECT `member_id` FROM `Members` WHERE `task_id` = '$taskID';";
+        $getUsers = mysqli_query($conn, $command);
+        while ($row2 = mysqli_fetch_assoc($getUsers)) {
+            $userID = $row2['member_id'];
+            $command = "SELECT `email` FROM `Users` WHERE `user_id`='$userID' LIMIT 1;";
+            $getEmail = mysqli_query($conn, $command);
+            $row3 = mysqli_fetch_assoc($getEmail);
+            $email = $row3['email'];
+            array_push($assignedMemb, $email);
+        }
+        $assignedMembJSON = json_encode($assignedMemb);
+        echo "<script>printTaskTemplate('$taskTitle', '$taskStatus', '$taskID', '$assignedMembJSON');</script>";
+    }
+
+    /*Попълва се информация за потребителя */
+    $userID = $_COOKIE['userID'];
+    $command = "SELECT * FROM `Users` WHERE `user_id` = '$userID' LIMIT 1;";
+    $getUserInfo = mysqli_query($conn, $command);
+    $row = mysqli_fetch_assoc($getUserInfo);
+    $name = $row['full_name'];
+    $email = $row['email'];
+    echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
+    ?>
 </body>
 
 </html>

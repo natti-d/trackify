@@ -1,12 +1,10 @@
 <?php
-//POPRAVI
 //Данни за достъп до базата данни
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "PlanA";
 
-    echo "<script>alert('gotin');</script>";
 //Прави се връзка с базата данни
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 //Проверява се връзката
@@ -34,13 +32,11 @@ if (!$getMembers)
 {
 echo("Error description: " . mysqli_error($conn));
 }
-$emails[] = "";
 while ($row = mysqli_fetch_assoc($getMembers)) {
 $email = strval($row['email']);
 echo "<script>members.push('$email');</script>";
 }
 
-// Check if the email exists in the Users table
 $command = "SELECT `user_id` FROM `Users` WHERE `email`='$email_member';";
 $getUserID = mysqli_query($conn, $command);
 

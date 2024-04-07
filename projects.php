@@ -33,6 +33,11 @@
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
 
     <script>
+        /*Проверява дали има logged акаунт */
+        if (!localStorage.getItem('user') || localStorage.getItem('user') == null) {
+            location.href = './home.html';
+        }
+
         function reload() {
             window.onload = function() {
                 if (!window.location.hash) {
@@ -42,11 +47,12 @@
             }
         }
     </script>
+
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden" id="top-navigation" style="background-color: #F0F2F4;">
         <!--Лява част-->
         <div class="d-flex">
-            <img src="./images/logo/0.2.png" alt="logo" style="height: 100px;" class="my-0 mx-3">
+            <img src="./images/logo/official.png" alt="logo" style="height: 100px;" class="my-0 mx-3">
             <div class="align-middle m-auto d-md-flex d-none">
                 <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='projects.php#projects-content';">
                     Проекти</button>
@@ -58,10 +64,10 @@
 
         <!--Дясна част-->
         <div class="pe-md-5 m-3 d-md-flex d-none align-items-center">
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='home.html#about-homepage'">
+            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='home.php#about-homepage'">
                 За Нас</button>
 
-            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+            <button class="btn mx-2 btn-lg" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" onclick="location.href='home.php#help-homepage'">
                 Помощ</button>
             <button class="btn mx-2 btn-lg bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
             </button>
@@ -76,13 +82,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='projects.php/#projects-content';" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                         Проекти</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button">
                         Създай</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#about-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                         За Нас</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#help-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                         Помощ</button>
                     <button class="btn mx-2 btn-lg w-100 bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                     </button>
@@ -96,8 +102,8 @@
                 <button type="button" class="btn-close d-block d-md-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 <div class="d-flex align-middle">
                     <div class="d-block">
-                        <p class="my-1">Име Фамилия</p>
-                        <p class="my-1">e-mail</p>
+                        <p class="my-1" id="userName">Име Фамилия</p>
+                        <p class="my-1" id="userEmail">e-mail</p>
                     </div>
                 </div>
             </div>
@@ -106,8 +112,8 @@
                     <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;"
                     onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';"
                     onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Настройки</button>-->
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Помощ</button>
-                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';">Излез</button>
+                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';" onclick="location.href='home.php#help-homepage';">Помощ</button>
+                <button class="w-100 btn mx-2 my-1 btn-lg" style="color: #003554;" onmouseover="this.style.backgroundColor = '#003554'; this.style.color = '#99DDFF';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#003554';" onclick="localStorage.removeItem('user'); location.href='home.html';">Излез</button>
             </div>
         </div>
     </header>
@@ -246,7 +252,7 @@
             card.append(card_display);
             cards_container.append(card);
 
-            card_display.addEventListener("click", function() {
+            h5.addEventListener("click", function() {
                 localStorage.setItem('projectID', id);
                 location.href = './loaded_project.php';
             });
@@ -324,7 +330,6 @@
     //Взима от бисквитката userID и търси съответните IDs, за да изпише проектите
     $userID = $_COOKIE['userID'];
     if ($userID != '') {
-
         $command = "SELECT `projects_id` FROM `Members` WHERE `member_id` = '$userID' GROUP BY `projects_id`;"; //check if works
         $getProjects = mysqli_query($conn, $command);
         if ($getProjects->num_rows == 0) {
@@ -337,13 +342,21 @@
                 $getInfo = mysqli_query($conn, $command);
                 while ($row2 = mysqli_fetch_assoc($getInfo)) {
                     $pName = $row2['project_name'];
-                    $pDescr = $row2['project_description'];
+                    $pDescr = json_encode($row2['project_description']);
                     $pBg = $row2['background_id'];
                     $pID = $row2['project_id'];
                     echo "<script>generateProjectCard( '$pName', '$pDescr', '$pBg', '$pID');</script>";
                 }
             }
         }
+
+        /*Попълва се информация за потребителя */
+        $command = "SELECT * FROM `Users` WHERE `user_id` = '$userID' LIMIT 1;";
+        $getUserInfo = mysqli_query($conn, $command);
+        $row = mysqli_fetch_assoc($getUserInfo);
+        $name = $row['full_name'];
+        $email = $row['email'];
+        echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
     }
     ?>
     <!--Скрипт за модала за създаване на нов проект-->
