@@ -40,6 +40,13 @@
 </head>
 
 <body class="overflow-y-auto" style="background-color: #d6f1ff;">
+    <!--Излизане от профила на потребител-->
+    <script>
+        if (localStorage.getItem("user") !== null) {
+
+            location.href = "home.php";
+        }
+    </script>
     <!--Заглавна част-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden"
         id="top-navigation" style="background-color: #F0F2F4;">

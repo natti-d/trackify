@@ -41,6 +41,13 @@
 </head>
 
 <body class="w-100 h-100 m-0 p-0 overflow-hidden">
+    <!--Излизане от профила на потребител-->
+    <script>
+        if (localStorage.getItem("user") !== null){
+            
+            localStorage.removeItem('user');
+        }
+    </script>
     <div class="w-100 h-100 m-0 p-0 overflow-hidden"
         style="background: #ade4ff; background: linear-gradient(180deg, #ade4ff 0%, #3ebfff 79%); background-attachment: fixed; background-size: cover;">
         <!--Облаци-->
