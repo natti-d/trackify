@@ -32,3 +32,4 @@ if ($updateTitle) {
 
 // Output JSON response
 echo json_encode($response);
+?>

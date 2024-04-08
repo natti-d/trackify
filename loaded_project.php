@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПланА - проект</title>
+    <link rel="icon" href="./images/logo/tab_ico.png"> <!--За да се постави икона в tab в браузъра-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--Bootstrap 5.3.2 - CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -34,35 +35,35 @@
         /*Взимане на цвят*/
         function getColors(bg) {
             switch (bg) {
-                case "0" || 0:
-                    return "#F94144";
+                case "0":
+                    return ["#B11B22", "text-light"];
                     break;
-                case "1" || 1:
-                    return "#F3722C";
+                case "1":
+                    return ["#E9640C", "text-black"];
                     break;
-                case "2" || 2:
-                    return "#F9C74F";
+                case "2":
+                    return ["#F6B213", "text-black"];
                     break;
-                case "3" || 3:
-                    return "#C5C35E";
+                case "3":
+                    return ["#CAC568", "text-black"];
                     break;
-                case "4" || 4:
-                    return "#90BE6D";
+                case "4":
+                    return ["#A8CC8F", "text-black"];
                     break;
-                case "5" || 5:
-                    return "#007A5E";
+                case "5":
+                    return ["#007A5E", "text-light"];
                     break;
-                case "6" || 6:
-                    return "#314087";
+                case "6":
+                    return ["#47C2FF", "text-light"];
                     break;
-                case "7" || 7:
-                    return "#7462AB";
+                case "7":
+                    return ["#36276B", "text-light"];
                     break;
-                case "8" || 8:
-                    return "#8A4A8A";
+                case "8":
+                    return ["#DB76DB", "text-light"];
                     break;
                 default:
-                    return "#314087";
+                    return ["#47C2FF", "text-light"];
                     break;
             }
         }
@@ -108,7 +109,7 @@
             while ($row = mysqli_fetch_assoc($getProjectInfo)) {
                 $color = $row['background_id'];
                 $pName = htmlspecialchars($row['project_name']);
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color'); pTitle = '$pName';</script>";
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; document.getElementsByTagName('body')[0].classList.add(getColors('$color')[1]); pTitle = '$pName';</script>";
             }
         } else {
             echo "Грешка: " . mysqli_error($conn);
@@ -314,7 +315,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="./create_project.php" method="post" autocomplete="off">
+                <form action="./onlyPHP/create_project.php" method="post" autocomplete="off">
                     <div class="modal-body">
                         <div class="w-100">
                             <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
@@ -327,15 +328,15 @@
                         <div class="w-100 mt-3 position-relative" id="color-picking">
                             <span>Гама на проект</span>
                             <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
-                                <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #F94144;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="orange-bg" style="background-color: #F3722C;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="yellow-bg" style="background-color: #F9C74F;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="lime-bg" style="background-color: #C5C35E;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="lightgreen-bg" style="background-color: #90BE6D;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="green-bg" style="background-color: #007a5e;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="blue-bg" style="background-color: #314087;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="purple-bg" style="background-color: #7462AB;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="pink-bg" style="background-color: #8A4A8A;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #B11B22;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="orange-bg" style="background-color: #E9640C;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="yellow-bg" style="background-color: #F6B213;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="lime-bg" style="background-color: #CAC568;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="lightgreen-bg" style="background-color: #A8CC8F;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="green-bg" style="background-color: #007A5E;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="blue-bg" style="background-color: #47C2FF;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="purple-bg" style="background-color: #36276B;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="pink-bg" style="background-color: #DB76DB;" onclick="selectedColor(this.id)">A</li>
                             </ul>
                             <div class="form-floating w-100 mt-3 position-relative">
                                 <input type="name" name="color" class="form-control" id="color-of-project" placeholder="name" value="blue-bg" required>
@@ -366,7 +367,7 @@
                     <h2 class="modal-title fs-5" id="assignTaskH2">Възложи задача</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="./assignTasks.php" method="post" autocomplete="off">
+                <form action="./onlyPHP/assignTasks.php" method="post" autocomplete="off">
                     <div class="modal-body">
                         <ul class="list-group" id="list-members-assign">
                         </ul>
@@ -401,7 +402,7 @@
                 alert("Това не е наш потребител.");
             } else {
                 $.ajax({
-                    url: './addMember.php',
+                    url: './onlyPHP/addMember.php',
                     type: 'POST',
                     data: {
                         email_member: email_member
@@ -482,7 +483,7 @@
             /*Актуализира името на задачата в БД*/
             task_text.addEventListener("focusout", function() {
                 $.ajax({
-                    url: './changeTaskTitleByID.php',
+                    url: './onlyPHP/changeTaskTitleByID.php',
                     type: 'POST',
                     data: {
                         task_text: task_text.value,
@@ -532,7 +533,7 @@
                 checkIfTaskIsClosed(move_task, status);
 
                 $.ajax({
-                    url: './changeTaskStatusByID.php',
+                    url: './onlyPHP/changeTaskStatusByID.php',
                     type: 'POST',
                     data: {
                         task_status: statusNum,
@@ -551,7 +552,7 @@
         /*Функцията създава нов ред в БД за задача*/
         function createTask() {
             $.ajax({
-                url: './addTask.php',
+                url: './onlyPHP/addTask.php',
                 type: 'POST',
                 data: {
                     task_text: "Задача"
@@ -592,7 +593,7 @@
                     input.addEventListener("change", function() {
                         if (input.checked == false) {
                             $.ajax({
-                                url: './unassign.php',
+                                url: './onlyPHP/unassign.php',
                                 type: 'POST',
                                 data: {
                                     email_member: member

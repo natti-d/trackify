@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПланА</title>
+    <link rel="icon" href="./images/logo/tab_ico.png"> <!--За да се постави икона в tab в браузъра-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--Bootstrap 5.3.2 - CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -213,16 +214,14 @@
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-6 text-break">
-                                            Функцията за краен срок на <strong>ПланА</strong> ви помага да
+                                            Функцията за проследяване на <strong>ПланА</strong> ви помага да
                                             визуализирате
                                             прогреса на проекта.
-                                            Този инструмент позволява на екипите
-                                            да задават етапи от изпълнението и крайни дати на задачите, което дава на
+                                            Софтуерът позволява на екипите
+                                            да проследяват етапите на изпълнението на зададените задачи, което дава на
                                             членовете
                                             пълна представа за напредъка на
-                                            проекта. Планираната дата на завършване е адаптивна, което позволява промени
-                                            в
-                                            реално време при развитие на проекта.
+                                            проекта.
                                         </div>
                                     </div>
                                 </div>
@@ -329,16 +328,14 @@
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-6 text-break">
-                                            Функцията за краен срок на <strong>ПланА</strong> ви помага да
+                                            Функцията за проследяване на <strong>ПланА</strong> ви помага да
                                             визуализирате
                                             прогреса на проекта.
-                                            Този инструмент позволява на екипите
-                                            да задават етапи от изпълнението и крайни дати на задачите, което дава на
+                                            Софтуерът позволява на екипите
+                                            да проследяват етапите на изпълнението на зададените задачи, което дава на
                                             членовете
                                             пълна представа за напредъка на
-                                            проекта. Планираната дата на завършване е адаптивна, което позволява промени
-                                            в
-                                            реално време при развитие на проекта.
+                                            проекта.
                                         </div>
                                     </div>
                                 </div>
@@ -359,7 +356,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="./create_project.php" method="post" autocomplete="off">
+                <form action="./onlyPHP/create_project.php" method="post" autocomplete="off">
                     <div class="modal-body">
                         <div class="w-100">
                             <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
@@ -372,15 +369,15 @@
                         <div class="w-100 mt-3 position-relative" id="color-picking">
                             <span>Гама на проект</span>
                             <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
-                                <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #F94144;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="orange-bg" style="background-color: #F3722C;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="yellow-bg" style="background-color: #F9C74F;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="lime-bg" style="background-color: #C5C35E;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-black" id="lightgreen-bg" style="background-color: #90BE6D;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="green-bg" style="background-color: #007a5e;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="blue-bg" style="background-color: #314087;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="purple-bg" style="background-color: #7462AB;" onclick="selectedColor(this.id)">A</li>
-                                <li class="col-2 py-2 text-center text-light" id="pink-bg" style="background-color: #8A4A8A;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="red-bg" style="background-color: #B11B22;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="orange-bg" style="background-color: #E9640C;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="yellow-bg" style="background-color: #F6B213;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="lime-bg" style="background-color: #CAC568;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="lightgreen-bg" style="background-color: #A8CC8F;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="green-bg" style="background-color: #007A5E;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="blue-bg" style="background-color: #47C2FF;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-light" id="purple-bg" style="background-color: #36276B;" onclick="selectedColor(this.id)">A</li>
+                                <li class="col-2 py-2 text-center text-black" id="pink-bg" style="background-color: #DB76DB;" onclick="selectedColor(this.id)">A</li>
                             </ul>
                             <div class="form-floating w-100 mt-3 position-relative">
                                 <input type="name" name="color" class="form-control" id="color-of-project" placeholder="name" value="blue-bg" required>
