@@ -14,7 +14,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
 }
-echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
 /*MYSQL колекция от символи*/
 $command = "SET CHARACTER SET utf8;";

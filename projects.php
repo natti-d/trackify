@@ -203,7 +203,7 @@
                                 <li class="col-2 py-2 text-center text-black" id="pink-bg" style="background-color: #DB76DB;" onclick="selectedColor(this.id)">A</li>
                             </ul>
                             <div class="form-floating w-100 mt-3 position-relative">
-                                <input type="name" name="color" class="form-control" id="color-of-project" placeholder="name" value="blue-bg" required>
+                                <input type="name" name="color" class="form-control" id="color-of-project" placeholder="name" value="blue-bg" readonly>
                                 <label for="color-of-project">Код на тема</label>
                             </div>
                         </div>
@@ -326,7 +326,6 @@
     if (!$conn) {
         die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
     }
-    echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
     /*MYSQL колекция от символи*/
     $command = "SET CHARACTER SET utf8;";
