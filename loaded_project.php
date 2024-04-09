@@ -28,6 +28,7 @@
         var members = [];
         var users = [];
         var pTitle = "";
+        var pColor;
 
         /*Взимане на user id, project id от localStorage*/
         document.cookie = "userID=" + localStorage.getItem('user');
@@ -109,7 +110,7 @@
             while ($row = mysqli_fetch_assoc($getProjectInfo)) {
                 $color = $row['background_id'];
                 $pName = htmlspecialchars($row['project_name']);
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; document.getElementsByTagName('body')[0].classList.add(getColors('$color')[1]); pTitle = '$pName';</script>";
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1];</script>";
             }
         } else {
             echo "Грешка: " . mysqli_error($conn);
@@ -385,10 +386,13 @@
     <script>
         /*Задава името на проекта*/
         document.getElementById('project-title').innerText = pTitle;
+        document.getElementById('project-title').classList.add(pColor);
         document.title = "ПланА - " + pTitle;
+
         /*Добавя e-mail към екип*/
         var team_list = document.getElementById('team-list');
 
+        /*Добавя се член на екипа визуално*/
         function addMember() {
             if (members.length == 0) {
                 team_list.innerHTML = '';
@@ -401,6 +405,7 @@
             } else if (!users.includes(email_member)) {
                 alert("Това не е наш потребител.");
             } else {
+                /*Добавя email-ът към пазата данни чрез определени релации*/
                 $.ajax({
                     url: './onlyPHP/addMember.php',
                     type: 'POST',
@@ -454,6 +459,7 @@
         /*Функцията принтира задачите в БД и активно update-ва в нея */
         function printTaskTemplate(taskTitle, statusNum, taskID, assigned) {
             status = returnStatusOfTable(parseInt(statusNum));
+
             //Поле за задача
             let task = document.createElement('div');
             task.classList.add('rounded-4', 'd-flex', 'flex-column', 'flex-md-row', 'mt-1', 'mb-2', 'p-2', 'justify-content-around');
@@ -480,7 +486,7 @@
                 task_text.select();
             });
 
-            /*Актуализира името на задачата в БД*/
+            //Актуализира името на задачата в БД
             task_text.addEventListener("focusout", function() {
                 $.ajax({
                     url: './onlyPHP/changeTaskTitleByID.php',
@@ -531,7 +537,6 @@
                 status = returnStatusOfTable(statusNum);
                 document.getElementById(status).appendChild(task);
                 checkIfTaskIsClosed(move_task, status);
-
                 $.ajax({
                     url: './onlyPHP/changeTaskStatusByID.php',
                     type: 'POST',
@@ -549,7 +554,7 @@
             });
         }
 
-        /*Функцията създава нов ред в БД за задача*/
+        //Функцията създава нов ред в БД за задача
         function createTask() {
             $.ajax({
                 url: './onlyPHP/addTask.php',
@@ -575,7 +580,6 @@
 
         /*Функцията възлага задачи на отделни членове от екипа*/
         var list_members_assign = document.getElementById('list-members-assign');
-
         function assignTask(task, assigned) {
             list_members_assign.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
@@ -592,6 +596,7 @@
                     input.checked = true;
                     input.addEventListener("change", function() {
                         if (input.checked == false) {
+                            //Премахва назначаването на задача на член от БД
                             $.ajax({
                                 url: './onlyPHP/unassign.php',
                                 type: 'POST',
