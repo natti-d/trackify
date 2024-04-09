@@ -1,5 +1,4 @@
-/*Стилово офромление на scrollbars*/
- 
+/*Стилово офромление на scrollbars*/ 
 ::-webkit-scrollbar {
     height: 5px;
      width: 5px;

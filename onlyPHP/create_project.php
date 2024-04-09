@@ -1,3 +1,6 @@
+<!--PHP за комуникация с БД:
+    - за добавяне на нов проект със съответните данни;
+-->
 <?php
 //Данни за достъп до базата данни
 $servername = "localhost";
@@ -13,11 +16,12 @@ if (!$conn) {
 }
 echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-//MYSQL Character Set
+/*MYSQL колекция от символи*/
 $command = "SET CHARACTER SET utf8;";
 $setCharacterSet = mysqli_query($conn, $command);
 
 $name = $_POST['name-of-project'];
+/*Взима се индекс на цвят за числово попълване*/
 $color = $_POST['color'];
 switch ($color) {
     case "red-bg":
@@ -55,9 +59,11 @@ switch ($color) {
 $description = $_POST['description'];
 $userID = $_COOKIE['userID'];
 
+/*Добавят се данните за един проект в таблица*/
 $command = "INSERT INTO `Projects` (`project_name`, `project_description`, `background_id`) VALUES ('$name', '$description', '$color');";
 $createProject = mysqli_query($conn, $command);
 
+/*Взима се id на проект и се вписва в таблицата за членове заедно с id на user-създателя*/
 $command = "SELECT `project_id` FROM `Projects` WHERE `project_name` = '$name' AND `project_description` = '$description' AND `background_id` = '$color';";
 $getProjectID = mysqli_query($conn, $command);
 if ($createProject && $getProjectID->num_rows != 0) {
@@ -69,3 +75,6 @@ if ($createProject && $getProjectID->num_rows != 0) {
     }
 }
 ?>
+<!--
+    БД - База данни
+-->

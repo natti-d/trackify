@@ -1,3 +1,6 @@
+<!--PHP към loaded_project.php за комуникация с БД:
+    - за назначаване на изпълнител на задача;
+-->
 <?php
 //Данни за достъп до базата данни
 $servername = "localhost";
@@ -13,13 +16,14 @@ if (!$conn) {
 }
 echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-//MYSQL Character Set
+/*MYSQL колекция от символи*/
 $command = "SET CHARACTER SET utf8;";
 $setCharacterSet = mysqli_query($conn, $command);
 
 $projectID = $_COOKIE['project'];
 $task = $_COOKIE['taskID'];
 
+/*Ако има отблеязани членове на екип като изпълнители, те се въвеждат в БД */
 if (!($_POST['membersAssign'])) {
     echo "<script>location.href='../loaded_project.php'; localStorage.removeItem('taskID');</script>";
 } else {
@@ -34,5 +38,8 @@ if (!($_POST['membersAssign'])) {
         $assignTask = mysqli_query($conn, $command);
     }
 }
-echo "<script>location.href='../loaded_project.php'; localStorage.removeItem('taskID');</script>";
+echo "<script>location.href='../loaded_project.php'; localStorage.removeItem('taskID');</script>"
 ?>
+<!--
+    БД - База данни
+-->

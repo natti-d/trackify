@@ -89,9 +89,9 @@
                         Проекти</button>
                     <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-toggle="modal" data-bs-target="#create" type="button" data-bs-dismiss="offcanvas">
                         Създай</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#about-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-dismiss="offcanvas">
+                    <!--BUG--><button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#about-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-dismiss="offcanvas">
                         За Нас</button>
-                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#help-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-dismiss="offcanvas">
+                    <!--BUG--><button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;" onclick="location.href='home.php#help-homepage'" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" data-bs-dismiss="offcanvas">
                         Помощ</button>
                     <button class="btn mx-2 btn-lg w-100 bi bi-person-circle" style="border: 2px solid #004e7a; color: #004e7a;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';">
                     </button>
@@ -156,6 +156,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <div class="accordion col-11" id="accordionExample">
+                                <!--Акордеон за Управление на задачите-->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="background-color: #1fb4ff; color: #051923;">
@@ -177,6 +178,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!--Акордеон за Kanban таблици-->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: #3ebfff; color: #051923;">
@@ -206,10 +208,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!--Акордеон за Развитие на проект-->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background-color: #5cc9ff; color: #051923;">
-                                            Развитие на проекта
+                                            Развитие на проект
                                         </button>
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -455,6 +458,7 @@
             }, 1000);
         }
     </script>
+    <!--PHP за комуникация с БД и извличане на данните за аканут-->
     <?php
     //Данни за достъп до базата данни
     $servername = "localhost";
@@ -470,10 +474,11 @@
     }
     echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-    //MYSQL Character Set
+    /*MYSQL колекция от символи*/
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
-    /*Попълва се информация за потребителя */
+
+    /*Попълва се информация за потребителя*/
     $userID = $_COOKIE['userID'];
     $command = "SELECT * FROM `Users` WHERE `user_id` = '$userID' LIMIT 1;";
     $getUserInfo = mysqli_query($conn, $command);
@@ -485,3 +490,6 @@
 </body>
 
 </html>
+<!--
+    БД - База данни
+-->

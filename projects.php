@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +15,9 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--jQuery-->
     <!--<script src="./creating_project.js"></script>Скрипт за създаване на нов проект-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
+    <!--Стилово офромление на фона на страницата-->
     <style>
-        #content-page {
+        #body-page {
             background: linear-gradient(-90deg, #D7F1FE, #AFE3FD, #87d5fc);
             background-size: 400% 400%;
             animation: gradient 7s ease infinite;
@@ -37,14 +39,14 @@
     </style>
 </head>
 
-<body class="overflow-y-auto" style="background-color: #d6f1ff;">
-
+<body class="overflow-y-auto" style="background-color: #d6f1ff;" id="body-container">
     <script>
         /*Проверява дали има logged акаунт */
         if (!localStorage.getItem('user') || localStorage.getItem('user') == null) {
             location.href = './home.html';
         }
 
+        /*Функция за единично презареждане на страницата за пълното изписване на съдържанието в нея */
         function reload() {
             window.onload = function() {
                 if (!window.location.hash) {
@@ -226,7 +228,6 @@
         let cards_container = document.getElementById('cards-container');
         /*Генериране на карти за проект*/
         function generateProjectCard(name, description, bg, id) {
-            //cards_container.innerHTML = '';
             let card = document.createElement('div');
             let text = getColors(bg)[1];
             let bgColor = getColors(bg)[0];
@@ -303,17 +304,15 @@
 
         /*Изписва съобщение, че няма проекти*/
         function noProjects() {
-            /*RAZKRASI!!!    */
             cards_container.innerHTML = '';
-            cards_container.innerHTML = '<p>Няма проекти.</p>';
-            console.log("nqq proekti");
+            cards_container.innerHTML = '<p class="fs-1">Няма проекти.</p>';
         }
 
-        /*Взимане на user id от localStorage*/
+        /*Взимане на user id от localStorage като бисквитка*/
         document.cookie = "userID=" + localStorage.getItem('user');
     </script>
 
-    <!--PHP за взимане на информацията за отпечатване на картите с таблици-->
+    <!--PHP за взимане на информацията от БД за отпечатване на картите с таблици-->
     <?php
     //Данни за достъп до базата данни
     $servername = "localhost";
@@ -329,12 +328,12 @@
     }
     echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-    //MYSQL Character Set
+    /*MYSQL колекция от символи*/
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
 
     echo "<script>reload()</script>";
-    //Взима от бисквитката userID и търси съответните IDs, за да изпише проектите
+    /*Взима от бисквитката userID и търси съответните IDs, за да изпише проектите*/
     $userID = $_COOKIE['userID'];
     if ($userID != '') {
         $command = "SELECT `projects_id` FROM `Members` WHERE `member_id` = '$userID' GROUP BY `projects_id`;"; //check if works
@@ -366,7 +365,8 @@
         echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
     }
     ?>
-    <!--Скрипт за модала за създаване на нов проект-->
+
+    <!--Скрипт за модал за създаване на нов проект-->
     <script>
         const colors = ["red-bg", "orange-bg", "yellow-bg", "lime-bg", "lightgreen-bg", "green-bg", "blue-bg", "purple-bg", "pink-bg"];
 
@@ -424,3 +424,6 @@
 </body>
 
 </html>
+<!--
+    БД - База данни
+-->

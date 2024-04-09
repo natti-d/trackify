@@ -1,3 +1,6 @@
+<!--PHP за комуникация с БД:
+    - за регистрация на нов акаунт;
+-->
 <?php
 //Данни за достъп до базата данни
 $servername = "localhost";
@@ -13,11 +16,11 @@ if (!$conn) {
 }
 echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-//MYSQL Character Set
+/*MYSQL колекция от символи*/
 $command = "SET CHARACTER SET utf8;";
 $setCharacterSet = mysqli_query($conn, $command);
 
-//Правят се валидации за регистрация
+/*Правят се валидации на e-mail*/
 $email = $_POST['e-mail'];
 $command = "SELECT `email` FROM `Users` WHERE `email` = '$email' LIMIT 1;";
 $validateEmail = mysqli_query($conn, $command);
@@ -29,6 +32,7 @@ if ($validateEmail->num_rows == 1) {
     $accountType = $_POST['account-type'];
     $pass = $_POST['password'];
 
+    /*Записват се данни за потребител*/
     $command = "INSERT INTO `Users` (`email`, `password`, `full_name`, `account_type`) VALUES ('$email', '$pass', '$name', '$accountType');";
     $registrateUser = mysqli_query($conn, $command);
     if ($registrateUser) {
@@ -42,3 +46,6 @@ if ($validateEmail->num_rows == 1) {
     }
 }
 ?>
+<!--
+    БД - База данни
+-->

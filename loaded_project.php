@@ -25,6 +25,7 @@
             location.href = './home.html';
         }
 
+        /*Променливи, уникални за един проект*/
         var members = [];
         var users = [];
         var pTitle = "";
@@ -69,6 +70,7 @@
             }
         }
 
+        /*Функция за единично презареждане на страницата за пълното изписване на съдържанието в нея */
         function reload() {
             window.onload = function() {
                 if (!window.location.hash) {
@@ -78,75 +80,6 @@
             }
         }
     </script>
-
-    <?php
-    //Данни за достъп до базата данни
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "PlanA";
-
-    //Прави се връзка с базата данни
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    //Проверява се връзката
-    if (!$conn) {
-        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
-    }
-    echo "<script>console.log('Успешно свързване с базата данни!');</script>";
-
-    //MYSQL Character Set
-    $command = "SET CHARACTER SET utf8;";
-    $setCharacterSet = mysqli_query($conn, $command);
-
-    $userID = $_COOKIE['userID'];
-    $projectID = $_COOKIE['project'];
-
-    //Взима се цвета на фона на проекта
-    $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
-    $getProjectInfo = mysqli_query($conn, $command);
-    if ($getProjectInfo) {
-        if ($getProjectInfo->num_rows != 0) {
-            echo "<script>reload()</script>";
-            while ($row = mysqli_fetch_assoc($getProjectInfo)) {
-                $color = $row['background_id'];
-                $pName = htmlspecialchars($row['project_name']);
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1];</script>";
-            }
-        } else {
-            echo "Грешка: " . mysqli_error($conn);
-        }
-    } else {
-        echo "Грешка: " . mysqli_error($conn);
-    }
-
-    //Изписват се членовете на един екип
-    $command = "SELECT Users.email 
-                FROM Members 
-                INNER JOIN Users ON Members.member_id = Users.user_id
-                WHERE Members.projects_id = '$projectID' 
-                GROUP BY Members.member_id;";
-    $getMembers = mysqli_query($conn, $command);
-
-    if (!$getMembers) {
-        echo ("Error description: " . mysqli_error($conn));
-    }
-    while ($row = mysqli_fetch_assoc($getMembers)) {
-        $email = strval($row['email']);
-        echo "<script>members.push('$email');</script>";
-    }
-
-    $command = "SELECT `email` FROM `Users`";
-    $getUsers = mysqli_query($conn, $command);
-
-    if (!$getUsers) {
-        echo ("Error description: " . mysqli_error($conn));
-    }
-    while ($row = mysqli_fetch_assoc($getUsers)) {
-        $user = strval($row['email']);
-        echo "<script>users.push('$user');</script>";
-    }
-    ?>
-
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden" id="top-navigation" style="background-color: #F0F2F4;">
         <!--Лява част-->
@@ -405,7 +338,7 @@
             } else if (!users.includes(email_member)) {
                 alert("Това не е наш потребител.");
             } else {
-                /*Добавя email-ът към пазата данни чрез определени релации*/
+                //Добавя email към БД след определените (предварителни) верификации [горепосочените if(); else if();]
                 $.ajax({
                     url: './onlyPHP/addMember.php',
                     type: 'POST',
@@ -413,7 +346,6 @@
                         email_member: email_member
                     },
                     success: function(response) {
-                        alert(email_member);
                         $(team_list).append('<li class="list-group-item">' + email_member + '</li>');
                         members.push(email_member);
                         if (response.success) {} else {}
@@ -485,9 +417,8 @@
             task_text.addEventListener("click", function() {
                 task_text.select();
             });
-
-            //Актуализира името на задачата в БД
             task_text.addEventListener("focusout", function() {
+                //Актуализира името на задачата в БД
                 $.ajax({
                     url: './onlyPHP/changeTaskTitleByID.php',
                     type: 'POST',
@@ -513,6 +444,7 @@
             assign_member.classList.add('bi', 'bi-plus-circle', 'w-50', 'px-2', 'fs-3');
             assign_member.addEventListener("click", function() {
                 localStorage.setItem('taskID', taskID);
+                /*Взимане на task id от localStorage като бисквитка*/
                 document.cookie = "taskID=" + localStorage.getItem('taskID');
                 assignTask(task_text.value, assigned);
             });
@@ -537,6 +469,7 @@
                 status = returnStatusOfTable(statusNum);
                 document.getElementById(status).appendChild(task);
                 checkIfTaskIsClosed(move_task, status);
+                //Функцията променя статуса на задача в БД
                 $.ajax({
                     url: './onlyPHP/changeTaskStatusByID.php',
                     type: 'POST',
@@ -544,9 +477,7 @@
                         task_status: statusNum,
                         task_ID: taskID
                     },
-                    success: function(response) {
-                        //window.location.reload();
-                    },
+                    success: function(response) {},
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
                     }
@@ -580,6 +511,7 @@
 
         /*Функцията възлага задачи на отделни членове от екипа*/
         var list_members_assign = document.getElementById('list-members-assign');
+
         function assignTask(task, assigned) {
             list_members_assign.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
@@ -680,6 +612,12 @@
         }
     </script>
 
+    <!--PHP за комуникация с БД: 
+        - за цвят, текст, име;
+        - за членове на екип;
+        - за задачите, името им, статуса им и на кого са назначени;
+        - информация за профила
+    -->
     <?php
     //Данни за достъп до базата данни
     $servername = "localhost";
@@ -695,11 +633,58 @@
     }
     echo "<script>console.log('Успешно свързване с базата данни!');</script>";
 
-    //MYSQL Character Set
+    /*MYSQL колекция от символи*/
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
 
+    $userID = $_COOKIE['userID'];
     $projectID = $_COOKIE['project'];
+
+    /*Взима се цвета на фона и името на проекта*/
+    $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
+    $getProjectInfo = mysqli_query($conn, $command);
+    if ($getProjectInfo) {
+        if ($getProjectInfo->num_rows != 0) {
+            echo "<script>reload()</script>";
+            while ($row = mysqli_fetch_assoc($getProjectInfo)) {
+                $color = $row['background_id'];
+                $pName = htmlspecialchars($row['project_name']);
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1];</script>";
+            }
+        } else {
+            echo "Грешка: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Грешка: " . mysqli_error($conn);
+    }
+
+    /*Изписват се членовете на един екип с техните e-mails, 
+намерени чрез id's и се записват като членове на екип към проект*/
+    $command = "SELECT Users.email 
+                FROM Members 
+                INNER JOIN Users ON Members.member_id = Users.user_id
+                WHERE Members.projects_id = '$projectID' 
+                GROUP BY Members.member_id;";
+    $getMembers = mysqli_query($conn, $command);
+    if (!$getMembers) {
+        echo ("Error description: " . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($getMembers)) {
+        $email = strval($row['email']);
+        echo "<script>members.push('$email');</script>";
+    }
+    $command = "SELECT `email` FROM `Users`";
+    $getUsers = mysqli_query($conn, $command);
+
+    if (!$getUsers) {
+        echo ("Error description: " . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($getUsers)) {
+        $user = strval($row['email']);
+        echo "<script>users.push('$user');</script>";
+    }
+
+    /*Взимат се задачите към проекта и се изписват*/
     $command = "SELECT * FROM `Tasks` WHERE `project_id` = '$projectID';";
     $getTasks = mysqli_query($conn, $command);
     if (!$getTasks) {
@@ -736,3 +721,8 @@
 </body>
 
 </html>
+
+<!--
+    БД - База данни
+    ст-сти - стойности
+-->
