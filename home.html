@@ -265,163 +265,632 @@
             <!--Помощ-->
             <div id="help-homepage d-flex" class="p-3">
                 <h2 class="bold mx-5 pb-2 text-center fs-md-3 fs-2 border-bottom border-dark">Помощ</h2>
-                <div class="row d-flex flex-row flex-wrap justify-content-around">
-                    <!--Картичка със За нас-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #051923; height: 25rem;">
-                        <img src="./images/help/about_page.png" class="card-img-top" alt="За нас - страница">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">За нас</h5>
-                            <p class="card-text">Основно описание на функционалностите на проекта, както и бутони за
-                                вход и регистрация.</p>
-                            <small class="card-text">Достига се с бутона <i>За нас</i> или <i>Помощ</i>.</small>
+                <!--За големи екрани-->
+                <div class="d-none d-md-block">
+                    <!--Първи ред помощ-->
+                    <div class="row d-flex flex-row flex-wrap justify-content-between p-1" style="color: #051923;">
+                        <!--Инфо за За нас-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">За нас</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/about_page.png" class="img-fluid align-middle my-auto"
+                                        alt="За нас - страница">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="fs-5">Основно описание на функционалностите на проекта, както и бутони за
+                                        вход и регистрация.</p>
+                                    <hr>
+                                    <small class="card-text">Достига се с бутона <i>За нас</i> или <i>Помощ</i>.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Вход-->
+                        <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Вход</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/login.png" class="img-fluid align-middle my-auto"
+                                        alt="Вход - страница">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">С въвеждане на e-mail и парола може да достъпите вашия акаунт!
+                                        А
+                                        ако
+                                        нямате такъв, регистрирайте се!</p>
+                                    <hr>
+                                    <small class="card-text">Достига се с бутона <i>Вход</i>.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Регистрация-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Регистрация</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/registrate.png" class="img-fluid align-middle my-auto"
+                                        alt="Регистрация - страница">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">За да създадете собствен акаунт, въведете собствените си данни:
+                                        e-mail,
+                                        имена, тип акаунт и парола.</p>
+                                    <hr>
+                                    <small class="card-text">Достига се с бутона <i>Регистрация</i>.</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            
-                    <!--Картичка с Вход-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #042B3E; height: 25rem;">
-                        <img src="./images/help/login.png" class="card-img-top" alt="Вход - страница">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Вход</h5>
-                            <p class="card-text">С въвеждане на e-mail и парола може да достъпите вашия акаунт! А ако
-                                нямате такъв, регистрирайте се!</p>
-                            <small class="card-text">Достига се с бутона <i>Вход</i>.</small>
+
+                    <!--Втори ред помощ-->
+                    <div class="row d-flex flex-row flex-wrap justify-content-between p-1" style="color: #051923;">
+                        <!--Инфо за Проекти-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Проекти</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto"
+                                        alt="Проекти - страница">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към
+                                        чиито
+                                        екипи принаджлежите.</p>
+                                    <hr>
+                                    <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Карта на проект-->
+                        <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Карта на проект</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto"
+                                        alt="Проект - картичка">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">Всеки проект си има карта, на която са показани основните
+                                        данни:
+                                        име и
+                                        описание.</p>
+                                    <hr>
+                                    <small class="card-text">При натискане на <i>Име</i> на проекта, влизате в самия
+                                        проект.</small><br>
+                                    <small class="card-text">При натискане на <i>Описание</i>, разтваряте пълното
+                                        описание
+                                        на самия проект.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Модал за създаване-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Форма за създаване на проект</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto"
+                                        alt="Създаване - страница">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">При създаване на проект, трябва да се попълнят име и описание
+                                        на
+                                        проект.</p>
+                                    <p class="card-text">За всеки отделен проект може да изберете цветова гама.</p>
+                                    <p class="card-text">В полето за код на гама <strong>НЕ</strong> се пише!</p>
+                                    <hr>
+                                    <small class="card-text">Достига се с бутона <i>Създай</i>.</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            
-                    <!--Картичка с Регистрация-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #024E74; height: 25rem;">
-                        <img src="./images/help/registrate.png" class="card-img-top" alt="Регистрация - страница">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Регистрация</h5>
-                            <p class="card-text">За да създадете собствен акаунт, въведете собствените си данни: e-mail,
-                                имена, тип акаунт и парола.</p>
-                            <small class="card-text">Достига се с бутона <i>Регистрация</i>.</small>
+
+                    <!--Три ред помощ-->
+                    <div class="row d-flex flex-row flex-wrap justify-content-between p-1" style="color: #051923;">
+                        <!--Инфо за Проект-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Проект</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto"
+                                        alt="Проект - страница">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">Един проект е съставен от 4 таблици, определящи прогреса, в
+                                        които
+                                        се
+                                        разпределят задачи.</p>
+                                    <hr>
+                                    <small class="card-text">Достига се с натискане <i>Име</i> на проект.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Екип-->
+                        <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Екип</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto"
+                                        alt="Добави екип - меню">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на
+                                        екип, като
+                                        се впише името на потребителя.</p>
+                                    <hr>
+                                    <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
+                                                class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Създаване на задача-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Задача</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto"
+                                        alt="Създаване на задача - бутон">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">Всеки проект си има определени задачи. При създаване на задача,
+                                        тя
+                                        се
+                                        появява в колона <i>Зададено</i> и с автоматично име <i>Задача</i>.</p>
+                                    <p class="card-text">За да се смени етикета на задачата, е нужно натискане върху
+                                        самия
+                                        етикет и вписване на новото име.</p>
+                                    <hr>
+                                    <small class="card-text">Създава се с бутона <i>Добави задача<i
+                                                class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            
-                    <!--Картичка с Проекти-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #051923; height: 25rem;">
-                        <img src="./images/help/all_projects.png" class="card-img-top" alt="Проекти - страница">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Проекти</h5>
-                            <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към чиито
-                                екипи принаджлежите.</p>
-                            <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
+
+                    <!--Четвърти ред помощ-->
+                    <div class="row d-flex flex-row flex-wrap justify-content-between p-1" style="color: #051923;">
+                        <!--Инфо за Задаване на задача-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Задаване</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto"
+                                        alt="Задаване - модал">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
+                                        изпълнителя от членовете на екипа.
+                                    </p>
+                                    <hr>
+                                    <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до
+                                        етикета
+                                        на задачата.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Статус на задача-->
+                        <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Статус на задача</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto"
+                                        alt="Статус - таблици">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">Независимо от другите задания, задачите се движат самостоятелно
+                                        в
+                                        таблиците по ред на завършване. По този начин се проследява статуса на една
+                                        задача.
+                                    </p>
+                                    <hr>
+                                    <small class="card-text">Достига се чрез бутона <i
+                                            class="bi bi-arrow-right-circle"></i>
+                                        до
+                                        етикета на задачата.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Инфо за Aкаунт-->
+                        <div class="col-4 border-bottom border-2 border-secondary px-3">
+                            <h3 class="fs-2 w-100">Акаунт</h3>
+                            <div class="w-100 d-flex flex-row">
+                                <div class="col-6">
+                                    <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto"
+                                        alt="Акаунт - меню">
+                                </div>
+                                <div class="col-6 align-middle my-auto mx-2">
+                                    <p class="card-text">В странично меню се изписват <i>Име</i> и <i>e-mail</i> на
+                                        настоящия
+                                        акаунт. Под информацията са разположени два бутона: за <i>Помощ</i> и за
+                                        <i>Излизане</i>
+                                        от профила.
+                                    </p>
+                                    <hr>
+                                    <small class="card-text">Достига се чрез бутона <i
+                                            class="bi bi-person-circle"></i>.</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            
-                    <!--Картичка с Карта на проект-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #042B3E; height: 25rem;">
-                        <img src="./images/help/project_card.png" class="card-img-top" alt="Проект - картичка">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Карта на проект</h5>
-                            <p class="card-text">Всеки проект си има карта, на която са показани основните данни: име и
-                                описание.</p>
-                            <p class="card-text">При натискане на името на проекта, влизате в самия проект.</p>
-                            <p class="card-text">При натискане на Описание, разтваряте пълното описание на самия проект.
-                            </p>
+                </div>
+
+                <!--За малки екрани-->
+                <div class="d-block d-md-none">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <!--За нас-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-about" aria-expanded="false" aria-controls="flush-about">
+                                    За нас
+                                </button>
+                            </h2>
+                            <div id="flush-about" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/about_page.png"
+                                                class="img-fluid align-middle my-auto" alt="За нас - страница">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="fs-5">Основно описание на функционалностите на проекта, както и
+                                                бутони за
+                                                вход и регистрация.</p>
+                                            <hr>
+                                            <small class="card-text">Достига се с бутона <i>За нас</i> или
+                                                <i>Помощ</i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Вход-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-login" aria-expanded="false" aria-controls="flush-login">
+                                    Вход
+                                </button>
+                            </h2>
+                            <div id="flush-login" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/login.png" class="img-fluid align-middle my-auto"
+                                                alt="Вход - страница">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">С въвеждане на e-mail и парола може да достъпите вашия
+                                                акаунт!
+                                                А
+                                                ако
+                                                нямате такъв, регистрирайте се!</p>
+                                            <hr>
+                                            <small class="card-text">Достига се с бутона <i>Вход</i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Регистрация-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-reg" aria-expanded="false" aria-controls="flush-reg">
+                                    Регистрация
+                                </button>
+                            </h2>
+                            <div id="flush-reg" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/registrate.png"
+                                                class="img-fluid align-middle my-auto" alt="Регистрация - страница">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">За да създадете собствен акаунт, въведете собствените
+                                                си данни:
+                                                e-mail,
+                                                имена, тип акаунт и парола.</p>
+                                            <hr>
+                                            <small class="card-text">Достига се с бутона <i>Регистрация</i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Проекти-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-prjs" aria-expanded="false" aria-controls="flush-prjs">
+                                    Проекти
+                                </button>
+                            </h2>
+                            <div id="flush-prjs" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto"
+                                                alt="Проекти - страница">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към
+                                                чиито
+                                                екипи принаджлежите.</p>
+                                            <hr>
+                                            <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Карта на проект-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-prjCard" aria-expanded="false" aria-controls="flush-prjCard">
+                                    Карта на проект
+                                </button>
+                            </h2>
+                            <div id="flush-prjCard" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto"
+                                                alt="Проект - картичка">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">Всеки проект си има карта, на която са показани основните
+                                                данни:
+                                                име и
+                                                описание.</p>
+                                            <hr>
+                                            <small class="card-text">При натискане на <i>Име</i> на проекта, влизате в самия
+                                                проект.</small><br>
+                                            <small class="card-text">При натискане на <i>Описание</i>, разтваряте пълното
+                                                описание
+                                                на самия проект.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Карта на Модал за създаване-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-createForm" aria-expanded="false" aria-controls="flush-createForm">
+                                    Форма за създаване на проект
+                                </button>
+                            </h2>
+                            <div id="flush-createForm" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto"
+                                                alt="Създаване - страница">
+                                        </div>
+                                        <div class="col-612 align-middle my-1 mx-2">
+                                            <p class="card-text">При създаване на проект, трябва да се попълнят име и описание
+                                                на
+                                                проект.</p>
+                                            <p class="card-text">За всеки отделен проект може да изберете цветова гама.</p>
+                                            <p class="card-text">В полето за код на гама <strong>НЕ</strong> се пише!</p>
+                                            <hr>
+                                            <small class="card-text">Достига се с бутона <i>Създай</i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Проект-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-prjBoard" aria-expanded="false" aria-controls="flush-prjBoard">
+                                    Проект
+                                </button>
+                            </h2>
+                            <div id="flush-prjBoard" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto"
+                                                alt="Проект - страница">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">Един проект е съставен от 4 таблици, определящи прогреса, в
+                                                които
+                                                се
+                                                разпределят задачи.</p>
+                                            <hr>
+                                            <small class="card-text">Достига се с натискане <i>Име</i> на проект.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Екип-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-team" aria-expanded="false" aria-controls="flush-team">
+                                    Екип
+                                </button>
+                            </h2>
+                            <div id="flush-team" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto"
+                                                alt="Добави екип - меню">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на
+                                                екип, като
+                                                се впише името на потребителя.</p>
+                                            <hr>
+                                            <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
+                                                        class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Създаване на задача-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-task" aria-expanded="false" aria-controls="flush-task">
+                                    Задача
+                                </button>
+                            </h2>
+                            <div id="flush-task" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto"
+                                                alt="Създаване на задача - бутон">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">Всеки проект си има определени задачи. При създаване на задача,
+                                                тя
+                                                се
+                                                появява в колона <i>Зададено</i> и с автоматично име <i>Задача</i>.</p>
+                                            <p class="card-text">За да се смени етикета на задачата, е нужно натискане върху
+                                                самия
+                                                етикет и вписване на новото име.</p>
+                                            <hr>
+                                            <small class="card-text">Създава се с бутона <i>Добави задача<i
+                                                        class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Задаване на задача-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-assign" aria-expanded="false" aria-controls="flush-assign">
+                                    Задаване
+                                </button>
+                            </h2>
+                            <div id="flush-assign" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto"
+                                                alt="Задаване - модал">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
+                                                изпълнителя от членовете на екипа.
+                                            </p>
+                                            <hr>
+                                            <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до
+                                                етикета
+                                                на задачата.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Статус на задача-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-status" aria-expanded="false" aria-controls="flush-status">
+                                    Статус на задача
+                                </button>
+                            </h2>
+                            <div id="flush-status" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto"
+                                                alt="Статус - таблици">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">Независимо от другите задания, задачите се движат самостоятелно
+                                                в
+                                                таблиците по ред на завършване. По този начин се проследява статуса на една
+                                                задача.
+                                            </p>
+                                            <hr>
+                                            <small class="card-text">Достига се чрез бутона <i
+                                                    class="bi bi-arrow-right-circle"></i>
+                                                до
+                                                етикета на задачата.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Aкаунт-->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-acc" aria-expanded="false" aria-controls="flush-acc">
+                                    Aкаунт
+                                </button>
+                            </h2>
+                            <div id="flush-acc" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #effaff;">
+                                    <div class="w-100 d-flex flex-column">
+                                        <div class="col-12">
+                                            <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto"
+                                                alt="Акаунт - меню">
+                                        </div>
+                                        <div class="col-12 align-middle my-1 mx-2">
+                                            <p class="card-text">В странично меню се изписват <i>Име</i> и <i>e-mail</i> на
+                                                настоящия
+                                                акаунт. Под информацията са разположени два бутона: за <i>Помощ</i> и за
+                                                <i>Излизане</i>
+                                                от профила.
+                                            </p>
+                                            <hr>
+                                            <small class="card-text">Достига се чрез бутона <i
+                                                    class="bi bi-person-circle"></i>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            
-                    <!--Картичка с модал за създаване-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #024E74; height: 25rem;">
-                        <img src="./images/help/create_project.png" class="card-img-top" alt="Създаване - модал">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Форма за създаване на проект</h5>
-                            <p class="card-text">При създаване на проект, трябва да се попълнят име и описание на
-                                проект.</p>
-                            <p class="card-text">За всеки отделен проект може да изберете цветова гама.</p>
-                            <p class="card-text">В полето за код на гама <strong>НЕ</strong> се пише!</p>
-                            <small class="card-text">Достига се с бутона <i>Създай</i>.</small>
-                        </div>
-                    </div>
-            
-                    <!--Картичка с Проект-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #051923; height: 25rem;">
-                        <img src="./images/help/project_board.png" class="card-img-top" alt="Проект - страница">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Проект</h5>
-                            <p class="card-text">Един проект е съставен от 4 таблици, определящи прогреса, в които се
-                                разпределят задачи.</p>
-                            <small class="card-text">Достига се с натискане <i>Името на проект</i>.</small>
-                        </div>
-                    </div>
-            
-                    <!--Картичка с екип-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #042B3E; height: 25rem;">
-                        <img src="./images/help/add_team.png" class="card-img-top" alt="Добави екип - меню">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Екип</h5>
-                            <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на екип, като
-                                се впише името на потребителя.</p>
-                            <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
-                                        class="bi bi-plus-circle ms-1"></i></i>.</small>
-                        </div>
-                    </div>
-            
-                    <!--Картичка със създаване на задача-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #024E74; height: 25rem;">
-                        <img src="./images/help/create_task.png" class="card-img-top" alt="Създаване на задача - бутон">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Задача</h5>
-                            <p class="card-text">Всеки проект си има определени задачи. При създаване на задача, тя се
-                                появява в колона <i>Зададено</i> и с автоматично име <i>Задача</i>.</p>
-                            <p class="card-text">За да се смени етикета на задачата, е нужно натискане върху самия
-                                етикет и вписване на новото име.</p>
-                            <small class="card-text">Създава се с бутона <i>Добави задача<i
-                                        class="bi bi-plus-circle ms-1"></i></i>.</small>
-                        </div>
-                    </div>
-            
-                    <!--Картичка със Задаване на задача-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #051923; height: 25rem;">
-                        <img src="./images/help/assign_task.png" class="card-img-top" alt="Задаване - модал">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Задаване</h5>
-                            <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
-                                изпълнителя от членовете на екипа.
-                            </p>
-                            <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до етикета
-                                на задачата.</small>
-                        </div>
-                    </div>
-            
-                    <!--Картичка със статус на задача-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #042B3E; height: 25rem;">
-                        <img src="./images/help/move_task.png" class="card-img-top" alt="Статус - таблици">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Статус</h5>
-                            <p class="card-text">Независимо от другите задания, задачите се движат самостоятелно в
-                                таблиците по ред на завършване. По този начин се проследява статуса на една задача.</p>
-                            <small class="card-text">Достига се чрез бутона <i class="bi bi-arrow-right-circle"></i> до
-                                етикета на задачата.</small>
-                        </div>
-                    </div>
-            
-                    <!--Картичка с акаунт-->
-                    <div class="card overflow-y-auto text-light d-flex col-md-3 col-12 mx-2 my-1"
-                        style="background-color: #024E74; height: 25rem;">
-                        <img src="./images/help/acc_offcanva.png" class="card-img-top" alt="Акаунт - меню">
-                        <div class="card-body border-top border-light">
-                            <h5 class="card-title pb-1 border-bottom border-light">Акаунт</h5>
-                            <p class="card-text">В странично меню се изписват <i>Име</i> и <i>e-mail</i> на настоящия
-                                акаунт. Под информацията са разположени два бутона: за <i>Помощ</i> и за <i>Излизане</i>
-                                от профила.</p>
-                            <small class="card-text">Достига се чрез бутона <i class="bi bi-person-circle"></i>.</small>
-                        </div>
-                    </div>
-            
                 </div>
             </div>
         </div>
