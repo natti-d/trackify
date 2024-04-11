@@ -18,6 +18,7 @@ if (!$conn) {
 /*MYSQL колекция от символи*/
 $command = "SET CHARACTER SET utf8;";
 $setCharacterSet = mysqli_query($conn, $command);
+
 $userID = $_COOKIE['userID'];
 $projectID = $_COOKIE['project'];
 $email_member = $_POST['email_member'];

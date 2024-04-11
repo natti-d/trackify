@@ -29,7 +29,7 @@
         var members = [];
         var users = [];
         var pTitle = "";
-        var pColor;
+        var pColor = "";
 
         /*Взимане на user id, project id от localStorage*/
         document.cookie = "userID=" + localStorage.getItem('user');
@@ -80,6 +80,44 @@
             }
         }
     </script>
+    <?php
+    //Данни за достъп до базата данни
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "PlanA";
+
+    //Прави се връзка с базата данни
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    //Проверява се връзката
+    if (!$conn) {
+        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
+    }
+
+    /*MYSQL колекция от символи*/
+    $command = "SET CHARACTER SET utf8;";
+    $setCharacterSet = mysqli_query($conn, $command);
+
+    $projectID = $_COOKIE['project'];
+
+    /*Взима се цвета на фона и името на проекта*/
+    $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
+    $getProjectInfo = mysqli_query($conn, $command);
+    if ($getProjectInfo) {
+        if ($getProjectInfo->num_rows != 0) {
+            echo "<script>reload();</script>";
+            while ($row = mysqli_fetch_assoc($getProjectInfo)) {
+                $color = $row['background_id'];
+                $pName = htmlspecialchars($row['project_name']);
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1]; console.log(pTitle);</script>";
+            }
+        } else {
+            echo "Грешка: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Грешка: " . mysqli_error($conn);
+    }
+    ?>
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden" id="top-navigation" style="background-color: #F0F2F4;">
         <!--Лява част-->
@@ -157,7 +195,7 @@
         </div>
         <div class="col-3 justify-content-end d-flex">
             <p class="btn btn-primary mx-3 text-center align-middle my-auto" data-bs-toggle="offcanvas" data-bs-target="#addMemberOffCanva" aria-controls="addMemberOffcanvas" onclick="printMembers();">
-                Добави Екип<i class="bi bi-plus-circle ms-2"></i>
+                Добави Екип<i class="bi bi-plus-circle ms-2 align-middle my-auto"></i>
             </p>
         </div>
     </div>
@@ -173,8 +211,8 @@
 
                     <div class="card-body overflow-y-auto overflow-y-auto" id="todo" style="max-height: 60vh;">
                     </div>
-                    <div class="card-footer">
-                        <p class="btn btn-primary mx-3 text-center" onclick="createTask();">Добави Задача<i class="bi bi-plus-circle ms-2"></i></p>
+                    <div class="card-footer d-flex justify-content-center">
+                        <p class="btn btn-primary mx-3 text-center d-flex justify-content-center col-12 align-middle my-auto" onclick="createTask();">Добави Задача<i class="bi bi-plus-circle ms-2 align-middle my-auto"></i></p>
                     </div>
                 </div>
             </div>
@@ -639,23 +677,23 @@
     $userID = $_COOKIE['userID'];
     $projectID = $_COOKIE['project'];
 
-    /*Взима се цвета на фона и името на проекта*/
+    /*Взима се цвета на фона и името на проекта
     $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
     $getProjectInfo = mysqli_query($conn, $command);
     if ($getProjectInfo) {
         if ($getProjectInfo->num_rows != 0) {
-            echo "<script>reload()</script>";
+            echo "<script>reload();</script>";
             while ($row = mysqli_fetch_assoc($getProjectInfo)) {
                 $color = $row['background_id'];
                 $pName = htmlspecialchars($row['project_name']);
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1];</script>";
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1]; console.log(pTitle);</script>";
             }
         } else {
             echo "Грешка: " . mysqli_error($conn);
         }
     } else {
         echo "Грешка: " . mysqli_error($conn);
-    }
+    }*/
 
     /*Изписват се членовете на един екип с техните e-mails, 
 намерени чрез id's и се записват като членове на екип към проект*/

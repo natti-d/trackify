@@ -341,7 +341,7 @@
             echo "<script>noProjects();</script>";
         } else {
 
-            while ($row = mysqli_fetch_assoc($getProjects)) { //check if works
+            while ($row = mysqli_fetch_assoc($getProjects)) {
                 $pID = $row['projects_id'];
                 $command = "SELECT * FROM `Projects` WHERE `project_id` = '$pID';"; //check if works
                 $getInfo = mysqli_query($conn, $command);
