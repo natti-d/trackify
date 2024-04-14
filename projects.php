@@ -335,7 +335,7 @@
     /*Взима от бисквитката userID и търси съответните IDs, за да изпише проектите*/
     $userID = $_COOKIE['userID'];
     if ($userID != '') {
-        $command = "SELECT `projects_id` FROM `Members` WHERE `member_id` = '$userID' GROUP BY `projects_id`;"; //check if works
+        $command = "SELECT `projects_id` FROM `Members` WHERE `member_id` = '$userID' GROUP BY `projects_id`;";
         $getProjects = mysqli_query($conn, $command);
         if ($getProjects->num_rows == 0) {
             echo "<script>noProjects();</script>";
@@ -343,7 +343,7 @@
 
             while ($row = mysqli_fetch_assoc($getProjects)) {
                 $pID = $row['projects_id'];
-                $command = "SELECT * FROM `Projects` WHERE `project_id` = '$pID';"; //check if works
+                $command = "SELECT * FROM `Projects` WHERE `project_id` = '$pID';";
                 $getInfo = mysqli_query($conn, $command);
                 while ($row2 = mysqli_fetch_assoc($getInfo)) {
                     $pName = $row2['project_name'];

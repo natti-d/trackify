@@ -98,7 +98,11 @@
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
 
-    $projectID = $_COOKIE['project'];
+    if(isset($_COOKIE['project'])){
+        $projectID = $_COOKIE['project'];
+    }else{
+        echo "<script>window.location.reload();</script>";
+    }
 
     /*Взима се цвета на фона и името на проекта*/
     $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
@@ -109,7 +113,7 @@
             while ($row = mysqli_fetch_assoc($getProjectInfo)) {
                 $color = $row['background_id'];
                 $pName = htmlspecialchars($row['project_name']);
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1]; console.log(pTitle);</script>";
+                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1];</script>";
             }
         } else {
             echo "Грешка: " . mysqli_error($conn);
@@ -676,24 +680,6 @@
 
     $userID = $_COOKIE['userID'];
     $projectID = $_COOKIE['project'];
-
-    /*Взима се цвета на фона и името на проекта
-    $command = "SELECT * FROM `Projects` WHERE `project_id`='$projectID';";
-    $getProjectInfo = mysqli_query($conn, $command);
-    if ($getProjectInfo) {
-        if ($getProjectInfo->num_rows != 0) {
-            echo "<script>reload();</script>";
-            while ($row = mysqli_fetch_assoc($getProjectInfo)) {
-                $color = $row['background_id'];
-                $pName = htmlspecialchars($row['project_name']);
-                echo "<script>document.getElementsByTagName('body')[0].style.backgroundColor = getColors('$color')[0]; pTitle = '$pName'; pColor = getColors('$color')[1]; console.log(pTitle);</script>";
-            }
-        } else {
-            echo "Грешка: " . mysqli_error($conn);
-        }
-    } else {
-        echo "Грешка: " . mysqli_error($conn);
-    }*/
 
     /*Изписват се членовете на един екип с техните e-mails, 
 намерени чрез id's и се записват като членове на екип към проект*/

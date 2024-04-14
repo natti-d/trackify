@@ -23,7 +23,7 @@ $userID = $_COOKIE['userID'];
 $projectID = $_COOKIE['project'];
 $email_member = $_POST['email_member'];
 
-/*Изваждат се e-mails на членовете*/
+/*Изважда се id на член*/
 $command = "SELECT `user_id` FROM `Users` WHERE `email`='$email_member';";
 $getUserID = mysqli_query($conn, $command);
 
