@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!--Страница за проследяване прогреса на проект-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,19 @@
             location.href = './home.html';
         }
 
+        /*Проверява дали има действителен проект */
+        if (!localStorage.getItem('projectID') || localStorage.getItem('projectID') == null) {
+            location.href = './projects.php';
+        }
+
         /*Променливи, уникални за един проект*/
         var members = [];
         var users = [];
         var pTitle = "";
         var pColor = "";
+        var owner = "";
+        var ownerEmail = "";
+        var rights;
 
         /*Взимане на user id, project id от localStorage*/
         document.cookie = "userID=" + localStorage.getItem('user');
@@ -79,17 +87,22 @@
                 }
             }
         }
+        reload();
     </script>
+    <!--PHP за комуникация с БД: 
+        - за цвят, текст, име на проект;
+        - за собственик на проект.
+    -->
     <?php
-    //Данни за достъп до базата данни
+    /*Данни за достъп до базата данни*/
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "PlanA";
 
-    //Прави се връзка с базата данни
+    /*Прави се връзка с базата данни*/
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-    //Проверява се връзката
+    /*Проверява се връзката*/
     if (!$conn) {
         die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
     }
@@ -98,9 +111,9 @@
     $command = "SET CHARACTER SET utf8;";
     $setCharacterSet = mysqli_query($conn, $command);
 
-    if(isset($_COOKIE['project'])){
+    if (isset($_COOKIE['project'])) {
         $projectID = $_COOKIE['project'];
-    }else{
+    } else {
         echo "<script>window.location.reload();</script>";
     }
 
@@ -109,7 +122,7 @@
     $getProjectInfo = mysqli_query($conn, $command);
     if ($getProjectInfo) {
         if ($getProjectInfo->num_rows != 0) {
-            echo "<script>reload();</script>";
+            //echo "<script>reload();</script>";
             while ($row = mysqli_fetch_assoc($getProjectInfo)) {
                 $color = $row['background_id'];
                 $pName = htmlspecialchars($row['project_name']);
@@ -121,6 +134,14 @@
     } else {
         echo "Грешка: " . mysqli_error($conn);
     }
+
+    /*Взима се собственик на проекта */
+    $command = "SELECT `member_id` FROM `Members` WHERE `projects_id`='$projectID' LIMIT 1;";
+    $getOwner = mysqli_query($conn, $command);
+    $row = mysqli_fetch_assoc($getOwner);
+    $owner = $row['member_id'];
+    echo "<script>owner='$owner';</script>";
+
     ?>
     <!--Заглавен елемент-->
     <header class="col-12 position-relative w-100 top-0 m-0 start-0 d-flex justify-content-between overflow-hidden" id="top-navigation" style="background-color: #F0F2F4;">
@@ -150,6 +171,7 @@
         <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
             <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
 
+            <!--За по-малки екрани-->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                     <h3 class="offcanvas-title" id="offcanvasRightLabel" style="color: #004e7a;">ПланА</h3>
@@ -192,7 +214,7 @@
         </div>
     </header>
 
-    <!--Лента с допълнителни настройки на един проект-->
+    <!--Лента с допълнителни функции на един проект-->
     <div class="d-flex w-100 py-2 border-bottom justify-content-end">
         <div class="flex-fill justify-content-center d-flex">
             <h1 class="fs-1" id="project-title"></h1>
@@ -245,7 +267,7 @@
                 </div>
             </div>
 
-            <!--Таблица приключено-->
+            <!--Таблица Приключено-->
             <div class="col-lg-3 col-md-4">
                 <div class="card mx-2 d-flex flex-column col-11">
                     <h5 class="card-header">Приключено
@@ -259,14 +281,14 @@
         </div>
     </div>
 
-    <!--Offcanva за добавяне членове на екип-->
+    <!--Offcanva за добавяне/премахване членове на екип и/ли изтриване на проект-->
     <div class="offcanvas offcanvas-end w-md-100" tabindex="-1" id="addMemberOffCanva" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasLabel">Добави членове на екип</h5>
             <button type="button" class="btn-close d-md-none d-block" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body d-block justify-content-center">
-            <!--За e-mail на член от екиш-->
+        <div class="offcanvas-body d-block justify-content-center overflow-y-auto" style="max-height: 85vh;">
+            <!--За e-mail на член от екип-->
             <div class="form-floating w-100 mb-3">
                 <input type="email" class="form-control mb-1" id="email-member" name="email-member" placeholder="name" required>
                 <label for="email-member">Email address на член от екип</label>
@@ -277,8 +299,13 @@
             </div>
 
             <!--Списък с екип-->
-            <ul class="list-group overflow-y-auto" id="team-list" max-height: 70vh;>
+            <ul class="list-group" id="team-list">
             </ul>
+        </div>
+
+        <!--За изтриване на проект-->
+        <div class="d-flex justify-content-center" style="height: 15hv;">
+            <button type="submit" class="btn btn-danger w-100 mx-md-5 mx-2" data-bs-toggle="modal" data-bs-target="#deleteProjectModal" onclick="makeCode();">Изтрий проект</button>
         </div>
     </div>
 
@@ -288,19 +315,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title fs-5" id="staticBackdropLabel">Създай проект</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <form action="./onlyPHP/create_project.php" method="post" autocomplete="off">
                     <div class="modal-body">
+
+                        <!--Визуализация-->
                         <div class="w-100">
                             <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
                         </div>
+
+                        <!--Име-->
                         <div class="form-floating w-100 mt-3 position-relative">
                             <input type="name" name="name-of-project" class="form-control" id="name-of-project" onkeyup="verificateData();" placeholder="name" required>
                             <label for="name-of-project">Име на проект</label>
                         </div>
 
+                        <!--Цветове-->
                         <div class="w-100 mt-3 position-relative" id="color-picking">
                             <span>Гама на проект</span>
                             <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
@@ -320,6 +351,7 @@
                             </div>
                         </div>
 
+                        <!--Описание-->
                         <div class="form-floating w-100 mt-3 position-relative">
                             <textarea type="name" name="description" class="form-control" id="description" placeholder="name" style="min-height: 120px;" onkeyup="verificateData();" required></textarea>
                             <label for="description">Описание на проект</label>
@@ -335,29 +367,100 @@
         </div>
     </div>
 
+    <!--Модал за потвърждение за премахване на член-->
+    <div class="modal fade" id="removeMembModal" tabindex="-1" aria-labelledby="removeMembModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form action="./onlyPHP/removeMember.php" method="post">
+                    <div class="modal-header">
+                        <input class="modal-title fs-5 form-control" id="removeMembModalLabel" name="member-email" readonly></input>
+                    </div>
+                    <div class="modal-body">
+                        <p class="d-flex justicfy-content-center align-middle my-auto">
+                            Наистина ли искате да премахнете този
+                            член на екипа?</p>
+                    </div>
+                    <div class="modal-footer justify-content-between" id="task-modif">
+                        <button type="button" class="btn btn-secondary" id="close-delete-modal" data-bs-dismiss="modal">Отмени</button>
+                        <button type="submit" class="btn btn-danger">Изтрий</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
     <!--Модал за възлагане на задача-->
     <div class="modal fade" id="assign-task" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title fs-5" id="assignTaskH2">Възложи задача</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="./onlyPHP/assignTasks.php" method="post" autocomplete="off">
+                <form action="./onlyPHP/assignOrDeleteTask.php" method="post" autocomplete="off">
                     <div class="modal-body">
+                        <!--Списък с екип-->
                         <ul class="list-group" id="list-members-assign">
                         </ul>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="close-create-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
-                        <button type="submit" class="btn btn-primary">Възложи</button>
+                    <div class="modal-footer justify-content-between" id="task-modif">
+                        <!--Изтриване на задача-->
+                        <div>
+                            <button type="submit" class="btn btn-danger" name="action" value="Delete">Изтрий</button>
+                        </div>
+                        <!--Възлагане на задача-->
+                        <div>
+                            <button type="button" class="btn btn-secondary" id="close-assign-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
+                            <button type="submit" class="btn btn-primary" name="action" value="Post">Възложи</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!--Скрипт за създаване на нова задача, проследяване на прогреса и добавяне членове на екипа-->
+    <!-- Модал за изтриване на проект -->
+    <div class="modal fade" id="deleteProjectModal" tabindex="-1" aria-labelledby="deleteProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="deleteProjectModalLabel">Изтрий проект</h2>
+                </div>
+                <form action="./onlyPHP/delete_project.php" method="post" autocomplete="off">
+                    <div class="modal-body">
+                        <p class="w-100 justicfy-content-center px-3">Въведете нужните данни, за да потвърдите
+                            изтриването на проекта:</p>
+                        <!--E-mail-->
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="email" class="form-control" id="email" name="e-mail" placeholder="text" required>
+                            <label for="email">Email address</label>
+                        </div>
+                        <!--Парола-->
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="password" class="form-control" id="password" placeholder="password" name="password" required>
+                            <label for="password">Парола</label>
+                        </div>
+                        <!--Код-->
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="code-RO" class="form-control" id="code-RO" placeholder="code-RO" name="code-RO" readonly onselectstart="return false" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false">
+                            <label for="code-RO">Код за въвеждане</label>
+                        </div>
+                        <!--Въвеждане на код-->
+                        <div class="form-floating w-100 mb-3 position-relative">
+                            <input type="code" class="form-control" id="code" placeholder="code" name="code" required onDrop="return false">
+                            <label for="code">Въведете кода</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмени</button>
+                        <button type="submit" class="btn btn-danger" id="delete-project" disabled>Изтрий</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Скрипт за модификации на задача, проследяване на прогреса и добавяне/премахване членове на екипа-->
     <script>
         /*Задава името на проекта*/
         document.getElementById('project-title').innerText = pTitle;
@@ -388,7 +491,11 @@
                         email_member: email_member
                     },
                     success: function(response) {
-                        $(team_list).append('<li class="list-group-item">' + email_member + '</li>');
+                        if (rights && email_member != ownerEmail) {
+                            $(team_list).append('<li class="list-group-item d-flex justify-content-between"><p class="align-middle my-auto">' + email_member + '</p><i class="bi bi-x align-middle my-auto fs-4 fs-md-5" id="remove-memb" data-bs-toggle="modal" data-bs-target="#removeMembModal" onclick="removeMemberModal(\'' + email_member + '\');"></i></li>');
+                        } else {
+                            $(team_list).append('<li class="list-group-item">' + email_member + '</li>');
+                        }
                         members.push(email_member);
                         if (response.success) {} else {}
                     },
@@ -405,11 +512,20 @@
             if (members.length > 0) {
                 for (let i = 0; i < members.length; i++) {
                     let member = members[i];
-                    $(team_list).append('<li class="list-group-item">' + members[i] + "</li>");
+                    if (rights && member != ownerEmail) {
+                        $(team_list).append('<li class="list-group-item d-flex justify-content-between"><p class="align-middle my-auto">' + member + '</p><i class="bi bi-x align-middle my-auto fs-4 fs-md-5" id="remove-memb" data-bs-toggle="modal" data-bs-target="#removeMembModal" onclick="removeMemberModal(\'' + member + '\');"></i></li>');
+                    } else {
+                        $(team_list).append('<li class="list-group-item">' + member + '</li>');
+                    }
                 }
             } else {
                 team_list.append('Няма добавени членове на екип.');
             }
+        }
+
+        /*Функция за изписване на e-mail адреса на член, който ще бъде премахнат*/
+        function removeMemberModal(member) {
+            document.getElementById('removeMembModalLabel').value = member;
         }
 
         /*Връща статуса на задача (т.е. към коя таблица принадлежи) в думи, като чете index числа*/
@@ -430,9 +546,15 @@
             }
         }
 
+        /*Функция, отговаряща за това дали един член на екипа има права за модификация или не */
+        function abilityOfMemb(arrID) {
+            return (localStorage.getItem('user') == owner || arrID.includes(localStorage.getItem('user')));
+        }
+
         /*Функцията принтира задачите в БД и активно update-ва в нея */
-        function printTaskTemplate(taskTitle, statusNum, taskID, assigned) {
+        function printTaskTemplate(taskTitle, statusNum, taskID, assigned, assidnedID) {
             status = returnStatusOfTable(parseInt(statusNum));
+            rights = abilityOfMemb(assidnedID);
 
             //Поле за задача
             let task = document.createElement('div');
@@ -488,13 +610,21 @@
                 localStorage.setItem('taskID', taskID);
                 /*Взимане на task id от localStorage като бисквитка*/
                 document.cookie = "taskID=" + localStorage.getItem('taskID');
-                assignTask(task_text.value, assigned);
+                if (!rights) {
+                    document.getElementById('task-modif').classList.add('d-none');
+                } else {
+                    document.getElementById('task-modif').classList.remove('d-none');
+                }
+                assignTask(task_text.value, assigned, rights);
             });
 
             //Бутон за преместване напред в таблиците
             let move_task = document.createElement('i');
             move_task.classList.add('bi', 'bi-arrow-right-circle', 'w-50', 'px-2', 'fs-3');
             checkIfTaskIsClosed(move_task, status);
+            if (!rights) {
+                move_task.classList.add('d-none');
+            }
 
             task_btn_container.appendChild(assign_member);
             task_btn_container.appendChild(move_task);
@@ -554,7 +684,7 @@
         /*Функцията възлага задачи на отделни членове от екипа*/
         var list_members_assign = document.getElementById('list-members-assign');
 
-        function assignTask(task, assigned) {
+        function assignTask(task, assigned, rights) {
             list_members_assign.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
                 let member = members[i];
@@ -566,10 +696,11 @@
                 input.id = 'memberCheckBox' + i;
                 input.name = 'membersAssign[]';
                 input.value = member;
+                input.readOnly = rights;
                 if (assigned.includes(member)) {
                     input.checked = true;
                     input.addEventListener("change", function() {
-                        if (input.checked == false) {
+                        if (input.checked == false && rights) {
                             //Премахва назначаването на задача на член от БД
                             $.ajax({
                                 url: './onlyPHP/unassign.php',
@@ -654,22 +785,48 @@
         }
     </script>
 
+    <!--Скрипт за модала за изтриване на проект-->
+    <script>
+        var code = '';
+        var inputCode = document.getElementById('code');
+
+        /*Генерира код за верификация*/
+        function makeCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const charactersLength = characters.length;
+            let counter = 0;
+            while (counter < 5) {
+                code += characters.charAt(Math.floor(Math.random() * charactersLength));
+                counter += 1;
+            }
+            document.getElementById('code-RO').value = code;
+        }
+
+        /*Проследява дали въведения код съвпада с въведения код*/
+        ['focusout', 'keyup'].forEach(event => inputCode.addEventListener(event, function() {
+            if (inputCode.value === code) {
+                document.getElementById('delete-project').disabled = false;
+            } else {
+                document.getElementById('delete-project').disabled = true;
+            }
+        }));
+    </script>
+
     <!--PHP за комуникация с БД: 
-        - за цвят, текст, име;
         - за членове на екип;
         - за задачите, името им, статуса им и на кого са назначени;
-        - информация за профила
+        - информация за профила.
     -->
     <?php
-    //Данни за достъп до базата данни
+    /*Данни за достъп до базата данни*/
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "PlanA";
 
-    //Прави се връзка с базата данни
+    /*Прави се връзка с базата данни*/
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-    //Проверява се връзката
+    /*Проверява се връзката*/
     if (!$conn) {
         die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
     }
@@ -718,10 +875,12 @@
         $taskStatus = $row['task_status'];
         $taskID = $row['task_id'];
         $assignedMemb = [];
+        $assignedMembID = [];
         $command = "SELECT `member_id` FROM `Members` WHERE `task_id` = '$taskID';";
         $getUsers = mysqli_query($conn, $command);
         while ($row2 = mysqli_fetch_assoc($getUsers)) {
             $userID = $row2['member_id'];
+            array_push($assignedMembID, $userID);
             $command = "SELECT `email` FROM `Users` WHERE `user_id`='$userID' LIMIT 1;";
             $getEmail = mysqli_query($conn, $command);
             $row3 = mysqli_fetch_assoc($getEmail);
@@ -729,7 +888,8 @@
             array_push($assignedMemb, $email);
         }
         $assignedMembJSON = json_encode($assignedMemb);
-        echo "<script>printTaskTemplate('$taskTitle', '$taskStatus', '$taskID', '$assignedMembJSON');</script>";
+        $assignedMembIDJSON = json_encode($assignedMembID);
+        echo "<script>printTaskTemplate('$taskTitle', '$taskStatus', '$taskID', '$assignedMembJSON', '$assignedMembIDJSON');</script>";
     }
 
     /*Попълва се информация за потребителя */
@@ -739,12 +899,11 @@
     $row = mysqli_fetch_assoc($getUserInfo);
     $name = $row['full_name'];
     $email = $row['email'];
-    echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
+    echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email'; ownerEmail = '$email'; </script>";
     ?>
 </body>
 
 </html>
-
 <!--
     БД - База данни
     ст-сти - стойности

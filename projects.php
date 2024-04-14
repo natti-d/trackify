@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Страница с информация за всички проекти на един потребител-->
 
 <head>
     <meta charset="UTF-8">
@@ -45,6 +46,7 @@
         if (!localStorage.getItem('user') || localStorage.getItem('user') == null) {
             location.href = './home.html';
         }
+        document.cookie = "userID=" + localStorage.getItem('user');
 
         /*Функция за единично презареждане на страницата за пълното изписване на съдържанието в нея */
         function reload() {
@@ -84,7 +86,7 @@
 
         <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
             <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
-
+            <!--За по-малки екрани-->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                     <h3 class="offcanvas-title" id="offcanvasRightLabel" style="color: #004e7a;">ПланА</h3>
@@ -130,7 +132,7 @@
     <!--Контейнер за проекти-->
     <div class="w-100 overflow-y-hidden overflow-x-hidden position-relative d-md-flex d-block" id="content-page" style="top: 0; background-color: #d6f1ff;">
         <div class="col-md-12 px-3">
-
+            <!--Шаблон-->
             <!--Име на страница - Проекти-->
             <div class="overflow-hidden pt-2 d-flex justify-content-around" style="color: #004e7a;" id="projects-content">
                 <div class="d-md-flex d-block justify-content-around">
@@ -176,19 +178,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title fs-5" id="staticBackdropLabel">Създай проект</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <form action="./onlyPHP/create_project.php" method="post" autocomplete="off">
                     <div class="modal-body">
+
+                        <!--Визуализация-->
                         <div class="w-100">
                             <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
                         </div>
+
+                        <!--Име-->
                         <div class="form-floating w-100 mt-3 position-relative">
                             <input type="name" name="name-of-project" class="form-control" id="name-of-project" onkeyup="verificateData();" placeholder="name" required>
                             <label for="name-of-project">Име на проект</label>
                         </div>
 
+                        <!--Цветове-->
                         <div class="w-100 mt-3 position-relative" id="color-picking">
                             <span>Гама на проект</span>
                             <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
@@ -208,6 +213,7 @@
                             </div>
                         </div>
 
+                        <!--Описание-->
                         <div class="form-floating w-100 mt-3 position-relative">
                             <textarea type="name" name="description" class="form-control" id="description" placeholder="name" style="min-height: 120px;" onkeyup="verificateData();" required></textarea>
                             <label for="description">Описание на проект</label>
@@ -238,11 +244,13 @@
             let card_display = document.createElement('div');
             card_display.classList.add('card-img-overlay', 'overflow-y-auto', 'overflow-x-hidden', 'text-break');
 
+            //Име
             let h5 = document.createElement('h5');
             h5.classList.add('card-title');
             h5.innerText = name;
             card_display.append(h5);
 
+            //Описвние
             let details = document.createElement('details');
             details.classList.add('d-flex');
 
@@ -260,6 +268,7 @@
             card.append(card_display);
             cards_container.append(card);
 
+            //Функция
             h5.addEventListener("click", function() {
                 localStorage.setItem('projectID', id);
                 location.href = './loaded_project.php';
@@ -307,63 +316,7 @@
             cards_container.innerHTML = '';
             cards_container.innerHTML = '<p class="fs-1">Няма проекти.</p>';
         }
-
-        /*Взимане на user id от localStorage като бисквитка*/
-        document.cookie = "userID=" + localStorage.getItem('user');
     </script>
-
-    <!--PHP за взимане на информацията от БД за отпечатване на картите с таблици-->
-    <?php
-    //Данни за достъп до базата данни
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "PlanA";
-
-    //Прави се връзка с базата данни
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    //Проверява се връзката
-    if (!$conn) {
-        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
-    }
-
-    /*MYSQL колекция от символи*/
-    $command = "SET CHARACTER SET utf8;";
-    $setCharacterSet = mysqli_query($conn, $command);
-
-    echo "<script>reload()</script>";
-    /*Взима от бисквитката userID и търси съответните IDs, за да изпише проектите*/
-    $userID = $_COOKIE['userID'];
-    if ($userID != '') {
-        $command = "SELECT `projects_id` FROM `Members` WHERE `member_id` = '$userID' GROUP BY `projects_id`;";
-        $getProjects = mysqli_query($conn, $command);
-        if ($getProjects->num_rows == 0) {
-            echo "<script>noProjects();</script>";
-        } else {
-
-            while ($row = mysqli_fetch_assoc($getProjects)) {
-                $pID = $row['projects_id'];
-                $command = "SELECT * FROM `Projects` WHERE `project_id` = '$pID';";
-                $getInfo = mysqli_query($conn, $command);
-                while ($row2 = mysqli_fetch_assoc($getInfo)) {
-                    $pName = $row2['project_name'];
-                    $pDescr = json_encode($row2['project_description']);
-                    $pBg = $row2['background_id'];
-                    $pID = $row2['project_id'];
-                    echo "<script>generateProjectCard( '$pName', '$pDescr', '$pBg', '$pID');</script>";
-                }
-            }
-        }
-
-        /*Попълва се информация за потребителя */
-        $command = "SELECT * FROM `Users` WHERE `user_id` = '$userID' LIMIT 1;";
-        $getUserInfo = mysqli_query($conn, $command);
-        $row = mysqli_fetch_assoc($getUserInfo);
-        $name = $row['full_name'];
-        $email = $row['email'];
-        echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
-    }
-    ?>
 
     <!--Скрипт за модал за създаване на нов проект-->
     <script>
@@ -420,6 +373,58 @@
             }, 1000);
         }
     </script>
+
+    <!--PHP за взимане на информацията от БД за отпечатване на картите с таблици-->
+    <?php
+    /*Данни за достъп до базата данни*/
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "PlanA";
+
+    /*Прави се връзка с базата данни*/
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    /*Проверява се връзката*/
+    if (!$conn) {
+        die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
+    }
+
+    /*MYSQL колекция от символи*/
+    $command = "SET CHARACTER SET utf8;";
+    $setCharacterSet = mysqli_query($conn, $command);
+
+    echo "<script>reload();</script>";
+    /*Взима userID и търси съответните IDs, за да изпише проектите*/
+    $userID = $_COOKIE['userID'];
+    if ($userID != '') {
+        $command = "SELECT `projects_id` FROM `Members` WHERE `member_id` = '$userID' GROUP BY `projects_id`;";
+        $getProjects = mysqli_query($conn, $command);
+        if ($getProjects->num_rows == 0) {
+            echo "<script>noProjects();</script>";
+        } else {
+            while ($row = mysqli_fetch_assoc($getProjects)) {
+                $pID = $row['projects_id'];
+                $command = "SELECT * FROM `Projects` WHERE `project_id` = '$pID';";
+                $getInfo = mysqli_query($conn, $command);
+                while ($row2 = mysqli_fetch_assoc($getInfo)) {
+                    $pName = $row2['project_name'];
+                    $pDescr = json_encode($row2['project_description']);
+                    $pBg = $row2['background_id'];
+                    $pID = $row2['project_id'];
+                    echo "<script>generateProjectCard( '$pName', '$pDescr', '$pBg', '$pID');</script>";
+                }
+            }
+        }
+
+        /*Попълва се информация за потребителя */
+        $command = "SELECT * FROM `Users` WHERE `user_id` = '$userID' LIMIT 1;";
+        $getUserInfo = mysqli_query($conn, $command);
+        $row = mysqli_fetch_assoc($getUserInfo);
+        $name = $row['full_name'];
+        $email = $row['email'];
+        echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
+    }
+    ?>
 </body>
 
 </html>

@@ -2,15 +2,15 @@
     - за добавяне на нова задача;
 -->
 <?php
-//Данни за достъп до базата данни
+/*Данни за достъп до базата данни*/
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "PlanA";
 
-//Прави се връзка с базата данни
+/*Прави се връзка с базата данни*/
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-//Проверява се връзката
+/*Проверява се връзката*/
 if (!$conn) {
     die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
 }

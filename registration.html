@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="w-100 h-100 m-0 p-0 overflow-hidden">
-
 <!--Страница, чрез която потребител се регастрира-->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,15 +47,15 @@
             localStorage.removeItem('user');
         }
     </script>
+    <!--Фон-->
     <div class="w-100 h-100 m-0 p-0 overflow-hidden"
         style="background: #ade4ff; background: linear-gradient(180deg, #ade4ff 0%, #3ebfff 79%); background-attachment: fixed; background-size: cover;">
-        <!--Облаци-->
         <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set1"></div>
         <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set2"></div>
-        <!--Съдържание-->
+
         <div class="d-flex align-items-center h-100">
             <div class="w-100 d-flex justify-content-center">
-                <!--Форма-->
+                <!--Формуляр-->
                 <form action="./onlyPHP/registration.php" method="post"
                     class="col-md-4 col-10 p-3 d-flex align-items-center flex-column" style="background-color: #F0F2F4;"
                     autocomplete="off">
@@ -98,7 +96,7 @@
                             data-bs-content="Въведените пароли не са еднакви!">
                         <label for="confirmPassword">Потвърди Парола</label>
                     </div>
-                    <!--Помощ - неподходящо??
+                    <!--Помощ - неподходящо
                     <div class="d-none position-relative w-100 p-2" id="help-registration">
                         <fieldset class="ps-2 w-100 d-md-flex d-block position-relative"
                             style="border: solid 2px #003554;">
@@ -161,5 +159,4 @@
         }
     </script>
 </body>
-
 </html>

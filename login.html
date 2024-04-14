@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="w-100 h-100 m-0 p-0 overflow-hidden">
-
 <!--Страница, чрез която се влиза в акаунт-->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,12 +49,14 @@
             localStorage.removeItem('user');
         }
     </script>
+    <!--Фон-->
     <div class="w-100 h-100 m-0 p-0 overflow-hidden"
         style="background: #ade4ff; background: linear-gradient(180deg, #ade4ff 0%, #3ebfff 79%); background-attachment: fixed; background-size: cover;">
         <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set1"></div>
         <div class="vw-100 vh-100 position-absolute top-0 bottom-0" id="cloud-set2"></div>
         <div class="d-flex align-items-center h-100">
-            <!--ako se mahne position-relative ot child elements i se sloji na tozi div, shte se opravi-->
+
+            <!--Формуляр-->
             <div class="w-100 d-flex justify-content-center">
                 <form action="./onlyPHP/login.php" method="post"
                     class="col-md-4 col-10 p-3 d-flex align-items-center flex-column" style="background-color: #F0F2F4;"
@@ -202,5 +202,4 @@
         </div>
     </div>-->
 </body>
-
 </html>

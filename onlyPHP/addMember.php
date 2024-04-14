@@ -1,16 +1,16 @@
 <!--PHP към loaded_project.php (AJAX conn) за комуникация с БД:
-    - за добавяне на нов член към екип;
+    - за добавяне на нов член към екип.
 -->
 <?php
-//Данни за достъп до базата данни
+/*Данни за достъп до базата данни*/
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "PlanA";
 
-//Прави се връзка с базата данни
+/*Прави се връзка с базата данни*/
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-//Проверява се връзката
+/*Проверява се връзката*/
 if (!$conn) {
     die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
 }
@@ -23,7 +23,7 @@ $userID = $_COOKIE['userID'];
 $projectID = $_COOKIE['project'];
 $email_member = $_POST['email_member'];
 
-/*Изважда се id на член*/
+/*Извежда се id на член*/
 $command = "SELECT `user_id` FROM `Users` WHERE `email`='$email_member';";
 $getUserID = mysqli_query($conn, $command);
 

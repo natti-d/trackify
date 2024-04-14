@@ -1,16 +1,16 @@
 <!--PHP за комуникация с БД:
-    - за влизане в акаунт;
+    - за влизане в акаунт.
 -->
 <?php
-//Данни за достъп до базата данни
+/*Данни за достъп до базата данни*/
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "PlanA";
 
-//Прави се връзка с базата данни
+/*Прави се връзка с базата данни*/
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-//Проверява се връзката
+/*Проверява се връзката*/
 if (!$conn) {
     die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
 }
@@ -29,8 +29,8 @@ $validateAcc = mysqli_query($conn, $command);
 if ($validateAcc->num_rows == 1) {
     $row = mysqli_fetch_assoc($validateAcc);
     $dbPass = $row['password'];
-
     if ($pass == $dbPass) {
+        /*Пренасочвания*/
         echo "<script>location.href='../projects.php'; localStorage.setItem('user', '" . $row['user_id'] . "');</script>";
     } else {
         echo "<script>alert('Невалидна парола! Моля, въведете друга!'); location.href='../login.html';</script>";

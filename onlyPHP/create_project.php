@@ -1,16 +1,16 @@
 <!--PHP за комуникация с БД:
-    - за добавяне на нов проект със съответните данни;
+    - за добавяне на нов проект със съответните данни.
 -->
 <?php
-//Данни за достъп до базата данни
+/*Данни за достъп до базата данни*/
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "PlanA";
 
-//Прави се връзка с базата данни
+/*Прави се връзка с базата данни*/
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-//Проверява се връзката
+/*Проверява се връзката*/
 if (!$conn) {
     die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
 }
@@ -69,8 +69,11 @@ if ($createProject && $getProjectID->num_rows != 0) {
     while ($row = mysqli_fetch_assoc($getProjectID)) {
         $command = "INSERT INTO `Members` (`member_id`, `projects_id`, `task_id`) VALUES ('$userID', " . $row['project_id'] . ", NULL);";
         $saveMember = mysqli_query($conn, $command);
+        /*Пренасочване */
         echo "<script>location.href='../loaded_project.php'; localStorage.setItem('projectID', '" . $row['project_id'] . "');</script>";
     }
+}else{
+    echo "<script>location.href='../projects.php'; alert('Възникна грешка при създаването на проект.');</script>";
 }
 ?>
 <!--

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!--Първата страница, която потребител БЕЗ акаунт вижда-->
-
+<!--Първата страница, която потребител С акаунт вижда-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,6 +74,7 @@
             </button>
         </div>
 
+        <!--За по-малки екрани-->
         <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
             <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;" onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';" onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
 
@@ -169,7 +168,7 @@
                                             удобен
                                             за потребителя
                                             интерфейс, където членовете на екипа
-                                            могат без усилие да създават, възлагат и проследяват дейности. Платформата
+                                            могат без усилие да създават, възлагат и проследяват заданията си. Платформата
                                             осигурява
                                             категоризиране на работата и
                                             установяване на приоритети, като гарантира ясно разбиране на дълбочината на
@@ -187,10 +186,10 @@
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-6 text-break">
-                                            <strong>ПланА</strong> предполага създаването на Kanban таблици, за да
+                                            <strong>ПланА</strong> предполага използването на Kanban таблици, за да
                                             повиши
                                             ефективността на вашия
-                                            екип и да рационализира работните
+                                            екип и да се рационализират работните
                                             процеси на проекта. Kanban е визуален метод за управление, който се е
                                             доказал
                                             като
@@ -198,11 +197,11 @@
                                             задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед
                                             върху
                                             напредъка и състоянието на проекта. С
-                                            напредването на задачите през колони като „Да направя“, „В ход“ и
-                                            „Завършени“,
+                                            напредването на задачите през колоните „Зададено“, „В прогрес“, „Изпълнено“ и
+                                            „Приключено“,
                                             членовете на екипа могат лесно да
                                             проследяват и наблюдават напредъка в реално време. С прилагането на Kanban
-                                            таблици от
+                                            таблиците на
                                             <strong>ПланА</strong>, управлението на проекти
                                             никога не е било по-лесно.
                                         </div>
@@ -217,7 +216,7 @@
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-6 text-break">
-                                            Функцията за проследяване на <strong>ПланА</strong> ви помага да
+                                            Функцията за проследяване на развитието, предоставена от <strong>ПланА</strong> ви помага да
                                             визуализирате
                                             прогреса на проекта.
                                             Софтуерът позволява на екипите
@@ -246,11 +245,10 @@
                             <h3 class="fs-2 w-100">За нас</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/about_page.png" class="img-fluid align-middle my-auto"
-                                        alt="За нас - страница">
+                                    <img src="./images/help/about_page.png" class="img-fluid align-middle my-auto" alt="За нас - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
-                                    <p class="fs-5">Основно описание на функционалностите на проекта, както и бутони за
+                                    <p class="card-text">Основно описание на функционалностите на проекта, както и бутони за
                                         вход и регистрация.</p>
                                     <hr>
                                     <small class="card-text">Достига се с бутона <i>За нас</i> или <i>Помощ</i>.</small>
@@ -263,8 +261,7 @@
                             <h3 class="fs-2 w-100">Вход</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/login.png" class="img-fluid align-middle my-auto"
-                                        alt="Вход - страница">
+                                    <img src="./images/help/login.png" class="img-fluid align-middle my-auto" alt="Вход - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">С въвеждане на e-mail и парола може да достъпите вашия акаунт!
@@ -282,8 +279,7 @@
                             <h3 class="fs-2 w-100">Регистрация</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/registrate.png" class="img-fluid align-middle my-auto"
-                                        alt="Регистрация - страница">
+                                    <img src="./images/help/registrate.png" class="img-fluid align-middle my-auto" alt="Регистрация - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">За да създадете собствен акаунт, въведете собствените си данни:
@@ -303,13 +299,12 @@
                             <h3 class="fs-2 w-100">Проекти</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto"
-                                        alt="Проекти - страница">
+                                    <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto" alt="Проекти - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към
                                         чиито
-                                        екипи принаджлежите.</p>
+                                        екипи принадлежите.</p>
                                     <hr>
                                     <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
                                 </div>
@@ -321,8 +316,7 @@
                             <h3 class="fs-2 w-100">Карта на проект</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto"
-                                        alt="Проект - картичка">
+                                    <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto" alt="Проект - картичка">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">Всеки проект си има карта, на която са показани основните
@@ -345,8 +339,7 @@
                             <h3 class="fs-2 w-100">Форма за създаване на проект</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto"
-                                        alt="Създаване - страница">
+                                    <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto" alt="Създаване - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">При създаване на проект, трябва да се попълнят име и описание
@@ -368,8 +361,7 @@
                             <h3 class="fs-2 w-100">Проект</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto"
-                                        alt="Проект - страница">
+                                    <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto" alt="Проект - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">Един проект е съставен от 4 таблици, определящи прогреса, в
@@ -387,16 +379,15 @@
                             <h3 class="fs-2 w-100">Екип</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto"
-                                        alt="Добави екип - меню">
+                                    <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto" alt="Добави екип - меню">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на
                                         екип, като
-                                        се впише името на потребителя.</p>
+                                        се впише името на потребителя. Собственикът също така може и да
+                                        самия проект от самото меню.</p>
                                     <hr>
-                                    <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
-                                                class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                    <small class="card-text">Достига се чрез бутона <i>Добави Екип<i class="bi bi-plus-circle ms-1"></i></i>.</small>
                                 </div>
                             </div>
                         </div>
@@ -406,8 +397,7 @@
                             <h3 class="fs-2 w-100">Задача</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto"
-                                        alt="Създаване на задача - бутон">
+                                    <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto" alt="Създаване на задача - бутон">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">Всеки проект си има определени задачи. При създаване на задача,
@@ -418,8 +408,7 @@
                                         самия
                                         етикет и вписване на новото име.</p>
                                     <hr>
-                                    <small class="card-text">Създава се с бутона <i>Добави задача<i
-                                                class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                    <small class="card-text">Създава се с бутона <i>Добави задача<i class="bi bi-plus-circle ms-1"></i></i>.</small>
                                 </div>
                             </div>
                         </div>
@@ -432,12 +421,11 @@
                             <h3 class="fs-2 w-100">Задаване</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto"
-                                        alt="Задаване - модал">
+                                    <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto" alt="Задаване - модал">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
-                                        изпълнителя от членовете на екипа.
+                                        изпълнителя от членовете на екипа. Те могат да правят промени по задачата, включително и да я изтриват.
                                     </p>
                                     <hr>
                                     <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до
@@ -452,8 +440,7 @@
                             <h3 class="fs-2 w-100">Статус на задача</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto"
-                                        alt="Статус - таблици">
+                                    <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto" alt="Статус - таблици">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">Независимо от другите задания, задачите се движат самостоятелно
@@ -462,8 +449,7 @@
                                         задача.
                                     </p>
                                     <hr>
-                                    <small class="card-text">Достига се чрез бутона <i
-                                            class="bi bi-arrow-right-circle"></i>
+                                    <small class="card-text">Достига се чрез бутона <i class="bi bi-arrow-right-circle"></i>
                                         до
                                         етикета на задачата.</small>
                                 </div>
@@ -475,8 +461,7 @@
                             <h3 class="fs-2 w-100">Акаунт</h3>
                             <div class="w-100 d-flex flex-row">
                                 <div class="col-6">
-                                    <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto"
-                                        alt="Акаунт - меню">
+                                    <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto" alt="Акаунт - меню">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">В странично меню се изписват <i>Име</i> и <i>e-mail</i> на
@@ -486,8 +471,7 @@
                                         от профила.
                                     </p>
                                     <hr>
-                                    <small class="card-text">Достига се чрез бутона <i
-                                            class="bi bi-person-circle"></i>.</small>
+                                    <small class="card-text">Достига се чрез бутона <i class="bi bi-person-circle"></i>.</small>
                                 </div>
                             </div>
                         </div>
@@ -500,21 +484,18 @@
                         <!--За нас-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-about" aria-expanded="false" aria-controls="flush-about">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-about" aria-expanded="false" aria-controls="flush-about">
                                     За нас
                                 </button>
                             </h2>
-                            <div id="flush-about" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-about" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/about_page.png"
-                                                class="img-fluid align-middle my-auto" alt="За нас - страница">
+                                            <img src="./images/help/about_page.png" class="img-fluid align-middle my-auto" alt="За нас - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
-                                            <p class="fs-5">Основно описание на функционалностите на проекта, както и
+                                            <p class="card-text">Основно описание на функционалностите на проекта, както и
                                                 бутони за
                                                 вход и регистрация.</p>
                                             <hr>
@@ -529,18 +510,15 @@
                         <!--Вход-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-login" aria-expanded="false" aria-controls="flush-login">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-login" aria-expanded="false" aria-controls="flush-login">
                                     Вход
                                 </button>
                             </h2>
-                            <div id="flush-login" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-login" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/login.png" class="img-fluid align-middle my-auto"
-                                                alt="Вход - страница">
+                                            <img src="./images/help/login.png" class="img-fluid align-middle my-auto" alt="Вход - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">С въвеждане на e-mail и парола може да достъпите вашия
@@ -559,18 +537,15 @@
                         <!--Регистрация-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-reg" aria-expanded="false" aria-controls="flush-reg">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-reg" aria-expanded="false" aria-controls="flush-reg">
                                     Регистрация
                                 </button>
                             </h2>
-                            <div id="flush-reg" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-reg" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/registrate.png"
-                                                class="img-fluid align-middle my-auto" alt="Регистрация - страница">
+                                            <img src="./images/help/registrate.png" class="img-fluid align-middle my-auto" alt="Регистрация - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">За да създадете собствен акаунт, въведете собствените
@@ -588,23 +563,20 @@
                         <!--Проекти-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-prjs" aria-expanded="false" aria-controls="flush-prjs">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-prjs" aria-expanded="false" aria-controls="flush-prjs">
                                     Проекти
                                 </button>
                             </h2>
-                            <div id="flush-prjs" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-prjs" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto"
-                                                alt="Проекти - страница">
+                                            <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto" alt="Проекти - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към
                                                 чиито
-                                                екипи принаджлежите.</p>
+                                                екипи принадлежите.</p>
                                             <hr>
                                             <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
                                         </div>
@@ -616,18 +588,15 @@
                         <!--Карта на проект-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-prjCard" aria-expanded="false" aria-controls="flush-prjCard">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-prjCard" aria-expanded="false" aria-controls="flush-prjCard">
                                     Карта на проект
                                 </button>
                             </h2>
-                            <div id="flush-prjCard" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-prjCard" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto"
-                                                alt="Проект - картичка">
+                                            <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto" alt="Проект - картичка">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">Всеки проект си има карта, на която са показани основните
@@ -650,18 +619,15 @@
                         <!--Карта на Модал за създаване-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-createForm" aria-expanded="false" aria-controls="flush-createForm">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-createForm" aria-expanded="false" aria-controls="flush-createForm">
                                     Форма за създаване на проект
                                 </button>
                             </h2>
-                            <div id="flush-createForm" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-createForm" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto"
-                                                alt="Създаване - страница">
+                                            <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto" alt="Създаване - страница">
                                         </div>
                                         <div class="col-612 align-middle my-1 mx-2">
                                             <p class="card-text">При създаване на проект, трябва да се попълнят име и описание
@@ -680,18 +646,15 @@
                         <!--Проект-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-prjBoard" aria-expanded="false" aria-controls="flush-prjBoard">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-prjBoard" aria-expanded="false" aria-controls="flush-prjBoard">
                                     Проект
                                 </button>
                             </h2>
-                            <div id="flush-prjBoard" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-prjBoard" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto"
-                                                alt="Проект - страница">
+                                            <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto" alt="Проект - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">Един проект е съставен от 4 таблици, определящи прогреса, в
@@ -709,26 +672,23 @@
                         <!--Екип-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-team" aria-expanded="false" aria-controls="flush-team">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-team" aria-expanded="false" aria-controls="flush-team">
                                     Екип
                                 </button>
                             </h2>
-                            <div id="flush-team" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-team" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto"
-                                                alt="Добави екип - меню">
+                                            <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto" alt="Добави екип - меню">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на
                                                 екип, като
-                                                се впише името на потребителя.</p>
+                                                се впише името на потребителя. Собственикът също така може и да
+                                                самия проект от самото меню.</p>
                                             <hr>
-                                            <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
-                                                        class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                            <small class="card-text">Достига се чрез бутона <i>Добави Екип<i class="bi bi-plus-circle ms-1"></i></i>.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -738,18 +698,15 @@
                         <!--Създаване на задача-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-task" aria-expanded="false" aria-controls="flush-task">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-task" aria-expanded="false" aria-controls="flush-task">
                                     Задача
                                 </button>
                             </h2>
-                            <div id="flush-task" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-task" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto"
-                                                alt="Създаване на задача - бутон">
+                                            <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto" alt="Създаване на задача - бутон">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">Всеки проект си има определени задачи. При създаване на задача,
@@ -760,8 +717,7 @@
                                                 самия
                                                 етикет и вписване на новото име.</p>
                                             <hr>
-                                            <small class="card-text">Създава се с бутона <i>Добави задача<i
-                                                        class="bi bi-plus-circle ms-1"></i></i>.</small>
+                                            <small class="card-text">Създава се с бутона <i>Добави задача<i class="bi bi-plus-circle ms-1"></i></i>.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -771,22 +727,19 @@
                         <!--Задаване на задача-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-assign" aria-expanded="false" aria-controls="flush-assign">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-assign" aria-expanded="false" aria-controls="flush-assign">
                                     Задаване
                                 </button>
                             </h2>
-                            <div id="flush-assign" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-assign" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto"
-                                                alt="Задаване - модал">
+                                            <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto" alt="Задаване - модал">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
-                                                изпълнителя от членовете на екипа.
+                                                изпълнителя от членовете на екипа. Те могат да правят промени по задачата, включително и да я изтриват.
                                             </p>
                                             <hr>
                                             <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до
@@ -801,18 +754,15 @@
                         <!--Статус на задача-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-status" aria-expanded="false" aria-controls="flush-status">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-status" aria-expanded="false" aria-controls="flush-status">
                                     Статус на задача
                                 </button>
                             </h2>
-                            <div id="flush-status" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-status" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto"
-                                                alt="Статус - таблици">
+                                            <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto" alt="Статус - таблици">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">Независимо от другите задания, задачите се движат самостоятелно
@@ -821,8 +771,7 @@
                                                 задача.
                                             </p>
                                             <hr>
-                                            <small class="card-text">Достига се чрез бутона <i
-                                                    class="bi bi-arrow-right-circle"></i>
+                                            <small class="card-text">Достига се чрез бутона <i class="bi bi-arrow-right-circle"></i>
                                                 до
                                                 етикета на задачата.</small>
                                         </div>
@@ -834,18 +783,15 @@
                         <!--Aкаунт-->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-acc" aria-expanded="false" aria-controls="flush-acc">
+                                <button class="accordion-button collapsed text-light" style="background-color: #003554;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-acc" aria-expanded="false" aria-controls="flush-acc">
                                     Aкаунт
                                 </button>
                             </h2>
-                            <div id="flush-acc" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
+                            <div id="flush-acc" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
                                         <div class="col-12">
-                                            <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto"
-                                                alt="Акаунт - меню">
+                                            <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto" alt="Акаунт - меню">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">В странично меню се изписват <i>Име</i> и <i>e-mail</i> на
@@ -855,8 +801,7 @@
                                                 от профила.
                                             </p>
                                             <hr>
-                                            <small class="card-text">Достига се чрез бутона <i
-                                                    class="bi bi-person-circle"></i>.</small>
+                                            <small class="card-text">Достига се чрез бутона <i class="bi bi-person-circle"></i>.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -879,14 +824,19 @@
 
                 <form action="./onlyPHP/create_project.php" method="post" autocomplete="off">
                     <div class="modal-body">
+
+                        <!--Визуализация-->
                         <div class="w-100">
                             <img class="img-fluid" src="./images/patterns for projects/blue-bg2.png" alt="Example of tables" id="project-pattern">
                         </div>
+
+                        <!--Име-->
                         <div class="form-floating w-100 mt-3 position-relative">
                             <input type="name" name="name-of-project" class="form-control" id="name-of-project" onkeyup="verificateData();" placeholder="name" required>
                             <label for="name-of-project">Име на проект</label>
                         </div>
 
+                        <!--Цветове-->
                         <div class="w-100 mt-3 position-relative" id="color-picking">
                             <span>Гама на проект</span>
                             <ul class="colorpicker w-100 h-100 d-flex overflow-x-auto list-unstyled fs-4">
@@ -906,6 +856,7 @@
                             </div>
                         </div>
 
+                        <!--Описание-->
                         <div class="form-floating w-100 mt-3 position-relative">
                             <textarea type="name" name="description" class="form-control" id="description" placeholder="name" style="min-height: 120px;" onkeyup="verificateData();" required></textarea>
                             <label for="description">Описание на проект</label>
@@ -978,15 +929,15 @@
     </script>
     <!--PHP за комуникация с БД и извличане на данните за аканут-->
     <?php
-    //Данни за достъп до базата данни
+    /*Данни за достъп до базата данни*/
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "PlanA";
 
-    //Прави се връзка с базата данни
+    /*Прави се връзка с базата данни*/
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-    //Проверява се връзката
+    /*Проверява се връзката*/
     if (!$conn) {
         die("Неосъществена връзка с базата данни: " . mysqli_connect_error());
     }
@@ -1005,7 +956,6 @@
     echo "<script>document.getElementById('userName').innerText = '$name'; document.getElementById('userEmail').innerText = '$email';</script>";
     ?>
 </body>
-
 </html>
 <!--
     БД - База данни

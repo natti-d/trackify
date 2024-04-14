@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!--Първата страница, която потребител БЕЗ акаунт вижда-->
-
+<!--Първата страница, която потребител БЕЗ акаунт, вижда-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,6 +81,7 @@
 
         </div>
 
+        <!--За по-малки екрани-->
         <div class="pe-md-5 m-3 d-flex d-md-none align-items-center">
             <button class="btn mx-2 btn-lg bi bi-list-ul" style="border: 2px solid #004e7a; color: #004e7a;"
                 onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
@@ -97,12 +96,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <!--BUG--> <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
                         onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
                         onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
                         onclick="location.href='home.html#about-homepage';" data-bs-dismiss="offcanvas">
                         За Нас</button>
-                    <!--BUG--> <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
+                    <button class="btn m-2 btn-lg w-100" style="border: 2px solid #004e7a; color: #004e7a;"
                         onmouseover="this.style.backgroundColor = '#004e7a'; this.style.color = '#99DDFF'; this.style.border = '2px solid #004e7a';"
                         onmouseleave="this.style.backgroundColor = ''; this.style.color = '#004e7a'; this.style.border = '2px solid #004e7a';"
                         onclick="location.href='home.html#help-homepage';" data-bs-dismiss="offcanvas">
@@ -122,12 +121,13 @@
         </div>
     </header>
 
+    <!--Съдържание-->
     <div class="w-100 overflow-hidden position-relative d-md-flex d-block" style="top: 0;">
-        <!--Контейнер за съдаржанието на страницата-->
+        <!--Контейнер за съдържанието на страницата-->
         <div class="" id="content-homepage">
             <!--За нас-->
             <div id="about-homepage" class="pb-5">
-                <!--Вход/Регистрация и име-->
+                <!--Име и Вход/Регистрация-->
                 <div class="w-100 d-flex justify-content-center align-items-center">
                     <div class="w-100 mx-3 my-2 py-5 col-8">
                         <h1 class="bold mx-5 text-center fs-md-3 fs-1">ПланА</h1>
@@ -189,7 +189,7 @@
                                             удобен
                                             за потребителя
                                             интерфейс, където членовете на екипа
-                                            могат без усилие да създават, възлагат и проследяват дейности. Платформата
+                                            могат без усилие да създават, възлагат и проследяват заданията си. Платформата
                                             осигурява
                                             категоризиране на работата и
                                             установяване на приоритети, като гарантира ясно разбиране на дълбочината на
@@ -211,10 +211,10 @@
                                     <div id="collapseTwo" class="accordion-collapse collapse"
                                         aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-6 text-break">
-                                            <strong>ПланА</strong> предполага създаването на Kanban таблици, за да
+                                            <strong>ПланА</strong> предполага използването на Kanban таблици, за да
                                             повиши
                                             ефективността на вашия
-                                            екип и да рационализира работните
+                                            екип и да се рационализират работните
                                             процеси на проекта. Kanban е визуален метод за управление, който се е
                                             доказал
                                             като
@@ -222,11 +222,11 @@
                                             задачи, подобряване на сътрудничеството и предоставяне на цялостен поглед
                                             върху
                                             напредъка и състоянието на проекта. С
-                                            напредването на задачите през колони като „Да направя“, „В ход“ и
-                                            „Завършени“,
+                                            напредването на задачите през колоните „Зададено“, „В прогрес“, „Изпълнено“ и
+                                            „Приключено“,
                                             членовете на екипа могат лесно да
                                             проследяват и наблюдават напредъка в реално време. С прилагането на Kanban
-                                            таблици от
+                                            таблиците на
                                             <strong>ПланА</strong>, управлението на проекти
                                             никога не е било по-лесно.
                                         </div>
@@ -245,7 +245,7 @@
                                     <div id="collapseThree" class="accordion-collapse collapse"
                                         aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-6 text-break">
-                                            Функцията за проследяване на <strong>ПланА</strong> ви помага да
+                                            Функцията за проследяване на развитието, предоставена от<strong>ПланА</strong> ви помага да
                                             визуализирате
                                             прогреса на проекта.
                                             Софтуерът позволява на екипите
@@ -278,7 +278,7 @@
                                         alt="За нас - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
-                                    <p class="fs-5">Основно описание на функционалностите на проекта, както и бутони за
+                                    <p class="card-text">Основно описание на функционалностите на проекта, както и бутони за
                                         вход и регистрация.</p>
                                     <hr>
                                     <small class="card-text">Достига се с бутона <i>За нас</i> или <i>Помощ</i>.</small>
@@ -337,7 +337,7 @@
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към
                                         чиито
-                                        екипи принаджлежите.</p>
+                                        екипи принадлежите.</p>
                                     <hr>
                                     <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
                                 </div>
@@ -420,8 +420,9 @@
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на
-                                        екип, като
-                                        се впише името на потребителя.</p>
+                                    екип, като
+                                    се впише името на потребителя. Собственикът също така може и да
+                                    самия проект от самото меню.</p>
                                     <hr>
                                     <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
                                                 class="bi bi-plus-circle ms-1"></i></i>.</small>
@@ -465,7 +466,7 @@
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
                                     <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
-                                        изпълнителя от членовете на екипа.
+                                        изпълнителя от членовете на екипа. Те могат да правят промени по задачата, включително и да я изтриват.
                                     </p>
                                     <hr>
                                     <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до
@@ -542,7 +543,7 @@
                                                 class="img-fluid align-middle my-auto" alt="За нас - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
-                                            <p class="fs-5">Основно описание на функционалностите на проекта, както и
+                                            <p class="card-text">Основно описание на функционалностите на проекта, както и
                                                 бутони за
                                                 вход и регистрация.</p>
                                             <hr>
@@ -632,7 +633,7 @@
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">При влизане в акаунт, имате достъп до всеки от проектите, към
                                                 чиито
-                                                екипи принаджлежите.</p>
+                                                екипи принадлежите.</p>
                                             <hr>
                                             <small class="card-text">Достига се с бутона <i>Проекти</i>.</small>
                                         </div>
@@ -753,7 +754,8 @@
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">Към всеки отделен проект могат да бъдат добавени членове на
                                                 екип, като
-                                                се впише името на потребителя.</p>
+                                                се впише името на потребителя. Собственикът също така може и да
+                                                самия проект от самото меню.</p>
                                             <hr>
                                             <small class="card-text">Достига се чрез бутона <i>Добави Екип<i
                                                         class="bi bi-plus-circle ms-1"></i></i>.</small>
@@ -814,7 +816,7 @@
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
                                             <p class="card-text">За всяка отделна задача може да се отбележат един или няколко
-                                                изпълнителя от членовете на екипа.
+                                            изпълнителя от членовете на екипа. Те могат да правят промени по задачата, включително и да я изтриват.
                                             </p>
                                             <hr>
                                             <small class="card-text">Достига се с натискане <i class="bi bi-plus-circle"></i> до
@@ -896,5 +898,4 @@
         </div>
     </div>
 </body>
-
 </html>
