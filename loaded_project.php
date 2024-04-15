@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--Страница за проследяване прогреса на проект-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -305,7 +306,7 @@
 
         <!--За изтриване на проект-->
         <div class="d-flex justify-content-center" style="height: 15hv;">
-            <button type="submit" class="btn btn-danger w-100 mx-md-5 mx-2" data-bs-toggle="modal" data-bs-target="#deleteProjectModal" onclick="makeCode();">Изтрий проект</button>
+            <button type="submit" class="btn btn-danger w-100 mx-md-5 mx-2" data-bs-toggle="modal" data-bs-target="#deleteProjectModal" onclick="makeCode();" id="del-btn">Изтрий проект</button>
         </div>
     </div>
 
@@ -403,15 +404,15 @@
                         <ul class="list-group" id="list-members-assign">
                         </ul>
                     </div>
-                    <div class="modal-footer justify-content-between" id="task-modif">
+                    <div class="modal-footer justify-content-between">
                         <!--Изтриване на задача-->
-                        <div>
+                        <div id="task-modif1">
                             <button type="submit" class="btn btn-danger" name="action" value="Delete">Изтрий</button>
                         </div>
                         <!--Възлагане на задача-->
                         <div>
                             <button type="button" class="btn btn-secondary" id="close-assign-modal" onclick="alert('Направените промени няма да се запазят.');" data-bs-dismiss="modal">Отмени</button>
-                            <button type="submit" class="btn btn-primary" name="action" value="Post">Възложи</button>
+                            <button type="submit" class="btn btn-primary" name="action" value="Post" id="task-modif2">Възложи</button>
                         </div>
                     </div>
                 </form>
@@ -491,7 +492,7 @@
                         email_member: email_member
                     },
                     success: function(response) {
-                        if (rights && email_member != ownerEmail) {
+                        if (owner == localStorage.getItem("user") && email_member != ownerEmail) {
                             $(team_list).append('<li class="list-group-item d-flex justify-content-between"><p class="align-middle my-auto">' + email_member + '</p><i class="bi bi-x align-middle my-auto fs-4 fs-md-5" id="remove-memb" data-bs-toggle="modal" data-bs-target="#removeMembModal" onclick="removeMemberModal(\'' + email_member + '\');"></i></li>');
                         } else {
                             $(team_list).append('<li class="list-group-item">' + email_member + '</li>');
@@ -508,15 +509,22 @@
 
         /*Изписва членове на екип */
         function printMembers() {
+            if (owner != localStorage.getItem("user")) {
+                document.getElementById('del-btn').classList.add('d-none');
+            } else {
+                document.getElementById('del-btn').classList.remove('d-none');
+            }
             team_list.innerHTML = '';
             if (members.length > 0) {
                 for (let i = 0; i < members.length; i++) {
                     let member = members[i];
-                    if (rights && member != ownerEmail) {
+                    if (owner == localStorage.getItem("user") && member != ownerEmail) {
                         $(team_list).append('<li class="list-group-item d-flex justify-content-between"><p class="align-middle my-auto">' + member + '</p><i class="bi bi-x align-middle my-auto fs-4 fs-md-5" id="remove-memb" data-bs-toggle="modal" data-bs-target="#removeMembModal" onclick="removeMemberModal(\'' + member + '\');"></i></li>');
                     } else {
                         $(team_list).append('<li class="list-group-item">' + member + '</li>');
                     }
+
+
                 }
             } else {
                 team_list.append('Няма добавени членове на екип.');
@@ -577,6 +585,7 @@
             task_text.classList.add('rounded-3', 'fs-5', 'w-100', 'px-2', 'py-1', 'text-truncate');
             task_text.type = 'text';
             task_text.value = taskTitle;
+            task_text.readOnly = !rights;
 
             task_text.addEventListener("click", function() {
                 task_text.select();
@@ -610,12 +619,17 @@
                 localStorage.setItem('taskID', taskID);
                 /*Взимане на task id от localStorage като бисквитка*/
                 document.cookie = "taskID=" + localStorage.getItem('taskID');
+                rights = abilityOfMemb(assidnedID);
                 if (!rights) {
-                    document.getElementById('task-modif').classList.add('d-none');
+                    console.log(1);
+                    document.getElementById('task-modif1').classList.add('d-none');
+                    document.getElementById('task-modif2').classList.add('d-none');
                 } else {
-                    document.getElementById('task-modif').classList.remove('d-none');
+                    console.log(2);
+                    document.getElementById('task-modif1').classList.remove('d-none');
+                    document.getElementById('task-modif2').classList.remove('d-none');
                 }
-                assignTask(task_text.value, assigned, rights);
+                assignTask(task_text.value, assigned);
             });
 
             //Бутон за преместване напред в таблиците
@@ -684,7 +698,7 @@
         /*Функцията възлага задачи на отделни членове от екипа*/
         var list_members_assign = document.getElementById('list-members-assign');
 
-        function assignTask(task, assigned, rights) {
+        function assignTask(task, assigned) {
             list_members_assign.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
                 let member = members[i];
