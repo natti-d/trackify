@@ -250,7 +250,7 @@
             h5.innerText = name;
             card_display.append(h5);
 
-            //Описвние
+            //Описание
             let details = document.createElement('details');
             details.classList.add('d-flex');
 

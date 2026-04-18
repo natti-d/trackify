@@ -368,7 +368,7 @@
         </div>
     </div>
 
-    <!--Модал за потвърждение за премахване на член-->
+    <!--Модал за потвърждение за премахването на член-->
     <div class="modal fade" id="removeMembModal" tabindex="-1" aria-labelledby="removeMembModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -816,7 +816,7 @@
             document.getElementById('code-RO').value = code;
         }
 
-        /*Проследява дали въведения код съвпада с въведения код*/
+        /*Проследява дали въведения код съвпада с генерирания код*/
         ['focusout', 'keyup'].forEach(event => inputCode.addEventListener(event, function() {
             if (inputCode.value === code) {
                 document.getElementById('delete-project').disabled = false;

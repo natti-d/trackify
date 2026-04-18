@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--Bootstrap 5.3.2 - JS-->
     <link rel="stylesheet" href="scrollbars.css"><!--Стилово офромление на scrollbars-->
-    <!--Стилово офромление на градиентната анимация в За Нас контейнера-->
+    <!--Стилово офромление на градиентната анимация в За Нас контейнера и водния знак-->
     <style>
         #about-homepage {
             background: linear-gradient(-45deg, #87d5fc, #64aed9, #0476b8);
@@ -33,6 +33,35 @@
             100% {
                 background-position: 0% 50%;
             }
+        }
+
+        /*воден печат*/
+        .watermark img {
+            width: 100%;
+            pointer-events: none
+        }
+
+        .watermark {
+            position: relative;
+        }
+
+        .watermark::after {
+            content: "ПланА";
+            font-size: 1.5em;
+            font-weight: bold;
+            color: rgb(84, 169, 254);
+
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .watermark::after {
+            content: "ПланА";
+            font-size: 2.5em;
+            }
+            
         }
     </style>
 
@@ -244,7 +273,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">За нас</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/about_page.png" class="img-fluid align-middle my-auto" alt="За нас - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -260,7 +289,7 @@
                         <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Вход</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/login.png" class="img-fluid align-middle my-auto" alt="Вход - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -278,7 +307,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Регистрация</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/registrate.png" class="img-fluid align-middle my-auto" alt="Регистрация - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -298,7 +327,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Проекти</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto" alt="Проекти - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -315,7 +344,7 @@
                         <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Карта на проект</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto" alt="Проект - картичка">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -338,7 +367,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Форма за създаване на проект</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto" alt="Създаване - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -360,7 +389,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Проект</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto" alt="Проект - страница">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -378,7 +407,7 @@
                         <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Екип</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto" alt="Добави екип - меню">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -396,7 +425,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Задача</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto" alt="Създаване на задача - бутон">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -420,7 +449,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Задаване</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto" alt="Задаване - модал">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -439,7 +468,7 @@
                         <div class="col-4 border-bottom border-start border-end border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Статус на задача</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto" alt="Статус - таблици">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -460,7 +489,7 @@
                         <div class="col-4 border-bottom border-2 border-secondary px-3">
                             <h3 class="fs-2 w-100">Акаунт</h3>
                             <div class="w-100 d-flex flex-row">
-                                <div class="col-6">
+                                <div class="col-6 watermark">
                                     <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto" alt="Акаунт - меню">
                                 </div>
                                 <div class="col-6 align-middle my-auto mx-2">
@@ -491,7 +520,7 @@
                             <div id="flush-about" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/about_page.png" class="img-fluid align-middle my-auto" alt="За нас - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -517,7 +546,7 @@
                             <div id="flush-login" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/login.png" class="img-fluid align-middle my-auto" alt="Вход - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -544,7 +573,7 @@
                             <div id="flush-reg" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/registrate.png" class="img-fluid align-middle my-auto" alt="Регистрация - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -570,7 +599,7 @@
                             <div id="flush-prjs" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/all_projects.png" class="img-fluid align-middle my-auto" alt="Проекти - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -595,7 +624,7 @@
                             <div id="flush-prjCard" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/project_card.png" class="img-fluid align-middle my-auto" alt="Проект - картичка">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -626,7 +655,7 @@
                             <div id="flush-createForm" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/create_project.png" class="img-fluid align-middle my-auto" alt="Създаване - страница">
                                         </div>
                                         <div class="col-612 align-middle my-1 mx-2">
@@ -653,7 +682,7 @@
                             <div id="flush-prjBoard" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/project_board.png" class="img-fluid align-middle my-auto" alt="Проект - страница">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -679,7 +708,7 @@
                             <div id="flush-team" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/add_team.png" class="img-fluid align-middle my-auto" alt="Добави екип - меню">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -705,7 +734,7 @@
                             <div id="flush-task" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/create_task.png" class="img-fluid align-middle my-auto" alt="Създаване на задача - бутон">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -734,7 +763,7 @@
                             <div id="flush-assign" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/assign_task.png" class="img-fluid align-middle my-auto" alt="Задаване - модал">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -761,7 +790,7 @@
                             <div id="flush-status" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/move_task.png" class="img-fluid align-middle my-auto" alt="Статус - таблици">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
@@ -790,7 +819,7 @@
                             <div id="flush-acc" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body" style="background-color: #effaff;">
                                     <div class="w-100 d-flex flex-column">
-                                        <div class="col-12">
+                                        <div class="col-12 watermark">
                                             <img src="./images/help/acc_offcanva.png" class="img-fluid align-middle my-auto" alt="Акаунт - меню">
                                         </div>
                                         <div class="col-12 align-middle my-1 mx-2">
